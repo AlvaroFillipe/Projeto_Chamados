@@ -18,7 +18,15 @@ CREATE TABLE tb_chamados(
     data_chammado DATETIME DEFAULT CURRENT_TIMESTAMP,
 
     FOREIGN KEY(fk_id_usuario)REFERENCES tb_usuarios(pk_id_usuario),
+    FOREIGN KEY(fk_id_departamento)REFERENCES tb_departamentos(pk_id_departamento),
 )
+
+CREATE TABLE tb_departamentos(
+    pk_id_departamento int not null auto_increment primary key,   
+    departamento varchar(30) not null   
+)
+
+
 
 
 INSERT INTO 

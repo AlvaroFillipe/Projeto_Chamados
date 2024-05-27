@@ -26,13 +26,13 @@ class IndexController extends Action
         session_start();
         if ($_SESSION['tipo_usuario'] != 2) {
 
-            //$getUsers = Container::getModel('Admin');
+            $getUsers = Container::getModel('Admin');
 
 
             //logica da tabela de usuarios
-            //$adminGetUsers = $getUsers->adminGetUsuarios();
+            $adminGetUsers = $getUsers->adminGetUsuarios();
 
-            //$this->view->adminGetUsers = $adminGetUsers;
+            $this->view->adminGetUsers = $adminGetUsers;
 
             //logica para pegar os valores da tabela de usuarios para um formulario           
 

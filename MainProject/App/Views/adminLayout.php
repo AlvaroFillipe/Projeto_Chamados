@@ -138,7 +138,7 @@
           </li>
           <li>
             <a href="/addSitePage">
-              <i class="bi bi-circle"></i><span>Adicionar Site</span>
+              <i class="bi bi-circle"></i><span>Adicionar Departamento</span>
             </a>
           </li>
 
@@ -152,7 +152,7 @@
 
           <li>
             <a href="/reportBetPage">
-              <i class="bi bi-circle"></i><span>Registrar aposta</span>
+              <i class="bi bi-circle"></i><span>Registrar Chamado</span>
             </a>
           </li>
 
@@ -161,7 +161,7 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-menu-button-wide"></i><span>Historico de Apostas</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="bi bi-menu-button-wide"></i><span>Historico de Chamados</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>

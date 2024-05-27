@@ -31,7 +31,7 @@
                       <th scope="col">#</th>
                       <th scope="col">Usuario</th>
                       <th scope="col">Tipo de usuario</th>
-                      <th scope="col">Categoria Usuário</th>
+                     
                       <th>Visualizar</th>
                       <th>Deletar</th>
                       
@@ -48,20 +48,13 @@
 
                       //logica da tabela para se o valor de categoria de usuario for 1 = senior, se for 2 pleno e se for 3 junior
 
-                      if ($usuario['categoria_usuario'] == 1) {
-                        $usuario['categoria_usuario'] = 'Senior';
-                      } elseif ($usuario['categoria_usuario'] == 2) {
-                        $usuario['categoria_usuario'] = 'Pleno';
-                      } elseif ($usuario['categoria_usuario'] == 3) {
-                        $usuario['categoria_usuario'] = 'Junior';
-                      }
 
                     ?>
                       <tr>
                         <th scope="row" name="id"><?= $usuario['pk_id_usuario']; ?></th>
                         <td><?= $usuario['usuario']; ?></td>
                         <td><?= $usuario['tipo_usuario']; ?></td>
-                        <td><?= $usuario['categoria_usuario']; ?></td>
+                      
                         <td>
                           <form action="showProfileAdmin" method="post">
                             <input type="hidden" name="pk_id_usuario" value="<?= $usuario['pk_id_usuario']; ?>">

@@ -11,12 +11,7 @@ class Admin extends Model
   private $pk_id_usuario;   
 
   //dados normais
-  private $nome_site;
-  private $url_site;
-  private $tax_senior;
-  private $tax_pleno;
-  private $tax_junior;
-  private $categoria_usuario;
+  private $departamento;
   private $tipo_usuario;
   private $email;
   private $usuario;
@@ -126,7 +121,7 @@ class Admin extends Model
                   pk_id_usuario,
                   usuario,
                   tipo_usuario,
-                  categoria_usuario 
+                  departamento 
               FROM 
                   tb_usuarios;";
     $stmt = $this->db->prepare($query);
@@ -200,28 +195,17 @@ class Admin extends Model
     $query = 'INSERT INTO 
                     tb_sites_apostas
                     (
-                      nome_site,
-                      url_site,
-                      tax_senior,
-                      tax_pleno,
-                      tax_junior
+                      Departamento                      
                     )
               VALUES
                     (
-                      :nome_site,
-                      :url_site,
-                      :taxa_senior,
-                      :taxa_pleno,
-                      :taxa_junior
+                      :departamento
                     );';
 
     $stmt = $this->db->prepare($query);
 
-    $stmt->bindValue('nome_site', $this->__get('nome_site'));
-    $stmt->bindValue('url_site', $this->__get('url_site'));
-    $stmt->bindValue('taxa_senior', $this->__get('taxa_senior'));
-    $stmt->bindValue('taxa_pleno', $this->__get('taxa_pleno'));
-    $stmt->bindValue('taxa_junior', $this->__get('taxa_junior'));
+    $stmt->bindValue('departamento', $this->__get('departamento'));
+  
 
     $stmt->execute();
 

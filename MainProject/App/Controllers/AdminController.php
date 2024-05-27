@@ -147,24 +147,18 @@ class AdminController extends Action
     }
 
     //logica para adicionar site
-    public function addSite()
+    public function add_departamento()
     {
         session_start();
+        echo '<pre>';
+        print_r($_POST);        
+        echo'</pre>';
         
         $site = Container::getModel('Admin');
 
-        $_POST['taxa_junior'] = intval($_POST['taxa_junior']);
-        $_POST['taxa_pleno'] = intval($_POST['taxa_pleno']);
-        $_POST['taxa_senior'] = intval($_POST['taxa_senior']);
-
-
-        $site->__set('nome_site',$_POST['nome_site']);
-        $site->__set('url_site',$_POST['url_site']);
-        $site->__set('taxa_junior',$_POST['taxa_junior']);
-        $site->__set('taxa_pleno',$_POST['taxa_pleno']);
-        $site->__set('taxa_senior',$_POST['taxa_senior']);
-
-
+       
+        $site->__set('departamento',$_POST['departamento']);
+        
         $site->addSite();
 
         header('Location:/addSitePage');

@@ -113,10 +113,10 @@ class Route extends Bootstrap
             'action' => 'mudarSenhaAdmin'
         );
 
-        $routes['addSite'] = array(
-            'route' => '/addSite',
+        $routes['add_departamento'] = array(
+            'route' => '/add_departamento',
             'controller' => 'AdminController',
-            'action' => 'addSite'
+            'action' => 'add_departamento'
         );
 
 

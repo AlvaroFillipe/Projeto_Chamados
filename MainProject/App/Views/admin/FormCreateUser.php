@@ -61,27 +61,8 @@
                                 </fieldset>
 
                                 <fieldset class="row mb-3">
-                                    <legend class="col-form-label col-sm-2 pt-0">Categoria Usuário</legend>
-                                    <div class="col-sm-10">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="categoria_usuario" id="gridRadios1" value="3" checked>
-                                            <label class="form-check-label" for="gridRadios1">
-                                                Júnior
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="categoria_usuario" id="gridRadios2" value="2">
-                                            <label class="form-check-label" for="gridRadios2">
-                                                Pleno
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="categoria_usuario" id="gridRadios3" value="1">
-                                            <label class="form-check-label" for="gridRadios2">
-                                                Senior
-                                            </label>
-                                        </div>
-                                    </div>
+                                    <legend class="col-form-label col-sm-2 pt-0">Depatamento</legend>
+                                    
                                 </fieldset>
 
                                 <div class="text-center">
