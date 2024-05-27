@@ -1,0 +1,7 @@
+-O sistema de gerenciamento de cassino deverá fazer cadastro, edição ,exclusão e uma tabela com a relação de usuarios existentes
+
+-Dentro do sistema na parte de usuarios, o mesmo poderá registrar todas as suas partidas, quanto apostou e o quanto ganhou ou perdeu com essa aposta
+
+- O sistema deverá ter uma tabela com o historico de apostas feitas com data, valor da aposta e o quanto ganhou ou perdeu com a mesma
+
+- O sistema vai poder apresentar para o usuario uma "carteira" com seu saldo
