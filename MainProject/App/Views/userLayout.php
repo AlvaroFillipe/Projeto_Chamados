@@ -114,8 +114,8 @@
                 </a>
                 <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="/reportBetPage">
-                            <i class="bi bi-circle"></i><span>Registrar Jogo</span>
+                        <a href="/reportChamadoPage">
+                            <i class="bi bi-circle"></i><span>Registrar Chamado</span>
                         </a>
                     </li>
                 </ul>

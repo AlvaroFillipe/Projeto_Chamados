@@ -137,7 +137,7 @@
             </a>
           </li>
           <li>
-            <a href="/addSitePage">
+            <a href="/addDepartamentoPage">
               <i class="bi bi-circle"></i><span>Adicionar Departamento</span>
             </a>
           </li>
@@ -151,7 +151,7 @@
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 
           <li>
-            <a href="/reportBetPage">
+            <a href="/reportChamadoPage">
               <i class="bi bi-circle"></i><span>Registrar Chamado</span>
             </a>
           </li>

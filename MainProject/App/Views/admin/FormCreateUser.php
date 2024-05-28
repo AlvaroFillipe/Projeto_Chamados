@@ -46,13 +46,15 @@
                                     <legend class="col-form-label col-sm-2 pt-0">Tipo De Usuário</legend>
                                     <div class="col-sm-10">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="tipo_usuario" id="gridRadios1" value="1" checked>
+                                            <input class="form-check-input" type="radio" name="tipo_usuario"
+                                                id="gridRadios1" value="1" checked>
                                             <label class="form-check-label" for="gridRadios1">
                                                 Admin
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="tipo_usuario" id="gridRadios2" value="2">
+                                            <input class="form-check-input" type="radio" name="tipo_usuario"
+                                                id="gridRadios2" value="2">
                                             <label class="form-check-label" for="gridRadios2">
                                                 Usuário Padrão
                                             </label>
@@ -62,7 +64,15 @@
 
                                 <fieldset class="row mb-3">
                                     <legend class="col-form-label col-sm-2 pt-0">Depatamento</legend>
-                                    
+                                    <div class="col-md-4">
+                                        <select  name="departamento" id="inputState" class="form-select">
+                                            <option selected>Choose...</option>
+                                            <?php foreach ($this->view->getAlldepartamentos as $departamentos => $departamento) {?>
+                                                <option  value="<?=$departamento['pk_id_departamento']?>"><?=$departamento['departamento']?></option>
+                                           <?php }?>
+                                        </select>
+                                    </div>
+
                                 </fieldset>
 
                                 <div class="text-center">

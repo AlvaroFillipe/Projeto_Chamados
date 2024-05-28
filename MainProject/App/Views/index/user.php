@@ -20,56 +20,8 @@
         <div class="col-lg-12">
           <div class="row">
 
-            <!-- Sales Card -->
-            <div class="col-xxl-4 col-md-4">
-              <div class="card info-card sales-card">
-
-                  
-
-                <div class="card-body">
-
-                  <h5 class="card-title">Apostas feitas <span>| Todas as apostas</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-cart"></i>
-                    </div>
-                    <div class="ps-3">
-                      <?php foreach ($this->view->contadorApostas as $contadorApostas => $apostas) {}?>
-                        
-                     
-                      <h6><?= $apostas['apostas_feitas']?></h6>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div><!-- End Sales Card -->
-
-            <!-- Revenue Card -->
-            <div class="col-xxl-4 col-md-8">
-              <div class="card info-card revenue-card">
-
-                
-
-                <div class="card-body">
-                  <h5 class="card-title">Investimentos <span>| Este Mês</span></h5>
-                  <?php foreach ($this->view->somaGanhos as $somaGanhos => $ganhos){}?>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-currency-dollar"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6><?= $ganhos['resultado']?></h6>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div><!-- End Revenue Card -->
-
             
+
      
     <section class="section">
       <div class="row">
@@ -77,7 +29,7 @@
 
           <div class="card">
             <div class="card-body">
-              <h2 class="card-title">Tabela de Apostas</h2>
+              <h2 class="card-title">Tabela de Chamados</h2>
               
 
               <!-- Table with stripped rows -->
@@ -85,33 +37,26 @@
                 <thead>                  
                   <tr>
                                       
-                    <th><b>Site Da Aposta</ b></th>                    
-                    <th data-type="date" data-format="DD/MM/YYYY">Data da Aposta</th>
-                    <th>Resultado da Aposta</th>
-                    <th>Editar</th>
+                    <th><b>#</b></th>
+                    <th><b>Usuario</b></th>                    
+                    <th data-type="date" data-format="DD/MM/YYYY"><b>Data do Chamado</b></th>                    
+                    <th><b>Editar</b></th>
                     
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach( $this->view->userGetApostas as $userGetApostas => $value) { ?>
-                 
+                  <?php foreach( $this->view->userGetChamados as $userGetChamados => $chamado) { ?>
+                    <?php foreach($this->view->adminGetUsuario as $adminGetUsuario => $usuario) {} ?>
+                    
                   <tr>
                     
-                    <td><?= $value['nome_site'];?></td>   
-                    <td ><?= $value['data_bet'];?></td> 
+                    <td><?= $chamado['pk_id_chamado'];?></td>   
+                    <td ><?= $usuario['usuario'];?></td> 
+                    <td ><?= $chamado['data_chamado'];?></td>
+                                                         
                     <td>
-                      <?php  if ($value['resultado_aposta'] >= 0) { ?>                       
-                        <h5 style="color: green;"> R$ <?= $value['resultado_aposta']?></h5>
-                      <?php }?> 
-
-                      <?php  if ($value['resultado_aposta'] <= 0) { ?>                       
-                        <h5 style="color: red;"> R$ <?= $value['resultado_aposta']?></h5>
-                      <?php }?>                   
-                      
-                    </td>                   
-                    <td>
-                          <form action="showAposta" method="post">
-                            <input type="hidden" name="id_usuario" value="<?=$value['fk_site_aposta']?>">
+                          <form action="showChamado" method="post">
+                            <input type="hidden" name="fk_id_usuario" value="<?=$chamado['fk_id_usuario']?>">
                             <button type="submit" class="btn btn-info"><i class="bi bi-info-circle"></i></button>
                           </form>
                         </td>                        

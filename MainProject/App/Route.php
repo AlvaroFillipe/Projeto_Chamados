@@ -28,10 +28,10 @@ class Route extends Bootstrap
             'action' => 'user'
         );
 
-        $routes['reportBetPage'] = array(
-            'route' => '/reportBetPage',
+        $routes['reportChamadoPage'] = array(
+            'route' => '/reportChamadoPage',
             'controller' => 'UserController',
-            'action' => 'reportBetPage'
+            'action' => 'reportChamadoPage'
         );
 
         $routes['createUserPage'] = array(
@@ -40,16 +40,16 @@ class Route extends Bootstrap
             'action' => 'createUserPage'
         );
      
-        $routes['addSitePage'] = array(
-            'route' => '/addSitePage',
+        $routes['addDepartamentoPage'] = array(
+            'route' => '/addDepartamentoPage',
             'controller' => 'IndexController',
-            'action' => 'addSitePage'
+            'action' => 'addDepartamentoPage'
         );
 
-        $routes['showAposta'] = array(
-            'route' => '/showAposta',
+        $routes['showChamado'] = array(
+            'route' => '/showChamado',
             'controller' => 'UserController',
-            'action' => 'showAposta'
+            'action' => 'showChamado'
         );
 
 
@@ -137,10 +137,10 @@ class Route extends Bootstrap
             'action' => 'getUser'
         );
 
-        $routes['reportBet'] = array(
-            'route' => '/reportBet',
+        $routes['reportChamado'] = array(
+            'route' => '/reportChamado',
             'controller' => 'UserController',
-            'action' => 'reportBet'
+            'action' => 'reportChamado'
         );
 
         $routes['getAllSites'] = array(

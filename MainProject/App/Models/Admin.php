@@ -39,7 +39,7 @@ class Admin extends Model
                       senha,
                       tipo_usuario,
                       email,
-                      categoria_usuario
+                      departamento
                     )
                   VALUES
                     (
@@ -47,7 +47,7 @@ class Admin extends Model
                       :senha,
                       :tipo_usuario,
                       :email,
-                      :categoria_usuario
+                      :departamento
                     );";
 
     $stmt = $this->db->prepare($query);
@@ -55,7 +55,7 @@ class Admin extends Model
     $stmt->bindValue(':senha', $this->__get('senha'));
     $stmt->bindValue(':tipo_usuario', $this->__get('tipo_usuario'));
     $stmt->bindValue(':email', $this->__get('email'));
-    $stmt->bindValue(':categoria_usuario', $this->__get('categoria_usuario'));
+    $stmt->bindValue(':departamento', $this->__get('departamento'));
 
     $stmt->execute();
     return $this;
@@ -100,7 +100,7 @@ class Admin extends Model
                   usuario,
                   email,
                   tipo_usuario,
-                  categoria_usuario 
+                  Departamento 
               FROM
                   tb_usuarios 
               WHERE 
@@ -174,7 +174,7 @@ class Admin extends Model
                   email = :email,
                   usuario = :usuario,
                   tipo_usuario = :tipo_usuario,
-                  categoria_usuario = :categoria_usuario
+                  departamento = :departamento
               WHERE
                   pk_id_usuario = :pk_id_usuario;";
     $stmt = $this->db->prepare($query);
@@ -182,33 +182,11 @@ class Admin extends Model
     $stmt->bindValue('email', $this->__get('email'));
     $stmt->bindValue('usuario', $this->__get('usuario'));
     $stmt->bindValue('tipo_usuario', $this->__get('tipo_usuario'));
-    $stmt->bindValue('categoria_usuario', $this->__get('categoria_usuario'));
+    $stmt->bindValue('departamento', $this->__get('departamento'));
     $stmt->bindValue('pk_id_usuario', $this->__get('pk_id_usuario'));
 
     $stmt->execute();
     return $this;
   }
-
-  //query para adicionar site no sistema
-  public function addSite()
-  {
-    $query = 'INSERT INTO 
-                    tb_sites_apostas
-                    (
-                      Departamento                      
-                    )
-              VALUES
-                    (
-                      :departamento
-                    );';
-
-    $stmt = $this->db->prepare($query);
-
-    $stmt->bindValue('departamento', $this->__get('departamento'));
-  
-
-    $stmt->execute();
-
-    return $this;
-  }
+ 
 }
