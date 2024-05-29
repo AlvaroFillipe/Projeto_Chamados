@@ -3,7 +3,7 @@
 
 <body>
   <main id="main" class="main">
-    <?php foreach ($this->view->usuarioGetchamados as $usuarioGetchamados => $chamado) {} ?>
+    <?php foreach ( $this->view->usuarioGetChamado as $usuarioGetchamado => $chamado) {} ?>
     <?php foreach ($this->view->adminGetUsuario as $adminGetUsuario => $usuario) {} ?>
 
     <div class="pagetitle">

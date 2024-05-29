@@ -113,4 +113,50 @@ class Chamado extends Model
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+
+    //query para pegar apenas um chamado de acordo com um usuario especifico
+    public function userGetChamado()
+    {
+        $query = 'SELECT
+                        *
+                    FROM
+                        tb_chamados
+                    LEFT JOIN
+                        tb_departamentos
+                    ON
+                        (tb_chamados.fk_id_departamento = tb_departamentos.pk_id_departamento)
+                    WHERE
+                        fk_id_usuario = :fk_id_usuario and pk_id_chamado = :pk_id_chamado;';
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue('fk_id_usuario', $this->__get('pk_id_usuario'));
+        $stmt->bindValue('pk_id_chamado', $this->__get('pk_id_chamado'));
+
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    //query para pegar todos chamados sem um filtro especifico
+    //query para pegar apenas um chamado de acordo com um usuario especifico
+    public function userGetAllChamados()
+    {
+        $query = 'SELECT
+                        *
+                    FROM
+                        tb_chamados
+                    LEFT JOIN
+                        tb_departamentos
+                    ON
+                        (tb_chamados.fk_id_departamento = tb_departamentos.pk_id_departamento)';
+                    
+        $stmt = $this->db->prepare($query);
+        
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    
 }

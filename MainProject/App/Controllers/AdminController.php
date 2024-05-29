@@ -42,37 +42,33 @@ class AdminController extends Action
     //pagina de rebderização de profile de usuario pela pagina de admin
     public function showProfileAdmin()
     {
-        session_start();            
-            //se o usuario for admin
-            $usuario = Container::getModel('Admin');
-            $chamado = Container::getModel('Chamado');
+        session_start();
+        //se o usuario for admin
+        $usuario = Container::getModel('Admin');
+        $chamado = Container::getModel('Chamado');
 
-             
-           
-            $usuario->__set('pk_id_usuario', $_POST['pk_id_usuario']);
-            $chamado->__set('pk_id_usuario', $_POST['pk_id_usuario']);
-            
-            
-            //metodo da parte de editar e visualizar usuario
-            $contentUsuario = $usuario->adminGetUsuario();
-            $contentDepartamento = $chamado->getDepartamento();
-            $getAllDepartamentos = $chamado->getAllDepartamentos();
+        $usuario->__set('pk_id_usuario', $_POST['pk_id_usuario']);
+        $chamado->__set('pk_id_usuario', $_POST['pk_id_usuario']);
 
-            //metodo para renderizar os chamados de um usuario especifico
-            $contentChamados = $chamado->userGetChamados();
-           
+        //metodo da parte de editar e visualizar usuario
+        $contentUsuario = $usuario->adminGetUsuario();
+        $contentDepartamento = $chamado->getDepartamento();
+        $getAllDepartamentos = $chamado->getAllDepartamentos();
 
-            //metodo da parte de editar e visualizar usuario
-            $this->view->contentUsuario = $contentUsuario;
-            $this->view->contentDepartamento = $contentDepartamento;
-            $this->view->getAlldepartamentos = $getAllDepartamentos;
-            
-            //metodo para renderizar os chamados de um usuario especifico
-            $this->view->contentChamados = $contentChamados;
-            
+        //metodo para renderizar os chamados de um usuario especifico
+        $contentChamados = $chamado->userGetChamados();
 
-            $this->render('showProfileAdmin', 'adminLayout');
+        //metodo da parte de editar e visualizar usuario
+        $this->view->contentUsuario = $contentUsuario;
+        $this->view->contentDepartamento = $contentDepartamento;
+        $this->view->getAlldepartamentos = $getAllDepartamentos;
+
+        //metodo para renderizar os chamados de um usuario especifico
+        $this->view->contentChamados = $contentChamados;
         
+
+        $this->render('showProfileAdmin', 'adminLayout');
+
     }
 
     //pagina de rebderização de edit de usuario pela pagina de admin
@@ -80,15 +76,12 @@ class AdminController extends Action
     {
         session_start();
         $editar = Container::getModel('Admin');
-        echo '<pre>';
-        print_r($_POST);
-        echo'</pre>';
+        $chamado = Container::getModel('Chamado');
+       
         //passado os valores necessarios para int
         $_POST['pk_id_usuario'] = intval($_POST['pk_id_usuario']);
         $_POST['tipo_usuario'] = intval($_POST['tipo_usuario']);
         $_POST['departamento'] = intval($_POST['departamento']);
-      
-
 
         $editar->__set('pk_id_usuario', $_POST['pk_id_usuario']);
         $editar->__set('usuario', $_POST['usuario']);
@@ -97,31 +90,34 @@ class AdminController extends Action
         $editar->__set('departamento', $_POST['departamento']);
 
         $editar->editarUsuario();
-
+        
         //redirecionando pra tela de profile denovo
         //se o usuario for admin        
-        $chamado = Container::getModel('Chamado');
 
-         
-       
         $editar->__set('pk_id_usuario', $_POST['pk_id_usuario']);
         $chamado->__set('pk_id_usuario', $_POST['pk_id_usuario']);
 
+        //metodo da parte de editar e visualizar usuario
         $contentUsuario = $editar->adminGetUsuario();
+        $contentDepartamento = $chamado->getDepartamento();
+        $getAllDepartamentos = $chamado->getAllDepartamentos();
+
+        //metodo para renderizar os chamados de um usuario especifico
         $contentChamados = $chamado->userGetChamados();
-        $departamentos = $chamado->getAllDepartamentos();
 
         //metodo da parte de editar e visualizar usuario
         $this->view->contentUsuario = $contentUsuario;
-        
-        //metodo da tabela de chamados do usuario solicitado
+        $this->view->contentDepartamento = $contentDepartamento;
+        $this->view->getAlldepartamentos = $getAllDepartamentos;
+
+        //metodo para renderizar os chamados de um usuario especifico
         $this->view->contentChamados = $contentChamados;
 
-        //metodo para pegar departamentos
-        $this->view->getAlldepartamentos = $departamentos;
-       
-
+        
+        
         $this->render('showProfileAdmin', 'adminLayout');
+
+        
     }
 
     //logica com a função de deletar usuario de acordo com o id fornecido pelo banco
@@ -153,33 +149,28 @@ class AdminController extends Action
 
         //redirecionando pra tela de profile denovo
         $usuario = Container::getModel('Admin');
-            $chamado = Container::getModel('Chamado');
+        $chamado = Container::getModel('Chamado');
 
-             
-           
-            $usuario->__set('pk_id_usuario', $_POST['pk_id_usuario']);
-            $chamado->__set('pk_id_usuario', $_POST['pk_id_usuario']);
-            
-            
-            //metodo da parte de editar e visualizar usuario
-            $contentUsuario = $usuario->adminGetUsuario();
-            $contentDepartamento = $chamado->getDepartamento();
-            $getAllDepartamentos = $chamado->getAllDepartamentos();
+        $usuario->__set('pk_id_usuario', $_POST['pk_id_usuario']);
+        $chamado->__set('pk_id_usuario', $_POST['pk_id_usuario']);
 
-            //metodo para renderizar os chamados de um usuario especifico
-            $contentChamados = $chamado->userGetChamados();
-           
+        //metodo da parte de editar e visualizar usuario
+        $contentUsuario = $usuario->adminGetUsuario();
+        $contentDepartamento = $chamado->getDepartamento();
+        $getAllDepartamentos = $chamado->getAllDepartamentos();
 
-            //metodo da parte de editar e visualizar usuario
-            $this->view->contentUsuario = $contentUsuario;
-            $this->view->contentDepartamento = $contentDepartamento;
-            $this->view->getAlldepartamentos = $getAllDepartamentos;
-            
-            //metodo para renderizar os chamados de um usuario especifico
-            $this->view->contentChamados = $contentChamados;
-            
+        //metodo para renderizar os chamados de um usuario especifico
+        $contentChamados = $chamado->userGetChamados();
 
-            $this->render('showProfileAdmin', 'adminLayout');
+        //metodo da parte de editar e visualizar usuario
+        $this->view->contentUsuario = $contentUsuario;
+        $this->view->contentDepartamento = $contentDepartamento;
+        $this->view->getAlldepartamentos = $getAllDepartamentos;
+
+        //metodo para renderizar os chamados de um usuario especifico
+        $this->view->contentChamados = $contentChamados;
+
+        $this->render('showProfileAdmin', 'adminLayout');
     }
 
     //logica para adicionar site

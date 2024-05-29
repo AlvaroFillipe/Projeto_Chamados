@@ -189,7 +189,7 @@ if ($usuario['tipo_usuario'] == 1) {
               <table class="table datatable">
                 <thead>
                   <tr>
-                   
+
                     <th data-type="date" data-format="DD/MM/YYYY">Data do Chamado</th>
                     <th>Editar</th>
                   </tr>
@@ -197,12 +197,13 @@ if ($usuario['tipo_usuario'] == 1) {
                 <tbody>
                   <?php foreach ($this->view->contentChamados as $contentChamados => $Chamado) {?>
                   <tr>
-                    
+
                     <td ><?=$Chamado['data_chamado'];?></td>
                     <td>
 
-                      <form action="showAposta" method="post">
-                        <input type="hidden" name="fk_id_usuario" value="<?=$value['fk_id_usuario']?>">
+                      <form action="showChamado" method="post">
+                        <input type="hidden" name="pk_id_chamado" value="<?=$Chamado['pk_id_chamado']?>">
+                        <input type="hidden" name="fk_id_usuario" value="<?=$Chamado['fk_id_usuario']?>">
                         <button type="submit" class="btn btn-info"><i class="bi bi-info-circle"></i></button>
                       </form>
                     </td>

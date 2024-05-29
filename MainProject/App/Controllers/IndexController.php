@@ -84,6 +84,25 @@ class IndexController extends Action
     {
         session_start();
 
+        $historico = Container::getModel('Chamado');
+        $usuario = Container::getModel('Admin');
+    
+
+        $historicoChamados = $historico->userGetAllChamados();
+        $usuarioHistorico = $usuario->adminGetUsuario();
+
+        $this->view->historicoChamados = $historicoChamados;
+        $this->view->usuarioHistorico = $usuarioHistorico;
+        /*
+        echo '<pre>';
+        print_r($this->view->historicoChamados);
+        echo'</pre>';
+        echo '<pre>';
+        print_r( $this->view->usuarioHistorico);
+        echo'</pre>';
+        */
+
+
         if ($_SESSION['tipo_usuario'] != 2) {
             $this->render('historicoGeral', 'adminLayout');
         } else {

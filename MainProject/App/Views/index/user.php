@@ -40,7 +40,7 @@
                     <th><b>#</b></th>
                     <th><b>Usuario</b></th>                    
                     <th data-type="date" data-format="DD/MM/YYYY"><b>Data do Chamado</b></th>                    
-                    <th><b>Editar</b></th>
+                    <th><b>Visualizar</b></th>
                     
                   </tr>
                 </thead>
@@ -56,6 +56,7 @@
                                                          
                     <td>
                           <form action="showChamado" method="post">
+                            <input type="hidden" name="pk_id_chamado" value="<?=$chamado['pk_id_chamado']?>">
                             <input type="hidden" name="fk_id_usuario" value="<?=$chamado['fk_id_usuario']?>">
                             <button type="submit" class="btn btn-info"><i class="bi bi-info-circle"></i></button>
                           </form>
