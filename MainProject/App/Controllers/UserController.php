@@ -59,35 +59,41 @@ class UserController extends Action
 
             $chamado->__set('pk_id_usuario', $_POST['fk_id_usuario']);
             $usuario->__set('pk_id_usuario', $_POST['fk_id_usuario']);
+            $chamado = Container::getModel('Chamado');
+            $usuario = Container::getModel('User');
+
+            $chamado->__set('pk_id_usuario', $_POST['fk_id_usuario']);
             $chamado->__set('pk_id_chamado', $_POST['pk_id_chamado']);
 
+            $usuario->__set('pk_id_usuario', $_POST['fk_id_usuario']);
+            
             //pegando informações da  chamado
             $this->view->usuarioGetChamado = $chamado->userGetChamado();
 
             //pegando informações do  usuario
-            $this->view->adminGetUsuario = $usuario->adminGetUsuario();
+            $this->view->usuarioGetUsuario = $usuario->userGetUsuario();
             
-
-        
+            
 
             
             $this->render('showChamado', 'adminLayout');
         } else {
 
             $chamado = Container::getModel('Chamado');
-            $usuario = Container::getModel('Admin');
+            $usuario = Container::getModel('User');
 
             $chamado->__set('pk_id_usuario', $_POST['fk_id_usuario']);
-            $usuario->__set('pk_id_usuario', $_POST['fk_id_usuario']);
             $chamado->__set('pk_id_chamado', $_POST['pk_id_chamado']);
 
+            $usuario->__set('pk_id_usuario', $_POST['fk_id_usuario']);
+            
             //pegando informações da  chamado
             $this->view->usuarioGetChamado = $chamado->userGetChamado();
 
             //pegando informações do  usuario
-            $this->view->adminGetUsuario = $usuario->adminGetUsuario();
+            $this->view->usuarioGetUsuario = $usuario->userGetUsuario();
             
-        
+            
 
             
             $this->render('showChamado', 'userLayout');

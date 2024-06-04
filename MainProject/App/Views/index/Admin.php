@@ -62,7 +62,8 @@
                           </form>
                         </td>                        
                         <td>                        
-                          <form action="deleteUserAdmin" method="post">                          
+                          <form action="deleteUserAdmin" method="post">       
+                                               
                             <input type="hidden" name="pk_id_usuario" value="<?= $usuario['pk_id_usuario']; ?>">
                             <button type="submit" class="btn btn-danger"><i class="bi bi-exclamation-octagon"></i></button>                         
                           </form>                          

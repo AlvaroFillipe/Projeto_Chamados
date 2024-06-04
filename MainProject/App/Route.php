@@ -119,6 +119,14 @@ class Route extends Bootstrap
             'action' => 'add_departamento'
         );
 
+        $routes['deleteChamadoAdmin'] = array(
+            'route' => '/deleteChamadoAdmin',
+            'controller' => 'AdminController',
+            'action' => 'deleteChamadoAdmin'
+        );
+
+        
+
 
 
 

@@ -4,7 +4,7 @@
 <body>
   <main id="main" class="main">
     <?php foreach ( $this->view->usuarioGetChamado as $usuarioGetchamado => $chamado) {} ?>
-    <?php foreach ($this->view->adminGetUsuario as $adminGetUsuario => $usuario) {} ?>
+    <?php foreach ($this->view->usuarioGetUsuario as $usuarioGetUsuario => $usuario) {} ?>
 
     <div class="pagetitle">
       <h1>Chamado</h1>
@@ -47,7 +47,7 @@
 
                   <div class="row">
                     <div class="col-lg-4 col-md-3 label"><b>Departamento</b></div>
-                    <div class="col-lg-3 col-md-8"><?= $chamado['departamento'] ?></div>
+                    <div class="col-lg-3 col-md-8"><?= $usuario['departamento'] ?></div>
                   </div>
                   <div class="row">
                     <div class="col-lg-4 col-md-3 label"><b>Data de abertura do Chamado</b></div>

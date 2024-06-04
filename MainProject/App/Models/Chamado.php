@@ -96,7 +96,11 @@ class Chamado extends Model
     public function userGetChamados()
     {
         $query = 'SELECT
-                        *
+                        pk_id_chamado,
+                        fk_id_usuario,
+                        fk_id_departamento,
+                        chamado,
+                        DATE_FORMAT(data_chamado,"%d/%m/%Y") as data_chamado
                     FROM
                         tb_chamados
                     LEFT JOIN
@@ -119,7 +123,11 @@ class Chamado extends Model
     public function userGetChamado()
     {
         $query = 'SELECT
-                        *
+                        pk_id_chamado,
+                        fk_id_usuario,
+                        fk_id_departamento,
+                        chamado,
+                        DATE_FORMAT(data_chamado,"%d/%m/%Y") as data_chamado
                     FROM
                         tb_chamados
                     LEFT JOIN
@@ -143,7 +151,11 @@ class Chamado extends Model
     public function userGetAllChamados()
     {
         $query = 'SELECT
-                        *
+                        pk_id_chamado,
+                        fk_id_usuario,
+                        fk_id_departamento,
+                        chamado,
+                        DATE_FORMAT(data_chamado,"%d/%m/%Y") as data_chamado
                     FROM
                         tb_chamados
                     LEFT JOIN

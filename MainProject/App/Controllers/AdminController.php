@@ -28,6 +28,9 @@ class AdminController extends Action
 
         $user = Container::getModel('Admin');
 
+        $_POST['tipo_usuario'] = intval( $_POST['tipo_usuario']);
+        $_POST['departamento'] = intval( $_POST['departamento']);
+
         $user->__set('usuario', $_POST['usuario']);
         $user->__set('senha', $_POST['senha']);
         $user->__set('email', $_POST['email']);
@@ -178,13 +181,35 @@ class AdminController extends Action
     {
 
         $site = Container::getModel('Admin');
+        
 
         $site->__set('departamento', $_POST['departamento']);
 
-        $site->addSite();
+        $site->add_departamento();
 
         header('Location:/addDepartamentoPage');
 
+    }
+
+    //logica para deletar um chamado especifico pelo admin
+    public function deleteChamadoAdmin()
+    {      
+        session_start();
+
+        $chamado = Container::getModel('Admin');
+
+        $chamado->__set('pk_id_chamado', $_POST['pk_id_chamado']);
+
+        $chamado->adminDeletarChamado();
+
+        
+
+        $this->render('showProfileAdmin', 'adminLayout');
+        
+
+        
+
+        
     }
 
 }

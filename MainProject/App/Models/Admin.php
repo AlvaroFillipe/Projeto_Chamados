@@ -9,6 +9,7 @@ class Admin extends Model
 
   //PK´s
   private $pk_id_usuario;   
+  private $pk_id_chamado;   
 
   //dados normais
   private $departamento;
@@ -184,6 +185,43 @@ class Admin extends Model
     $stmt->bindValue('tipo_usuario', $this->__get('tipo_usuario'));
     $stmt->bindValue('departamento', $this->__get('departamento'));
     $stmt->bindValue('pk_id_usuario', $this->__get('pk_id_usuario'));
+
+    $stmt->execute();
+    return $this;
+  }
+
+  //query para adicionar departamento
+  public function add_departamento()
+  {
+    $query = 'INSERT INTO tb_departamentos
+                        (
+                          departamento
+                        )
+                      VALUES
+                        (
+                          :departamento
+                        )';
+    
+    $stmt = $this->db->prepare($query);
+
+    $stmt->bindValue(':departamento',$this->__get('departamento'));
+
+    $stmt->execute();
+
+    return $this;
+  }
+
+  //query para deletar um usuario especifico
+  public function adminDeletarChamado()
+  {
+    $query = 'DELETE FROM 
+                tb_chamados
+              WHERE
+                pk_id_chamado = :pk_id_chamado';
+    
+    $stmt = $this->db->prepare($query);
+
+    $stmt->bindValue(':pk_id_chamado',$this->__get('pk_id_chamado'));
 
     $stmt->execute();
     return $this;

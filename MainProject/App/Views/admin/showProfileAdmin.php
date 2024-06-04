@@ -192,6 +192,7 @@ if ($usuario['tipo_usuario'] == 1) {
 
                     <th data-type="date" data-format="DD/MM/YYYY">Data do Chamado</th>
                     <th>Editar</th>
+                    <th>Excluir</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -207,6 +208,13 @@ if ($usuario['tipo_usuario'] == 1) {
                         <button type="submit" class="btn btn-info"><i class="bi bi-info-circle"></i></button>
                       </form>
                     </td>
+
+                    <td>                        
+                          <form action="deleteChamadoAdmin" method="post">                          
+                          <input type="hidden" name="pk_id_chamado" value="<?=$Chamado['pk_id_chamado']?>">
+                            <button type="submit" class="btn btn-danger"><i class="bi bi-exclamation-octagon"></i></button>                         
+                          </form>                          
+                        </td>
                   </tr>
                   <?php }?>
                 </tbody>
