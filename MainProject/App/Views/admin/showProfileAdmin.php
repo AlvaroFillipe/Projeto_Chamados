@@ -189,7 +189,7 @@ if ($usuario['tipo_usuario'] == 1) {
               <table class="table datatable">
                 <thead>
                   <tr>
-
+                  <th >#</th>
                     <th data-type="date" data-format="DD/MM/YYYY">Data do Chamado</th>
                     <th>Editar</th>
                     <th>Excluir</th>
@@ -198,7 +198,7 @@ if ($usuario['tipo_usuario'] == 1) {
                 <tbody>
                   <?php foreach ($this->view->contentChamados as $contentChamados => $Chamado) {?>
                   <tr>
-
+                    <td><?=$Chamado['pk_id_chamado'];?></td>
                     <td ><?=$Chamado['data_chamado'];?></td>
                     <td>
 

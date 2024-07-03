@@ -196,15 +196,41 @@ class AdminController extends Action
     {      
         session_start();
 
-        $chamado = Container::getModel('Admin');
+        $usuario = Container::getModel('Admin');
+        $chamado = Container::getModel('Chamado');
 
-        $chamado->__set('pk_id_chamado', $_POST['pk_id_chamado']);
+        $usuario->__set('pk_id_chamado', $_POST['pk_id_chamado']);
 
-        $chamado->adminDeletarChamado();
+        $usuario->adminDeletarChamado();       
 
         
+        //se o usuario for admin
+        
+       
 
-        $this->render('showProfileAdmin', 'adminLayout');
+        //$usuario->__set('pk_id_usuario', $_SESSION['pk_id_usuario']);
+        //$chamado->__set('pk_id_usuario', $_SESSION['pk_id_usuario']);
+
+        //metodo da parte de editar e visualizar usuario
+        $contentUsuario = $usuario->adminGetUsuario();
+        $contentDepartamento = $chamado->getDepartamento();
+        $getAllDepartamentos = $chamado->getAllDepartamentos();
+
+        //metodo para renderizar os chamados de um usuario especifico
+        $contentChamados = $chamado->userGetChamados();
+
+        //metodo da parte de editar e visualizar usuario
+        $this->view->contentUsuario = $contentUsuario;
+        $this->view->contentDepartamento = $contentDepartamento;
+        $this->view->getAlldepartamentos = $getAllDepartamentos;
+
+        //metodo para renderizar os chamados de um usuario especifico
+        $this->view->contentChamados = $contentChamados;
+
+       
+        
+
+        header('Location: /admin');
         
 
         
