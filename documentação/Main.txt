@@ -11,6 +11,12 @@ Main project {
         3junior
     }
 
+    categorias de status de chamados{
+        1- aberto,
+        2- fechado
+    }
+    
+
     
 
 

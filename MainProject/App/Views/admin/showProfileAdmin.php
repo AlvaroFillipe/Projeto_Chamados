@@ -191,6 +191,7 @@ if ($usuario['tipo_usuario'] == 1) {
                   <tr>
                   <th >#</th>
                     <th data-type="date" data-format="DD/MM/YYYY">Data do Chamado</th>
+                    <th>STATUS</th>
                     <th>Editar</th>
                     <th>Excluir</th>
                   </tr>
@@ -199,9 +200,20 @@ if ($usuario['tipo_usuario'] == 1) {
                   <?php foreach ($this->view->contentChamados as $contentChamados => $Chamado) {?>
                   <tr>
                     <td><?=$Chamado['pk_id_chamado'];?></td>
-                    <td ><?=$Chamado['data_chamado'];?></td>
+                    <td><?=$Chamado['data_chamado'];?></td>
                     <td>
-
+                      <?php if ($Chamado['status_chamado'] == 1) {?>
+                        <div class="col-lg-3 col-md-8">
+                          <h4 style="color:red"><i class="bi bi-check-circle"></i></h4>
+                        </div>
+                      <?php } ?>
+                      <?php if ($Chamado['status_chamado'] == 2) {?>
+                        <div class="col-lg-3 col-md-8">
+                          <h4 style="color:green"><i class="bi bi-check-circle-fill"></i></h4> 
+                        </div>
+                      <?php }?>
+                    </td>
+                    <td>
                       <form action="showChamado" method="post">
                         <input type="hidden" name="pk_id_chamado" value="<?=$Chamado['pk_id_chamado']?>">
                         <input type="hidden" name="fk_id_usuario" value="<?=$Chamado['fk_id_usuario']?>">

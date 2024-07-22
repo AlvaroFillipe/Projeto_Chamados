@@ -42,7 +42,18 @@
                     <td><?= $historico['pk_id_chamado']?></td>
                     <td>USUARIO</td>
                     <td><?= $historico['data_chamado']?></td>
-                    <td>STATUS</td>
+                    <td>
+                      <?php if ($historico['status_chamado'] == 1) {?>
+                        <div class="col-lg-3 col-md-8">
+                          <h4 style="color:red"><i class="bi bi-check-circle"></i></h4>
+                        </div>
+                      <?php } ?>
+                      <?php if ($historico['status_chamado'] == 2) {?>
+                        <div class="col-lg-3 col-md-8">
+                          <h4 style="color:green"><i class="bi bi-check-circle-fill"></i></h4> 
+                        </div>
+                      <?php }?>
+                    </td>
 
                     
                     <td>

@@ -37,14 +37,17 @@ class Chamado extends Model
                   ( 
                     fk_id_usuario,
                     fk_id_departamento,                    
-                    chamado
-                                       
+                    chamado,
+                    status_chamado,
+                    solucao_chamado                                      
                   )
               VALUES
                   (
                     :fk_id_usuario,
                     :fk_id_departamento,                    
-                    :chamado                    
+                    :chamado, 
+                    :status_chamado,
+                    :solucao_chamado                     
                   );";
 
         $stmt = $this->db->prepare($query);
@@ -53,6 +56,8 @@ class Chamado extends Model
         $stmt->bindValue('fk_id_usuario', $this->__get('fk_id_usuario'));
         $stmt->bindValue('fk_id_departamento', $this->__get('fk_id_departamento'));
         $stmt->bindValue('chamado', $this->__get('chamado'));
+        $stmt->bindValue('status_chamado', $this->__get('status_chamado'));
+        $stmt->bindValue('solucao_chamado', $this->__get('solucao_chamado'));
         
 
         $stmt->execute();
@@ -100,6 +105,8 @@ class Chamado extends Model
                         fk_id_usuario,
                         fk_id_departamento,
                         chamado,
+                        status_chamado,
+                        solucao_chamado,
                         DATE_FORMAT(data_chamado,"%d/%m/%Y") as data_chamado
                     FROM
                         tb_chamados
@@ -118,7 +125,6 @@ class Chamado extends Model
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-
     //query para pegar apenas um chamado de acordo com um usuario especifico
     public function userGetChamado()
     {
@@ -127,6 +133,8 @@ class Chamado extends Model
                         fk_id_usuario,
                         fk_id_departamento,
                         chamado,
+                        status_chamado,
+                        solucao_chamado,
                         DATE_FORMAT(data_chamado,"%d/%m/%Y") as data_chamado
                     FROM
                         tb_chamados
@@ -155,6 +163,7 @@ class Chamado extends Model
                         fk_id_usuario,
                         fk_id_departamento,
                         chamado,
+                        status_chamado,
                         DATE_FORMAT(data_chamado,"%d/%m/%Y") as data_chamado
                     FROM
                         tb_chamados

@@ -23,6 +23,7 @@ CREATE TABLE tb_chamados(
     fk_id_usuario int not null,
     fk_id_departamento int not null,
     chamado text not null,
+    status_chamado int not null
     data_chamado DATETIME DEFAULT CURRENT_TIMESTAMP,
 
     FOREIGN KEY(fk_id_usuario)REFERENCES tb_usuarios(pk_id_usuario),

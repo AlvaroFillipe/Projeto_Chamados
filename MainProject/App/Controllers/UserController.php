@@ -18,11 +18,14 @@ class UserController extends Action
         //passando valores para inteiros
         $_POST['pk_id_usuario'] = intval($_POST['pk_id_usuario']);
         $_POST['fk_id_departamento'] = intval($_POST['fk_id_departamento']);
+        $_POST['status_chamado'] = intval($_POST['status_chamado']);
 
         //setando os valores
         $chamado->__set('fk_id_usuario', $_POST['pk_id_usuario']);
         $chamado->__set('fk_id_departamento', $_POST['fk_id_departamento']);
         $chamado->__set('chamado', $_POST['chamado']);
+        $chamado->__set('status_chamado', $_POST['status_chamado']);
+        $chamado->__set('solucao_chamado', $_POST['solucao_chamado']);
 
         $chamado->reportChamado();
 
