@@ -22,6 +22,10 @@ class AuthController extends Action
         $autenticar->__set('senha', $_POST['senha']);
         //$autenticar->__set('senha', md5($_POST['senha']));  
 
+        echo '<pre>';
+        print_r($_POST);
+        echo'</pre>';
+        
         //executando funções
         $autenticar->autenticar();
 
@@ -60,6 +64,7 @@ class AuthController extends Action
             //usando função nativa do php para redirecionar o usuario para a tela de login se ele não colocar um usuario e senha corretos
             header('Location: /?login=erro'); //somente a barra retorna ele para a pagina raiz de login
         }
+        
     }
 
     public function sair()
