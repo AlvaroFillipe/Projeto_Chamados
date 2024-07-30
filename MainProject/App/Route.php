@@ -65,6 +65,12 @@ class Route extends Bootstrap
             'action' => 'show_historico_geral'
         );
 
+        $routes['show_configs'] = array(
+            'route' => '/Show_configs',
+            'controller' => 'IndexController',
+            'action' => 'show_configs'
+        );
+
 
 
 

@@ -122,4 +122,11 @@ class IndexController extends Action
         }
 
     }
+
+    //render para a tela de configurações do dite de chamados
+    public function show_configs()
+    {
+        session_start();
+        $this->render('Show_configs','adminLayout');
+    }
 }
