@@ -32,26 +32,13 @@ class Route extends Bootstrap
             'route' => '/reportChamadoPage',
             'controller' => 'UserController',
             'action' => 'reportChamadoPage'
-        );
-
-        $routes['createUserPage'] = array(
-            'route' => '/createUserPage',
-            'controller' => 'AdminController',
-            'action' => 'createUserPage'
-        );
-     
-        $routes['addDepartamentoPage'] = array(
-            'route' => '/addDepartamentoPage',
-            'controller' => 'IndexController',
-            'action' => 'addDepartamentoPage'
-        );
+        );     
 
         $routes['showChamado'] = array(
             'route' => '/showChamado',
             'controller' => 'UserController',
             'action' => 'showChamado'
         );
-
 
         $routes['deleteAposta'] = array(
             'route' => '/deleteAposta',
@@ -95,10 +82,10 @@ class Route extends Bootstrap
             'action' => 'createUser'
         );
 
-        $routes['showProfileAdmin'] = array(
-            'route' => '/showProfileAdmin',
+        $routes['showProfile'] = array(
+            'route' => '/showProfile',
             'controller' => 'AdminController',
-            'action' => 'showProfileAdmin'
+            'action' => 'showProfile'
         );
 
         $routes['editarPerfil'] = array(

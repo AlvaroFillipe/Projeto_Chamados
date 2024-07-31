@@ -136,22 +136,7 @@
 
       <!-- funçãoes do sistema Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Funções do Sistema</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="/createUserPage">
-              <i class="bi bi-circle"></i><span>Criar Usuarios</span>
-            </a>
-          </li>
-          <li>
-            <a href="/addDepartamentoPage">
-              <i class="bi bi-circle"></i><span>Adicionar Departamento</span>
-            </a>
-          </li>
-
-        </ul>
+        
         <!-- funçãoes do usuario Nav -->
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">

@@ -127,6 +127,25 @@ class IndexController extends Action
     public function show_configs()
     {
         session_start();
+
+        $depto = Container::getModel('Chamado');
+        $getUsers = Container::getModel('Admin');
+
+        //logica da tabela de usuarios
+        $adminGetUsers = $getUsers->adminGetUsuarios();
+        $departamentos = $depto->getAlldepartamentos();
+        
+
+        $this->view->getAlldepartamentos = $departamentos;
+        $this->view->adminGetUsers = $adminGetUsers;
+
+       
+
+
+        $this->view->adminGetUsers = $adminGetUsers;
+
+        //logica para pegar os valores da tabela de usuarios para um formulario
+
         $this->render('Show_configs','adminLayout');
     }
 }

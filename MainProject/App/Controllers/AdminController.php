@@ -8,18 +8,7 @@ use MF\Model\Container;
 
 class AdminController extends Action
 {
-    //render para pagina de criar usuarios
-    public function createUserPage()
-    {
-        session_start();
-
-        $depto = Container::getModel('Chamado');
-        $departamentos = $depto->getAlldepartamentos();
-
-        $this->view->getAlldepartamentos = $departamentos;
-
-        $this->render("FormCreateUser", "adminLayout");
-    }
+  
 
     //logica para criação de usuarios
     public function createUser()
@@ -39,11 +28,11 @@ class AdminController extends Action
 
         $user->createUser();
 
-        header('location:/createUserPage');
+        header('location:/Show_configs');
     }
 
     //pagina de rebderização de profile de usuario pela pagina de admin
-    public function showProfileAdmin()
+    public function showProfile()
     {
         session_start();
         //se o usuario for admin
@@ -55,6 +44,7 @@ class AdminController extends Action
 
         //metodo da parte de editar e visualizar usuario
         $contentUsuario = $usuario->adminGetUsuario();
+        $adminGetUsers = $usuario->adminGetUsuarios();
         $contentDepartamento = $chamado->getDepartamento();
         $getAllDepartamentos = $chamado->getAllDepartamentos();
 
@@ -64,13 +54,20 @@ class AdminController extends Action
         //metodo da parte de editar e visualizar usuario
         $this->view->contentUsuario = $contentUsuario;
         $this->view->contentDepartamento = $contentDepartamento;
-        $this->view->getAlldepartamentos = $getAllDepartamentos;
+        $this->view->getAlldepartamentos = $getAllDepartamentos; 
+
+        $this->view->adminGetUsers = $adminGetUsers;
+
 
         //metodo para renderizar os chamados de um usuario especifico
         $this->view->contentChamados = $contentChamados;
         
-
-        $this->render('showProfileAdmin', 'adminLayout');
+        if ($_SESSION['tipo_usuario'] == 1) {
+            $this->render('showProfile', 'adminLayout');
+        }else {
+            $this->render('showProfile', 'userLayout');
+        }
+        
 
     }
 
@@ -134,7 +131,7 @@ class AdminController extends Action
 
         $usuario->deleteUser();
 
-        header('location:/admin');
+        header('location:/Show_configs');
     }
 
     //logica para mudar a senha de qualquer usuario
@@ -187,7 +184,7 @@ class AdminController extends Action
 
         $site->add_departamento();
 
-        header('Location:/addDepartamentoPage');
+        header('Location:/Show_configs');
 
     }
 
