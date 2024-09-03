@@ -110,7 +110,7 @@ if ($usuario['tipo_usuario'] == 1) {
                     </div>
 
                     <fieldset class="row mb-3">
-                      <legend class="col-form-label col-sm-2 pt-0">Tipo De Usuário</legend>
+                      <legend class="col-form-label col-sm-6 pt-0">Tipo De Usuário</legend>
                       <div class="col-sm-10">
                         <div class="form-check">
                           <input class="form-check-input" type="radio" name="tipo_usuario" id="gridRadios1" value="1">
@@ -127,9 +127,9 @@ if ($usuario['tipo_usuario'] == 1) {
                       </div>
                     </fieldset>
 
-                    <fieldset class="row mb-3">
-                      <legend class="col-form-label col-sm-2 pt-0">Departamento</legend>
-                      <div class="col-md-4">
+                    <fieldset class="row mb-4">
+                      <legend class="col-form-label col-sm-4 pt-0">Departamento</legend>
+                      <div class="col-md-12">
                         <select  name="departamento" id="inputState" class="form-select">
                             <option selected><?=$departamento['departamento']?></option>
                             <?php foreach ($this->view->getAlldepartamentos as $departamentos => $departamento) {?>
@@ -239,11 +239,11 @@ if ($usuario['tipo_usuario'] == 1) {
 <?php }?>
     <section class="section">
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-10">
 
           <div class="card">
             <div class="card-body">
-              <h2 class="card-title">Tabela de Chamados</h2>
+              <h2 class="card-title">Tabela de Chamados ABERTOS</h2>
 
 
               <!-- Table with stripped rows -->
@@ -253,7 +253,7 @@ if ($usuario['tipo_usuario'] == 1) {
                   <th >#</th>
                     <th data-type="date" data-format="DD/MM/YYYY">Data do Chamado</th>
                     <th>STATUS</th>
-                    <th>Editar</th>
+                    <th>Chamado</th>
                     <th>Excluir</th>
                   </tr>
                 </thead>
@@ -294,12 +294,83 @@ if ($usuario['tipo_usuario'] == 1) {
               </table>
               <!-- End Table with stripped rows -->
 
+              
+
 
           </div>
         </div><!-- End Left side columns -->
 
       </div>
     </section>
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-10">
+
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title">Tabela de Chamados FECHADOS</h2>
+
+
+              <!-- Table with stripped rows -->
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                  <th >#</th>
+                    <th data-type="date" data-format="DD/MM/YYYY">Data do Chamado</th>
+                    <th>STATUS</th>
+                    <th>Chamado</th>
+                    <th>Excluir</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach ($this->view->contentChamados as $contentChamados => $Chamado) {?>
+                  <tr>
+                    <td><?=$Chamado['pk_id_chamado'];?></td>
+                    <td><?=$Chamado['data_chamado'];?></td>
+                    <td>
+                      <?php if ($Chamado['status_chamado'] == 1) {?>
+                        <div class="col-lg-3 col-md-8">
+                          <h4 style="color:red"><i class="bi bi-check-circle"></i></h4>
+                        </div>
+                      <?php } ?>
+                      <?php if ($Chamado['status_chamado'] == 2) {?>
+                        <div class="col-lg-3 col-md-8">
+                          <h4 style="color:green"><i class="bi bi-check-circle-fill"></i></h4> 
+                        </div>
+                      <?php }?>
+                    </td>
+                    <td>
+                      <form action="showChamado" method="post">
+                        <input type="hidden" name="pk_id_chamado" value="<?=$Chamado['pk_id_chamado']?>">
+                        <input type="hidden" name="fk_id_usuario" value="<?=$Chamado['fk_id_usuario']?>">
+                        <button type="submit" class="btn btn-info"><i class="bi bi-info-circle"></i></button>
+                      </form>
+                    </td>
+
+                    <td>                        
+                          <form action="deleteChamadoAdmin" method="post">                          
+                          <input type="hidden" name="pk_id_chamado" value="<?=$Chamado['pk_id_chamado']?>">
+                            <button type="submit" class="btn btn-danger"><i class="bi bi-exclamation-octagon"></i></button>                         
+                          </form>                          
+                        </td>
+                  </tr>
+                  <?php }?>
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+              
+
+
+          </div>
+        </div><!-- End Left side columns -->
+
+      </div>
+    </section>
+    
+
+    
 
   </main><!-- End #main -->
 

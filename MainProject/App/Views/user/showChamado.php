@@ -37,31 +37,32 @@
 
 
                 <div class="tab-pane fade show active" id="home-justified" role="tabpanel" aria-labelledby="home-tab">
-                    <?php if ($_SESSION['tipo_usuario'] ==  '1') {?>
-                      
-                        <div class="card-body">
-                          
+                    <?php if ($_SESSION['tipo_usuario'] ==  '1') {?>                      
+                        <div class="card-body">                           
                           <!-- Disabled Backdrop Modal -->
                           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#disablebackdrop">
                           Fechar Chamado <i class="bi bi-check-circle-fill"></i>
                           </button>
-                          <div class="modal fade" id="disablebackdrop" tabindex="-1" data-bs-backdrop="false">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title">Solucção do chamado</h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                
-                                <textarea  style="height: 300px;" name="solucao_chamado"></textarea>
-                                
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                  <button type="button" class="btn btn-primary">Save changes</button>
+                          <form action="responder_chamado" method="post">
+                            <div class="modal fade" id="disablebackdrop" tabindex="-1" data-bs-backdrop="false">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title">Solucção do chamado</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  
+                                  <textarea  style="height: 300px;" name="solucao_chamado"></textarea>
+                                  
+                                  <div class="modal-footer">
+                                    <input type="hidden" name="pk_id_chamado" value="<?= $chamado['pk_id_chamado']; ?>">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          </div><!-- End Disabled Backdrop Modal-->
+                            </div><!-- End Disabled Backdrop Modal-->
+                          </form>
 
                         </div>
                          

@@ -95,10 +95,7 @@ class UserController extends Action
 
             //pegando informações do  usuario
             $this->view->usuarioGetUsuario = $usuario->userGetUsuario();
-            
-            
-
-            
+                        
             $this->render('showChamado', 'userLayout');
         }
 

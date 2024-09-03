@@ -118,6 +118,12 @@ class Route extends Bootstrap
             'action' => 'deleteChamadoAdmin'
         );
 
+        $routes['responder_chamado'] = array(
+            'route' => '/responder_chamado',
+            'controller' => 'AdminController',
+            'action' => 'responder_chamado'
+        );
+
         
 
 

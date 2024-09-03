@@ -226,5 +226,28 @@ class Admin extends Model
     $stmt->execute();
     return $this;
   }
+
+  //query para responder o chamado
+  public function responder_chamado()
+  {
+    $query = "UPDATE 
+                tb_chamados
+              SET 
+                solucao_chamado = :solucao_chamado,
+                status_chamado = 2
+              WHERE
+                pk_id_chamado = :pk_id_chamado
+              ";
+
+    $stmt = $this->db->prepare($query);
+
+    $stmt->bindValue('solucao_chamado',$this->__get('solucao_chamado'));
+    $stmt->bindValue('pk_id_chamado',$this->__get('pk_id_chamado'));
+
+    $stmt->execute();
+
+    return $this;
+
+  }
  
 }

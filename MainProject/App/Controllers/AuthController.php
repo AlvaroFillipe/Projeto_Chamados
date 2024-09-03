@@ -18,13 +18,11 @@ class AuthController extends Action
 
 
         //setando inputs
-        $autenticar->__set('usuario', $_POST['usuario']);
-        $autenticar->__set('senha', $_POST['senha']);
-        //$autenticar->__set('senha', md5($_POST['senha']));  
+        $autenticar->__set('usuario', $_POST['usuario']);        
+        $autenticar->__set('senha', md5($_POST['senha']));  
+        //$autenticar->__set('senha', $_POST['senha']);  
 
-        echo '<pre>';
-        print_r($_POST);
-        echo'</pre>';
+        
         
         //executando funções
         $autenticar->autenticar();

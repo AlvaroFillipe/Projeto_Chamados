@@ -21,7 +21,7 @@ class AdminController extends Action
         $_POST['departamento'] = intval( $_POST['departamento']);
 
         $user->__set('usuario', $_POST['usuario']);
-        $user->__set('senha', $_POST['senha']);
+        $user->__set('senha', md5($_POST['senha']));
         $user->__set('email', $_POST['email']);
         $user->__set('tipo_usuario', $_POST['tipo_usuario']);
         $user->__set('departamento', $_POST['departamento']);
@@ -45,6 +45,7 @@ class AdminController extends Action
         //metodo da parte de editar e visualizar usuario
         $contentUsuario = $usuario->adminGetUsuario();
         $adminGetUsers = $usuario->adminGetUsuarios();
+
         $contentDepartamento = $chamado->getDepartamento();
         $getAllDepartamentos = $chamado->getAllDepartamentos();
 
@@ -58,7 +59,6 @@ class AdminController extends Action
 
         $this->view->adminGetUsers = $adminGetUsers;
 
-
         //metodo para renderizar os chamados de um usuario especifico
         $this->view->contentChamados = $contentChamados;
         
@@ -67,16 +67,14 @@ class AdminController extends Action
         }else {
             $this->render('showProfile', 'userLayout');
         }
-        
-
     }
 
     //pagina de rebderização de edit de usuario pela pagina de admin
     public function editarPerfil()
     {
+        
         session_start();
-        $editar = Container::getModel('Admin');
-        $chamado = Container::getModel('Chamado');
+        $editar = Container::getModel('Admin');        
        
         //passado os valores necessarios para int
         $_POST['pk_id_usuario'] = intval($_POST['pk_id_usuario']);
@@ -89,35 +87,10 @@ class AdminController extends Action
         $editar->__set('tipo_usuario', $_POST['tipo_usuario']);
         $editar->__set('departamento', $_POST['departamento']);
 
-        $editar->editarUsuario();
-        
-        //redirecionando pra tela de profile denovo
-        //se o usuario for admin        
+        $editar->editarUsuario();                
 
-        $editar->__set('pk_id_usuario', $_POST['pk_id_usuario']);
-        $chamado->__set('pk_id_usuario', $_POST['pk_id_usuario']);
+        header('Location: /voltar');
 
-        //metodo da parte de editar e visualizar usuario
-        $contentUsuario = $editar->adminGetUsuario();
-        $contentDepartamento = $chamado->getDepartamento();
-        $getAllDepartamentos = $chamado->getAllDepartamentos();
-
-        //metodo para renderizar os chamados de um usuario especifico
-        $contentChamados = $chamado->userGetChamados();
-
-        //metodo da parte de editar e visualizar usuario
-        $this->view->contentUsuario = $contentUsuario;
-        $this->view->contentDepartamento = $contentDepartamento;
-        $this->view->getAlldepartamentos = $getAllDepartamentos;
-
-        //metodo para renderizar os chamados de um usuario especifico
-        $this->view->contentChamados = $contentChamados;
-
-        
-        
-        $this->render('showProfileAdmin', 'adminLayout');
-
-        
     }
 
     //logica com a função de deletar usuario de acordo com o id fornecido pelo banco
@@ -143,34 +116,11 @@ class AdminController extends Action
         $senha = Container::getModel('Admin');
 
         $senha->__set('pk_id_usuario', $_POST['pk_id_usuario']);
-        $senha->__set('senha', $_POST['senha']);
+        $senha->__set('senha', md5($_POST['senha']));
 
         $senha->mudarSenha();
 
-        //redirecionando pra tela de profile denovo
-        $usuario = Container::getModel('Admin');
-        $chamado = Container::getModel('Chamado');
-
-        $usuario->__set('pk_id_usuario', $_POST['pk_id_usuario']);
-        $chamado->__set('pk_id_usuario', $_POST['pk_id_usuario']);
-
-        //metodo da parte de editar e visualizar usuario
-        $contentUsuario = $usuario->adminGetUsuario();
-        $contentDepartamento = $chamado->getDepartamento();
-        $getAllDepartamentos = $chamado->getAllDepartamentos();
-
-        //metodo para renderizar os chamados de um usuario especifico
-        $contentChamados = $chamado->userGetChamados();
-
-        //metodo da parte de editar e visualizar usuario
-        $this->view->contentUsuario = $contentUsuario;
-        $this->view->contentDepartamento = $contentDepartamento;
-        $this->view->getAlldepartamentos = $getAllDepartamentos;
-
-        //metodo para renderizar os chamados de um usuario especifico
-        $this->view->contentChamados = $contentChamados;
-
-        $this->render('showProfileAdmin', 'adminLayout');
+        header('Location:/voltar');
     }
 
     //logica para adicionar site
@@ -198,15 +148,9 @@ class AdminController extends Action
 
         $usuario->__set('pk_id_chamado', $_POST['pk_id_chamado']);
 
-        $usuario->adminDeletarChamado();       
-
+        $usuario->adminDeletarChamado();   
         
-        //se o usuario for admin
-        
-       
-
-        //$usuario->__set('pk_id_usuario', $_SESSION['pk_id_usuario']);
-        //$chamado->__set('pk_id_usuario', $_SESSION['pk_id_usuario']);
+        //se o usuario for admin      
 
         //metodo da parte de editar e visualizar usuario
         $contentUsuario = $usuario->adminGetUsuario();
@@ -222,17 +166,24 @@ class AdminController extends Action
         $this->view->getAlldepartamentos = $getAllDepartamentos;
 
         //metodo para renderizar os chamados de um usuario especifico
-        $this->view->contentChamados = $contentChamados;
+        $this->view->contentChamados = $contentChamados;   
 
-       
-        
+        header('Location: /admin');       
+    }
 
-        header('Location: /admin');
-        
+    //logica de responder chamado
+    public function responder_chamado()
+    {
+        session_start();        
 
-        
+        $chamado = Container::getModel('Admin');
+        $chamado->__set('solucao_chamado',$_POST['solucao_chamado']);
+        $chamado->__set('pk_id_chamado',$_POST['pk_id_chamado']);
 
-        
+        $chamado->responder_chamado();
+
+        header('Location:/voltar');
+
     }
 
 }

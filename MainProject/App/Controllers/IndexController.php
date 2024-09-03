@@ -93,14 +93,7 @@ class IndexController extends Action
 
         $this->view->historicoChamados = $historicoChamados;
         $this->view->usuarioHistorico = $usuarioHistorico;
-        /*
-        echo '<pre>';
-        print_r($this->view->historicoChamados);
-        echo'</pre>';
-        echo '<pre>';
-        print_r( $this->view->usuarioHistorico);
-        echo'</pre>';
-        */
+       
 
 
         if ($_SESSION['tipo_usuario'] != 2) {
