@@ -49,19 +49,28 @@ class AdminController extends Action
         $contentDepartamento = $chamado->getDepartamento();
         $getAllDepartamentos = $chamado->getAllDepartamentos();
 
-        //metodo para renderizar os chamados de um usuario especifico
-        $contentChamados = $chamado->userGetChamados();
+        //metodo para renderizar os chamados ABERTOS de um usuario especifico
+        $getChamadosAbertos = $chamado->getChamadosAbertos();
+        
+        
+        //metodo para renderizar os chamados FECHADOS de um usuario especifico
+        $getChamadosFechados = $chamado->getChamadosFechados();
+        //$contentChamados = $chamado->userGetChamados();
 
         //metodo da parte de editar e visualizar usuario
         $this->view->contentUsuario = $contentUsuario;
         $this->view->contentDepartamento = $contentDepartamento;
         $this->view->getAlldepartamentos = $getAllDepartamentos; 
 
+
+        //metodo para admin ver todos os usuarios
         $this->view->adminGetUsers = $adminGetUsers;
 
-        //metodo para renderizar os chamados de um usuario especifico
-        $this->view->contentChamados = $contentChamados;
-        
+        //metodo das tabelas de chamados abertos e fechados
+        $this->view->chamadosAbertos = $getChamadosAbertos;
+        $this->view->chamadosFechados =  $getChamadosFechados;
+
+        //renderizando pagina
         if ($_SESSION['tipo_usuario'] == 1) {
             $this->render('showProfile', 'adminLayout');
         }else {

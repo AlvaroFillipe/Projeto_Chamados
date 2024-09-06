@@ -4,13 +4,6 @@
 
     <div class="pagetitle">
       <h1>Form Layouts</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/voltar">Home</a></li>
-          <li class="breadcrumb-item">Forms</li>
-          <li class="breadcrumb-item active">Layouts</li>
-        </ol>
-      </nav>
     </div><!-- End Page Title -->
     <section class="section">
       <div class="row">
@@ -60,10 +53,10 @@
                 </fieldset>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-12">
                   <label for="inputState" class="form-label">Departamento</label>
                   <select  name="departamento" id="inputState" class="form-select">
-                      <option selected>Choose...</option>
+                      <option selected>Departamentos...</option>
                       <?php foreach ($this->view->getAlldepartamentos as $departamentos => $departamento) {?>
                           <option  value="<?=$departamento['pk_id_departamento']?>"><?=$departamento['departamento']?></option>
                       <?php }?>

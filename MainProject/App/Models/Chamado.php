@@ -16,6 +16,7 @@ class Chamado extends Model
     private $fk_id_departamento;
 
     //dados normais
+
     
 
     //METODOS GET E SET MAGICOS
@@ -153,8 +154,7 @@ class Chamado extends Model
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
-
-    //query para pegar todos chamados sem um filtro especifico
+    
     //query para pegar apenas um chamado de acordo com um usuario especifico
     public function userGetAllChamados()
     {
@@ -179,5 +179,52 @@ class Chamado extends Model
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    //query para pegar todos os chamados ABERTOS de um usuario especifico
+    public function getChamadosAbertos()
+    {
+        $query = "SELECT
+                    pk_id_chamado,
+                    data_chamado,
+                    status_chamado,
+                    fk_id_usuario             
+                  FROM
+                    tb_chamados
+                  WHERE
+                    fk_id_usuario = :fk_id_usuario
+                        and
+                    status_chamado = 1
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue('fk_id_usuario',$this->__get('pk_id_usuario'));
+
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    //query para pegar todos os chamados FECHADOS de um usuario especifico
+    public function getChamadosFechados()
+    {
+        $query = "SELECT
+                    pk_id_chamado,
+                    data_chamado,
+                    status_chamado,
+                    fk_id_usuario
+                  FROM
+                    tb_chamados
+                  WHERE
+                    fk_id_usuario = :fk_id_usuario
+                        and
+                    status_chamado = 2
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue('fk_id_usuario',$this->__get('pk_id_usuario'));
+
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
     
 }

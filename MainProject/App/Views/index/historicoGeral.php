@@ -5,14 +5,7 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Tabela de Historico Geral</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/voltar">Home</a></li>
-           <li class="breadcrumb-item">Histórico</li>
-          <li class="breadcrumb-item active">Tabela de Historico Geral</li>
-        </ol>
-      </nav>
+      <h1>Tabela de Historico Geral</h1>      
     </div><!-- End Page Title -->
 
     <section class="section">

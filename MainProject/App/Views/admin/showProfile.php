@@ -1,32 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
 <body>
-
-
   <main id="main" class="main">
     <?php
-foreach ($this->view->contentUsuario as $contentUsuario => $usuario) {}
-foreach ($this->view->contentDepartamento as $contentDepartamento => $departamento) {}
+  foreach ($this->view->contentUsuario as $contentUsuario => $usuario) {}
+  foreach ($this->view->contentDepartamento as $contentDepartamento => $departamento) {}
 
-//logica da tabela para se o valor de tipo_usuario for 1 imprime 'admin' e se for 2 imprime 'padrao'
-if ($usuario['tipo_usuario'] == 1) {
-    $usuario['tipo_usuario'] = 'Admin';
-} elseif ($usuario['tipo_usuario'] == 2) {
-    $usuario['tipo_usuario'] = 'Padrão';
-}
-?>
+  //logica da tabela para se o valor de tipo_usuario for 1 imprime 'admin' e se for 2 imprime 'padrao'
+  if ($usuario['tipo_usuario'] == 1) {
+      $usuario['tipo_usuario'] = 'Admin';
+  } elseif ($usuario['tipo_usuario'] == 2) {
+      $usuario['tipo_usuario'] = 'Padrão';
+  }
+  ?>
 
-    <div class="pagetitle">
-      <h1>Perfil de Usuário</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/voltar">Home</a></li>
-          <li class="breadcrumb-item">Users</li>
-          <li class="breadcrumb-item active">Perfil de Usuário</li>
-        </ol>
-      </nav>
+      <div class="pagetitle">
+        <h1>Perfil de Usuário</h1>
+        
     </div><!-- End Page Title -->
 
     <?php if ($_SESSION['tipo_usuario'] == 1) {?>
@@ -258,7 +248,7 @@ if ($usuario['tipo_usuario'] == 1) {
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($this->view->contentChamados as $contentChamados => $Chamado) {?>
+                  <?php foreach ($this->view->chamadosAbertos as $chamadosAbertos => $Chamado) {?>
                   <tr>
                     <td><?=$Chamado['pk_id_chamado'];?></td>
                     <td><?=$Chamado['data_chamado'];?></td>
@@ -324,7 +314,7 @@ if ($usuario['tipo_usuario'] == 1) {
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($this->view->contentChamados as $contentChamados => $Chamado) {?>
+                  <?php foreach ($this->view->chamadosFechados as $chamadosFechados => $Chamado) {?>
                   <tr>
                     <td><?=$Chamado['pk_id_chamado'];?></td>
                     <td><?=$Chamado['data_chamado'];?></td>
