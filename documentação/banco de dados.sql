@@ -11,12 +11,10 @@ CREATE TABLE tb_usuarios(
  
 );
 
-
 CREATE TABLE tb_departamentos(
     pk_id_departamento int not null auto_increment primary key,   
-    departamento varchar(30) not null   
+    departamento varchar(30) not null
 );
-
 
 CREATE TABLE tb_chamados(
     pk_id_chamado int not null auto_increment primary key,
@@ -30,7 +28,6 @@ CREATE TABLE tb_chamados(
     FOREIGN KEY(fk_id_usuario)REFERENCES tb_usuarios(pk_id_usuario),
     FOREIGN KEY(fk_id_departamento)REFERENCES tb_departamentos(pk_id_departamento)
 );
-
 
 
 

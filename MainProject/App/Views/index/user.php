@@ -33,7 +33,8 @@
                                       
                     <th><b>#</b></th>
                     <th><b>Usuario</b></th>                    
-                    <th data-type="date" data-format="DD/MM/YYYY"><b>Data do Chamado</b></th>                    
+                    <th data-type="date" data-format="DD/MM/YYYY"><b>Data do Chamado</b></th>
+                    <th data-type="date" data-format="DD/MM/YYYY"><b>Hora Chamado</b></th>                    
                     <th><b>Visualizar</b></th>
                     
                   </tr>
@@ -47,6 +48,7 @@
                     <td><?= $chamado['pk_id_chamado'];?></td>   
                     <td ><?= $usuario['usuario'];?></td> 
                     <td ><?= $chamado['data_chamado'];?></td>
+                    <td ><?= $chamado['hora_chamado'];?></td>
                                                          
                     <td>
                           <form action="showChamado" method="post">

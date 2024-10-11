@@ -30,8 +30,8 @@
   <link href="assets/css/style.css" rel="stylesheet">
 
   <!-- JQuery Files -->
-  <script src="includes/js/JQuery/jquery-3.7.1.js"></script>
-  <script src="includes/js/main.js"></script>
+  <!--<script src="assets/js/JQuery/jquery-3.7.1.js"></script>-->
+  <script src="assets/js/main.js"></script>
 
 
 

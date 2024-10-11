@@ -108,7 +108,8 @@ class Chamado extends Model
                         chamado,
                         status_chamado,
                         solucao_chamado,
-                        DATE_FORMAT(data_chamado,"%d/%m/%Y") as data_chamado
+                        DATE_FORMAT(data_chamado,"%d/%m/%Y") as data_chamado,
+                        DATE_FORMAT(data_chamado,"%H:%i") as hora_chamado
                     FROM
                         tb_chamados
                     LEFT JOIN
@@ -116,7 +117,10 @@ class Chamado extends Model
                     ON
                         (tb_chamados.fk_id_departamento = tb_departamentos.pk_id_departamento)
                     WHERE
-                        fk_id_usuario = :fk_id_usuario;';
+                        fk_id_usuario = :fk_id_usuario
+                    ORDER BY
+                        pk_id_chamado
+                    DESC;';
 
         $stmt = $this->db->prepare($query);
         $stmt->bindValue('fk_id_usuario', $this->__get('pk_id_usuario'));

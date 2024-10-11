@@ -103,7 +103,7 @@ class Admin extends Model
                   tipo_usuario,
                   Departamento 
               FROM
-                  tb_usuarios 
+                  tb_usuarios  
               WHERE 
                   pk_id_usuario = :pk_id_usuario;";
 

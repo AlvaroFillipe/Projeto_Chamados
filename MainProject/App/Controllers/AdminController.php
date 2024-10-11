@@ -61,6 +61,7 @@ class AdminController extends Action
         $this->view->contentUsuario = $contentUsuario;
         $this->view->contentDepartamento = $contentDepartamento;
         $this->view->getAlldepartamentos = $getAllDepartamentos; 
+       
 
 
         //metodo para admin ver todos os usuarios
