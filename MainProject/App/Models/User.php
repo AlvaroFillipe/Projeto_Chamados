@@ -32,7 +32,7 @@ class User extends Model
                 LEFT JOIN
                     tb_departamentos
                 ON
-                    (tb_usuarios.departamento = tb_departamentos.pk_id_departamento)
+                    (tb_usuarios.fk_id_departamento = tb_departamentos.pk_id_departamento)
                 
                 WHERE
                     pk_id_usuario = :pk_id_usuario

@@ -46,7 +46,7 @@ class AdminController extends Action
         $contentUsuario = $usuario->adminGetUsuario();
         $adminGetUsers = $usuario->adminGetUsuarios();
 
-        $contentDepartamento = $chamado->getDepartamento();
+        
         $getAllDepartamentos = $chamado->getAllDepartamentos();
 
         //metodo para renderizar os chamados ABERTOS de um usuario especifico
@@ -55,11 +55,11 @@ class AdminController extends Action
         
         //metodo para renderizar os chamados FECHADOS de um usuario especifico
         $getChamadosFechados = $chamado->getChamadosFechados();
-        //$contentChamados = $chamado->userGetChamados();
+        
 
         //metodo da parte de editar e visualizar usuario
         $this->view->contentUsuario = $contentUsuario;
-        $this->view->contentDepartamento = $contentDepartamento;
+       
         $this->view->getAlldepartamentos = $getAllDepartamentos; 
        
 
@@ -70,6 +70,12 @@ class AdminController extends Action
         //metodo das tabelas de chamados abertos e fechados
         $this->view->chamadosAbertos = $getChamadosAbertos;
         $this->view->chamadosFechados =  $getChamadosFechados;
+
+        // echo "<pre>";
+        // print_r($contentUsuario);
+        // echo"</pre>";
+
+    
 
         //renderizando pagina
         if ($_SESSION['tipo_usuario'] == 1) {
@@ -95,8 +101,10 @@ class AdminController extends Action
         $editar->__set('usuario', $_POST['usuario']);
         $editar->__set('email', $_POST['email']);
         $editar->__set('tipo_usuario', $_POST['tipo_usuario']);
-        $editar->__set('departamento', $_POST['departamento']);
+        $editar->__set('departamento', $_POST['departamento']);       
 
+
+        
         $editar->editarUsuario();                
 
         header('Location: /voltar');

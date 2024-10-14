@@ -24,7 +24,7 @@
            
 
                 <input type="hidden" name="pk_id_usuario" value="<?=$usuario['pk_id_usuario']?>">
-                <input type="hidden" name="fk_id_departamento" value="<?=$usuario['Departamento']?>">
+                <input type="hidden" name="fk_id_departamento" value="<?=$usuario['fk_id_departamento']?>">
                 <input type="hidden" name="solucao_chamado" value="Chamado em Aberto">
                 <input type="hidden" name="status_chamado" value="1">
 

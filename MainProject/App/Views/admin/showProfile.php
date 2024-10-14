@@ -4,7 +4,7 @@
   <main id="main" class="main">
     <?php
   foreach ($this->view->contentUsuario as $contentUsuario => $usuario) {}
-  foreach ($this->view->contentDepartamento as $contentDepartamento => $departamento) {}
+  
 
   //logica da tabela para se o valor de tipo_usuario for 1 imprime 'admin' e se for 2 imprime 'padrao'
   if ($usuario['tipo_usuario'] == 1) {
@@ -71,7 +71,7 @@
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Departamento</div>
-                    <div class="col-lg-9 col-md-8"><?=$departamento['departamento']?></div>
+                    <div class="col-lg-9 col-md-8"><?=$usuario['departamento']?></div>
                   </div>
 
                 </div>
@@ -121,7 +121,7 @@
                       <legend class="col-form-label col-sm-4 pt-0">Departamento</legend>
                       <div class="col-md-12">
                         <select  name="departamento" id="inputState" class="form-select">
-                            <option selected><?=$departamento['departamento']?></option>
+                            <option selected><?=$usuario['departamento']?></option>
                             <?php foreach ($this->view->getAlldepartamentos as $departamentos => $departamento) {?>
                                 <option  value="<?=$departamento['pk_id_departamento']?>"><?=$departamento['departamento']?></option>
                             <?php }?>

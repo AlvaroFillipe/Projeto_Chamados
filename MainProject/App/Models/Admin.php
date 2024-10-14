@@ -9,10 +9,13 @@ class Admin extends Model
 
   //PK´s
   private $pk_id_usuario;   
-  private $pk_id_chamado;   
+  private $pk_id_chamado; 
+  
+  //FK´s
+  private $fk_id_departamento;
 
   //dados normais
-  private $departamento;
+  
   private $tipo_usuario;
   private $email;
   private $usuario;
@@ -40,7 +43,7 @@ class Admin extends Model
                       senha,
                       tipo_usuario,
                       email,
-                      departamento
+                      fk_id_departamento
                     )
                   VALUES
                     (
@@ -101,9 +104,16 @@ class Admin extends Model
                   usuario,
                   email,
                   tipo_usuario,
-                  Departamento 
+                  fk_id_departamento,
+                  departamento
+                  
               FROM
-                  tb_usuarios  
+                  tb_usuarios 
+              LEFT JOIN
+                  tb_departamentos
+              ON
+                  tb_usuarios.fk_id_departamento = tb_departamentos.pk_id_departamento
+
               WHERE 
                   pk_id_usuario = :pk_id_usuario;";
 
@@ -122,7 +132,7 @@ class Admin extends Model
                   pk_id_usuario,
                   usuario,
                   tipo_usuario,
-                  departamento 
+                  fk_id_departamento 
               FROM 
                   tb_usuarios;";
     $stmt = $this->db->prepare($query);
@@ -175,7 +185,7 @@ class Admin extends Model
                   email = :email,
                   usuario = :usuario,
                   tipo_usuario = :tipo_usuario,
-                  departamento = :departamento
+                  fk_id_departamento = :departamento
               WHERE
                   pk_id_usuario = :pk_id_usuario;";
     $stmt = $this->db->prepare($query);

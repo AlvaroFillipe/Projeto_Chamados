@@ -1,19 +1,23 @@
 CREATE DATABASE db_projeto_chamados;
 
 
+
+
+CREATE TABLE tb_departamentos(
+    pk_id_departamento int not null auto_increment primary key,   
+    departamento varchar(30) not null
+);
+
 CREATE TABLE tb_usuarios(   
     pk_id_usuario int not null auto_increment primary key,    
     email varchar(150) not null,
     usuario varchar(150) not null,
     tipo_usuario int not null,
-    Departamento int not null,
-    senha varchar(32) not null   
- 
-);
+    fk_id_departamento int not null,
+    senha varchar(32) not null,   
 
-CREATE TABLE tb_departamentos(
-    pk_id_departamento int not null auto_increment primary key,   
-    departamento varchar(30) not null
+     FOREIGN KEY(fk_id_departamento)REFERENCES tb_departamentos(pk_id_departamento)
+ 
 );
 
 CREATE TABLE tb_chamados(
@@ -29,18 +33,31 @@ CREATE TABLE tb_chamados(
     FOREIGN KEY(fk_id_departamento)REFERENCES tb_departamentos(pk_id_departamento)
 );
 
+//adicionando primeiro depatrtamento
+INSERT INTO 
+    tb_departamentos
+        (
+        departamento
+        )
+VALUES
+        ("dep_piloto");
 
 
+
+
+
+//adicionando primeiro usuario
 INSERT INTO 
     tb_usuarios
         (
         email, 
         usuario, 
-        tipo_usuario,         
+        tipo_usuario,
+        fk_id_departamento,         
         senha
         )
 VALUES
-        ("alvarofillipe6@gmail.com","alvaro",1,"123");
+        ("alvarofillipe6@gmail.com","alvaro",1,1,"123");
 
 
 

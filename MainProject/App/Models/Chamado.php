@@ -84,7 +84,8 @@ class Chamado extends Model
     public function getDepartamento()
     {
         $query = "SELECT
-                    *
+                    pk_id_departamento,
+                    departamento 
                 FROM
                     tb_departamentos
                 WHERE
