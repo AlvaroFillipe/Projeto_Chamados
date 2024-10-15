@@ -145,10 +145,12 @@ class Admin extends Model
   //query deletar usuario especifico
   public function deleteUser()
   {
-    $query = "DELETE FROM 
+    $query = "SET FOREIGN_KEY_CHECKS = 0;
+              DELETE FROM 
                   tb_usuarios 
               WHERE 
-                  pk_id_usuario = :pk_id_usuario;";
+                  pk_id_usuario = :pk_id_usuario;
+              SET FOREIGN_KEY_CHECKS = 1;";
 
     $stmt = $this->db->prepare($query);
     $stmt->bindValue(':pk_id_usuario', $this->__get('pk_id_usuario'));
@@ -258,6 +260,25 @@ class Admin extends Model
 
     return $this;
 
+  }
+
+  //query para deletar um departamento especifico
+  public function delete_departamento()
+  {
+    $query = "SET FOREIGN_KEY_CHECKS = 0;
+              DELETE FROM
+                tb_departamentos
+              WHERE 
+                pk_id_departamento = :pk_id_departamento;
+              SET FOREIGN_KEY_CHECKS = 1;";
+    
+    $stmt = $this->db->prepare($query);
+
+    $stmt->bindValue("pk_id_departamento",$this->__get('pk_id_departamento'));
+
+    $stmt->execute();
+
+    return $this;
   }
  
 }

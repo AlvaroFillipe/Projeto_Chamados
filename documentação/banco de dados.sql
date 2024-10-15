@@ -33,20 +33,14 @@ CREATE TABLE tb_chamados(
     FOREIGN KEY(fk_id_departamento)REFERENCES tb_departamentos(pk_id_departamento)
 );
 
-//adicionando primeiro depatrtamento
+//adicionando primeiro depatrtamento e usuario
 INSERT INTO 
     tb_departamentos
         (
         departamento
         )
 VALUES
-        ("dep_piloto");
-
-
-
-
-
-//adicionando primeiro usuario
+        ("dep_piloto");.
 INSERT INTO 
     tb_usuarios
         (

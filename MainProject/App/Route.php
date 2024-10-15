@@ -124,6 +124,14 @@ class Route extends Bootstrap
             'action' => 'responder_chamado'
         );
 
+        $routes['delete_departamento'] = array(
+            'route' => '/delete_departamento',
+            'controller' => 'AdminController',
+            'action' => 'delete_departamento'
+        );
+
+
+
         
 
 

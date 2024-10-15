@@ -182,14 +182,16 @@
                 <tbody>
                   <?php foreach ($this->view->getAlldepartamentos as $departamentos => $departamento) {?>
                     <tr>
-                    <td><?= $departamento['pk_id_departamento']; ?></td>
-                    <td><?= $departamento['departamento']; ?></td>                    
-                    <td>
-                      <form action="delete_departamento" method="post">                                              
-                        <input type="hidden" name="pk_id_usuario" value="<?= $departamento['pk_id_departamento']; ?>">
-                        <button type="submit" class="btn btn-danger"><i class="bi bi-exclamation-octagon"></i></button>                         
-                      </form>     
-                    </td>                    
+                   
+                      <td><?= $departamento['pk_id_departamento']; ?></td>
+                      <td><?= $departamento['departamento']; ?></td>                    
+                      <td>    
+                        <form action="delete_departamento" method="post">  
+                          <input type="hidden" name="pk_id_departamento" value="<?= $departamento['pk_id_departamento']; ?>">       
+                          <button type="submit" class="btn btn-danger"><i class="bi bi-exclamation-octagon"></i></button>                                                   
+                        </form> 
+                      </td>    
+                                    
                   </tr>
                   <?php } ?>        
                 </tbody>

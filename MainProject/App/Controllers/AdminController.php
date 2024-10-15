@@ -204,4 +204,24 @@ class AdminController extends Action
 
     }
 
+    //logica para deletar departamento
+    public function delete_departamento()
+    {
+        session_start();
+        print_r($_POST);
+        //chamando Model
+        $usuario = Container::getModel('Admin');
+
+        //setando o que estiver em post na variavel get para mandar para o banco
+        
+        $usuario->__set('pk_id_departamento',$_POST['pk_id_departamento']);
+
+        //chamando função do model
+        $usuario->delete_departamento();
+
+        header('Location: /Show_configs'); 
+
+        
+    }
+
 }
