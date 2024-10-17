@@ -181,7 +181,8 @@ class Admin extends Model
   //query para editar um usuario especifico
   public function editarUsuario()
   {
-    $query = "UPDATE 
+    $query = "SET FOREIGN_KEY_CHECKS = 0;
+              UPDATE 
                   tb_usuarios 
               SET 
                   email = :email,
@@ -189,7 +190,9 @@ class Admin extends Model
                   tipo_usuario = :tipo_usuario,
                   fk_id_departamento = :departamento
               WHERE
-                  pk_id_usuario = :pk_id_usuario;";
+                  pk_id_usuario = :pk_id_usuario;
+                SET FOREIGN_KEY_CHECKS = 1;";
+
     $stmt = $this->db->prepare($query);
 
     $stmt->bindValue('email', $this->__get('email'));
