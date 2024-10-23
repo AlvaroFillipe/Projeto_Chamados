@@ -88,8 +88,8 @@ class AdminController extends Action
     //pagina de rebderização de edit de usuario pela pagina de admin
     public function editarPerfil()
     {
-        
-        session_start();
+        if (isset($_SESSION)) {
+            session_start();
         $editar = Container::getModel('Admin');        
        
         //passado os valores necessarios para int
@@ -108,7 +108,8 @@ class AdminController extends Action
         $editar->editarUsuario();                
 
         header('Location: /voltar');
-
+        }
+        header('Location: /sair');
     }
 
     //logica com a função de deletar usuario de acordo com o id fornecido pelo banco

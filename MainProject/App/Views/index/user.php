@@ -5,6 +5,8 @@
 
     <div class="pagetitle">
       <h1>Dashboard</h1>
+
+      <button  type="button" class="btn btn-outline-primary btn-lg "><a href="/reportChamadoPage">Abrir Chamado</a></button>
     </div><!-- End Page Title -->
 
     <section class="section dashboard">

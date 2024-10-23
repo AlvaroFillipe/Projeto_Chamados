@@ -84,23 +84,41 @@ class IndexController extends Action
     {
         session_start();
 
-        $historico = Container::getModel('Chamado');
-        $usuario = Container::getModel('Admin');
-    
+        $historico = Container::getModel('Chamado');  
 
-        $historicoChamados = $historico->userGetAllChamados();
-        $usuarioHistorico = $usuario->adminGetUsuario();
+        if ($_SESSION['tipo_usuario'] == 1) {
+           $historicoChamados = $historico->adminGetAllChamados();
+
+           $this->view->historicoChamados = $historicoChamados;
+
+           //$this->render('historicoGeral', 'adminLayout');
+        } elseif ($_SESSION['tipo_usuario'] == 2) {
+            $historicoChamados = $historico->userGetAllChamados();
+
+           $this->view->historicoChamados = $historicoChamados;
+
+            //$this->render('historicoGeral', 'userLayout');
+        }else {
+            header('Location:/');
+        }
+        
+
+          
+
+        $historicoChamados = $historico->userGetAllChamados();        
 
         $this->view->historicoChamados = $historicoChamados;
-        $this->view->usuarioHistorico = $usuarioHistorico;
-       
+        
+       echo "<pre>";
+       print_r($historicoChamados);
+       echo "</pre>";
 
 
-        if ($_SESSION['tipo_usuario'] != 2) {
-            $this->render('historicoGeral', 'adminLayout');
-        } else {
-            $this->render('historicoGeral', 'userLayout');
-        }
+        // if ($_SESSION['tipo_usuario'] != 2) {
+        //     
+        // } else {
+        //     
+        // }
 
     }
 

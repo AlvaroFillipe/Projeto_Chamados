@@ -68,7 +68,7 @@ class Chamado extends Model
         return $this;
     }
 
-    //query para pegar TODOS os sites que tem no sistema
+    //query para pegar TODOS os departamentos que tem no sistema
     public function getAllDepartamentos()
     {
         $query =   "SELECT
@@ -101,7 +101,7 @@ class Chamado extends Model
 
     }
     
-    //query para pegar aposta detalhada tb_apostas/tb_sites_apostas
+    //query para pegar aposta chamados mais detalhadamente
     public function userGetChamados()
     {
         $query = 'SELECT
@@ -163,7 +163,7 @@ class Chamado extends Model
     }
     
     //query para pegar apenas um chamado de acordo com um usuario especifico
-    public function userGetAllChamados()
+    public function adminGetAllChamados()
     {
         $query = 'SELECT
                         pk_id_chamado,
@@ -185,6 +185,35 @@ class Chamado extends Model
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+     //query para pegar apenas um chamado de acordo com um usuario especifico
+     public function userGetAllChamados()
+     {
+         $query = 'SELECT
+                         pk_id_chamado,
+                         fk_id_usuario,
+                         fk_id_departamento,
+                         chamado,
+                         status_chamado,
+                         DATE_FORMAT(data_chamado,"%d/%m/%Y") as data_chamado,
+                         DATE_FORMAT(data_chamado,"%k/%i") as hora_chamado
+                     FROM
+                         tb_chamados
+                     LEFT JOIN
+                         tb_departamentos
+                     ON
+                         (tb_chamados.fk_id_departamento = tb_departamentos.pk_id_departamento)
+                     
+                     WHERE fk_id_usuario = :pk_id_chamado
+                     
+                     ORDER BY data_chamado DESC';
+                     
+         $stmt = $this->db->prepare($query);
+         
+         $stmt->execute();
+ 
+         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+     }
 
     //query para pegar todos os chamados ABERTOS de um usuario especifico
     public function getChamadosAbertos()

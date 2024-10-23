@@ -17,6 +17,8 @@
     <link href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
+
+
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -57,9 +59,6 @@
 
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
-
-
-
 
                 <li class="nav-item dropdown pe-3">
 
@@ -114,8 +113,8 @@
                 </a>
                 <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="/reportChamadoPage">
-                            <i class="bi bi-circle"></i><span>Registrar Chamado</span>
+                        <a href="/show_historico_geral">
+                            <i class="bi bi-circle"></i><span>Historico de Chamado</span>
                         </a>
                     </li>
                 </ul>
