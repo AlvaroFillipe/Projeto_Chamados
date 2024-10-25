@@ -87,17 +87,20 @@ class IndexController extends Action
         $historico = Container::getModel('Chamado');  
 
         if ($_SESSION['tipo_usuario'] == 1) {
-           $historicoChamados = $historico->adminGetAllChamados();
 
-           $this->view->historicoChamados = $historicoChamados;
+            $historico->adminGetAllChamados();
 
-           //$this->render('historicoGeral', 'adminLayout');
+            $this->view->adminGetAllChamados = $historico->adminGetAllChamados();           
+           
+            $this->render('historicoGeral', 'adminLayout');
+
         } elseif ($_SESSION['tipo_usuario'] == 2) {
-            $historicoChamados = $historico->userGetAllChamados();
 
-           $this->view->historicoChamados = $historicoChamados;
+            $historico->__set('pk_id_usuario',$_SESSION['pk_id_usuario']); 
 
-            //$this->render('historicoGeral', 'userLayout');
+            $this->view->adminGetAllChamados = $historico->userGetAllChamados();
+
+            $this->render('historicoGeral', 'userLayout');
         }else {
             header('Location:/');
         }
@@ -105,20 +108,6 @@ class IndexController extends Action
 
           
 
-        $historicoChamados = $historico->userGetAllChamados();        
-
-        $this->view->historicoChamados = $historicoChamados;
-        
-       echo "<pre>";
-       print_r($historicoChamados);
-       echo "</pre>";
-
-
-        // if ($_SESSION['tipo_usuario'] != 2) {
-        //     
-        // } else {
-        //     
-        // }
 
     }
 

@@ -167,17 +167,24 @@ class Chamado extends Model
     {
         $query = 'SELECT
                         pk_id_chamado,
-                        fk_id_usuario,
-                        fk_id_departamento,
-                        chamado,
+                        usuario,
+                        departamento,                        
                         status_chamado,
-                        DATE_FORMAT(data_chamado,"%d/%m/%Y") as data_chamado
+                        DATE_FORMAT(data_chamado,"%d/%m/%Y") as data_chamado,
+                        DATE_FORMAT(data_chamado,"%H:%i") as hora_chamado
                     FROM
                         tb_chamados
                     LEFT JOIN
                         tb_departamentos
                     ON
-                        (tb_chamados.fk_id_departamento = tb_departamentos.pk_id_departamento)';
+                        (tb_chamados.fk_id_departamento = tb_departamentos.pk_id_departamento)
+                     LEFT JOIN
+                        tb_usuarios
+                    ON
+                        (tb_chamados.fk_id_usuario = tb_usuarios.pk_id_usuario)
+                    
+                    ORDER BY
+                        data_chamado DESC';
                     
         $stmt = $this->db->prepare($query);
         
@@ -190,25 +197,29 @@ class Chamado extends Model
      public function userGetAllChamados()
      {
          $query = 'SELECT
-                         pk_id_chamado,
-                         fk_id_usuario,
-                         fk_id_departamento,
-                         chamado,
-                         status_chamado,
-                         DATE_FORMAT(data_chamado,"%d/%m/%Y") as data_chamado,
-                         DATE_FORMAT(data_chamado,"%k/%i") as hora_chamado
-                     FROM
-                         tb_chamados
+                        pk_id_chamado,
+                        usuario,
+                        departamento,                        
+                        status_chamado,
+                        DATE_FORMAT(data_chamado,"%d/%m/%Y") as data_chamado,
+                        DATE_FORMAT(data_chamado,"%H:%i") as hora_chamado
+                    FROM
+                        tb_chamados
+                    LEFT JOIN
+                        tb_departamentos
+                    ON
+                        (tb_chamados.fk_id_departamento = tb_departamentos.pk_id_departamento)
                      LEFT JOIN
-                         tb_departamentos
-                     ON
-                         (tb_chamados.fk_id_departamento = tb_departamentos.pk_id_departamento)
-                     
-                     WHERE fk_id_usuario = :pk_id_chamado
-                     
-                     ORDER BY data_chamado DESC';
+                        tb_usuarios
+                    ON
+                        (tb_chamados.fk_id_usuario = tb_usuarios.pk_id_usuario)
+                    WHERE
+                        pk_id_usuario = :pk_id_usuario
+                    ORDER BY
+                        data_chamado DESC';
                      
          $stmt = $this->db->prepare($query);
+         $stmt->bindValue('pk_id_usuario', $this->__get('pk_id_usuario'));
          
          $stmt->execute();
  
