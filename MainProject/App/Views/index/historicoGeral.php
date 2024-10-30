@@ -5,12 +5,12 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Data Tables</h1>
+      <h1>Historico de Chamados</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Tables</li>
-          <li class="breadcrumb-item active">Data</li>
+          <li class="breadcrumb-item"><a href="/voltar">Home</a></li>
+          <li class="breadcrumb-item">Usuario</li>
+          <li class="breadcrumb-item active">Historico de chamados</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -34,7 +34,11 @@
                     <th>STATUS</th>
                     <th>Hora</th>
                     <th>Data</th>
-                    <th>Visualizar</th>
+                    <th></th>
+                    <?php if ($_SESSION['tipo_usuario'] == 1) {?>
+                      <th></th>
+                    <?php } ?>
+                   
                   </tr>
                 </thead>
                 <tbody>
@@ -58,7 +62,24 @@
                     </td>
                     <td><?=$historico['hora_chamado'];?></td>
                     <td><?=$historico['data_chamado'];?></td>
-                    <td>BOTAO DE VISUALIZAR CHAMADO</td>
+                    <!--BOTAO DE VER CHAMADO-->
+                    <td>
+                      <form action="showChamado" method="post">
+                        <input type="hidden" name="pk_id_chamado" value="<?=$historico['pk_id_chamado']?>">
+                        <input type="hidden" name="fk_id_usuario" value="<?=$historico['fk_id_usuario']?>">
+                        <button type="submit" class="btn btn-info"><i class="bi bi-info-circle"></i></button>
+                      </form>
+                    </td>  
+                    <?php if ($_SESSION['tipo_usuario'] == 1) {?>
+                    <!--BOTAO DE EXCLUIR CHAMADO-->
+                    <td>                        
+                      <form action="deleteChamadoAdmin" method="post">                          
+                      <input type="hidden" name="pk_id_chamado" value="<?=$historico['pk_id_chamado']?>">
+                        <button type="submit" class="btn btn-danger"><i class="bi bi-exclamation-octagon"></i></button>                         
+                      </form>                          
+                    </td>
+                    <?php }?>
+                    
                     
                   </tr>                  
                 </tbody>

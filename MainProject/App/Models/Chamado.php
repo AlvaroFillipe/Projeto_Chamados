@@ -168,6 +168,7 @@ class Chamado extends Model
         $query = 'SELECT
                         pk_id_chamado,
                         usuario,
+                        fk_id_usuario,
                         departamento,                        
                         status_chamado,
                         DATE_FORMAT(data_chamado,"%d/%m/%Y") as data_chamado,
@@ -199,7 +200,8 @@ class Chamado extends Model
          $query = 'SELECT
                         pk_id_chamado,
                         usuario,
-                        departamento,                        
+                        departamento, 
+                        fk_id_usuario,                       
                         status_chamado,
                         DATE_FORMAT(data_chamado,"%d/%m/%Y") as data_chamado,
                         DATE_FORMAT(data_chamado,"%H:%i") as hora_chamado
@@ -229,9 +231,10 @@ class Chamado extends Model
     //query para pegar todos os chamados ABERTOS de um usuario especifico
     public function getChamadosAbertos()
     {
-        $query = "SELECT
+        $query = 'SELECT
                     pk_id_chamado,
-                    data_chamado,
+                    DATE_FORMAT(data_chamado,"%d/%m/%Y") as data_chamado,
+                    DATE_FORMAT(data_chamado,"%H:%i") as hora_chamado,
                     status_chamado,
                     fk_id_usuario             
                   FROM
@@ -240,7 +243,7 @@ class Chamado extends Model
                     fk_id_usuario = :fk_id_usuario
                         and
                     status_chamado = 1
-        ";
+        ';
 
         $stmt = $this->db->prepare($query);
         $stmt->bindValue('fk_id_usuario',$this->__get('pk_id_usuario'));
@@ -253,9 +256,10 @@ class Chamado extends Model
     //query para pegar todos os chamados FECHADOS de um usuario especifico
     public function getChamadosFechados()
     {
-        $query = "SELECT
+        $query = 'SELECT
                     pk_id_chamado,
-                    data_chamado,
+                    DATE_FORMAT(data_chamado,"%d/%m/%Y") as data_chamado,
+                    DATE_FORMAT(data_chamado,"%H:%i") as hora_chamado,
                     status_chamado,
                     fk_id_usuario
                   FROM
@@ -264,7 +268,7 @@ class Chamado extends Model
                     fk_id_usuario = :fk_id_usuario
                         and
                     status_chamado = 2
-        ";
+        ';
 
         $stmt = $this->db->prepare($query);
         $stmt->bindValue('fk_id_usuario',$this->__get('pk_id_usuario'));

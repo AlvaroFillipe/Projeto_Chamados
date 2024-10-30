@@ -58,7 +58,7 @@
                             <input type="hidden" name="fk_id_usuario" value="<?=$chamado['fk_id_usuario']?>">
                             <button type="submit" class="btn btn-info"><i class="bi bi-info-circle"></i></button>
                           </form>
-                        </td>                        
+                      </td>             
                         
                   </tr>  
                   <?php }?>

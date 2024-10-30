@@ -241,7 +241,8 @@
                 <thead>
                   <tr>
                   <th >#</th>
-                    <th data-type="date" data-format="DD/MM/YYYY">Data do Chamado</th>
+                    <th>Data do Chamado</th>
+                    <th>Hora do Chamado</th>
                     <th>STATUS</th>
                     <th>Chamado</th>
                     <th>Excluir</th>
@@ -252,6 +253,7 @@
                   <tr>
                     <td><?=$Chamado['pk_id_chamado'];?></td>
                     <td><?=$Chamado['data_chamado'];?></td>
+                    <td><?=$Chamado['hora_chamado'];?></td>
                     <td>
                       <?php if ($Chamado['status_chamado'] == 1) {?>
                         <div class="col-lg-3 col-md-8">
@@ -273,11 +275,11 @@
                     </td>
 
                     <td>                        
-                          <form action="deleteChamadoAdmin" method="post">                          
-                          <input type="hidden" name="pk_id_chamado" value="<?=$Chamado['pk_id_chamado']?>">
-                            <button type="submit" class="btn btn-danger"><i class="bi bi-exclamation-octagon"></i></button>                         
-                          </form>                          
-                        </td>
+                      <form action="deleteChamadoAdmin" method="post">                          
+                      <input type="hidden" name="pk_id_chamado" value="<?=$Chamado['pk_id_chamado']?>">
+                        <button type="submit" class="btn btn-danger"><i class="bi bi-exclamation-octagon"></i></button>                         
+                      </form>                          
+                    </td>
                   </tr>
                   <?php }?>
                 </tbody>
@@ -318,6 +320,7 @@
                   <tr>
                     <td><?=$Chamado['pk_id_chamado'];?></td>
                     <td><?=$Chamado['data_chamado'];?></td>
+                    <td><?=$Chamado['hora_chamado'];?></td>
                     <td>
                       <?php if ($Chamado['status_chamado'] == 1) {?>
                         <div class="col-lg-3 col-md-8">
