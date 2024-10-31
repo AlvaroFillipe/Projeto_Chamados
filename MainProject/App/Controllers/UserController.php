@@ -56,42 +56,33 @@ class UserController extends Action
     public function showChamado()
     {
         session_start();
-        if ($_SESSION['tipo_usuario'] != 2) {
-            $chamado = Container::getModel('Chamado');
-            $usuario = Container::getModel('Admin');
-
-            $chamado->__set('pk_id_usuario', $_POST['fk_id_usuario']);
-            $usuario->__set('pk_id_usuario', $_POST['fk_id_usuario']);
-            $chamado = Container::getModel('Chamado');
+        if ($_SESSION['tipo_usuario'] != 2) {           
+            
             $usuario = Container::getModel('User');
 
-            $chamado->__set('pk_id_usuario', $_POST['fk_id_usuario']);
-            $chamado->__set('pk_id_chamado', $_POST['pk_id_chamado']);
-
+           
+            $usuario->__set('pk_id_chamado', $_POST['pk_id_chamado']);
             $usuario->__set('pk_id_usuario', $_POST['fk_id_usuario']);
             
             //pegando informações da  chamado
-            $this->view->usuarioGetChamado = $chamado->userGetChamado();
+            $this->view->usuarioGetChamado = $usuario->userGetChamado();
 
             //pegando informações do  usuario
-            $this->view->usuarioGetUsuario = $usuario->userGetUsuario();
-            
+            $this->view->usuarioGetUsuario = $usuario->userGetUsuario();       
             
 
             
             $this->render('showChamado', 'adminLayout');
         } else {
 
-            $chamado = Container::getModel('Chamado');
+            
             $usuario = Container::getModel('User');
-
-            $chamado->__set('pk_id_usuario', $_POST['fk_id_usuario']);
-            $chamado->__set('pk_id_chamado', $_POST['pk_id_chamado']);
-
+           
+            $usuario->__set('pk_id_chamado', $_POST['pk_id_chamado']);
             $usuario->__set('pk_id_usuario', $_POST['fk_id_usuario']);
             
             //pegando informações da  chamado
-            $this->view->usuarioGetChamado = $chamado->userGetChamado();
+            $this->view->usuarioGetChamado = $usuario->userGetChamado();
 
             //pegando informações do  usuario
             $this->view->usuarioGetUsuario = $usuario->userGetUsuario();
