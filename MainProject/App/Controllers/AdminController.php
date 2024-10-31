@@ -143,7 +143,7 @@ class AdminController extends Action
     }
 
     //logica para adicionar site
-    public function add_departamento()
+    public function addDepartamento()
     {
 
         $site = Container::getModel('Admin');
@@ -151,7 +151,7 @@ class AdminController extends Action
 
         $site->__set('departamento', $_POST['departamento']);
 
-        $site->add_departamento();
+        $site->addDepartamento();
 
         header('Location:/Show_configs');
 
@@ -199,14 +199,14 @@ class AdminController extends Action
         $chamado->__set('solucao_chamado',$_POST['solucao_chamado']);
         $chamado->__set('pk_id_chamado',$_POST['pk_id_chamado']);
 
-        $chamado->responder_chamado();
+        $chamado->responderChamado();
 
         header('Location:/voltar');
 
     }
 
     //logica para deletar departamento
-    public function delete_departamento()
+    public function deleteDepartamento()
     {
         session_start();
         print_r($_POST);
@@ -224,5 +224,4 @@ class AdminController extends Action
 
         
     }
-
 }

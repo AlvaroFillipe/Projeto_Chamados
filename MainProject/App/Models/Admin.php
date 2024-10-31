@@ -206,7 +206,7 @@ class Admin extends Model
   }
 
   //query para adicionar departamento
-  public function add_departamento()
+  public function addDepartamento()
   {
     $query = 'INSERT INTO tb_departamentos
                         (
@@ -243,7 +243,7 @@ class Admin extends Model
   }
 
   //query para responder o chamado
-  public function responder_chamado()
+  public function responderChamado()
   {
     $query = "UPDATE 
                 tb_chamados
@@ -266,7 +266,7 @@ class Admin extends Model
   }
 
   //query para deletar um departamento especifico
-  public function delete_departamento()
+  public function deleteDepartamento()
   {
     $query = "SET FOREIGN_KEY_CHECKS = 0;
               DELETE FROM
@@ -282,6 +282,38 @@ class Admin extends Model
     $stmt->execute();
 
     return $this;
+  }
+
+  //query para pegar apenas um chamado de acordo com um usuario especifico
+  public function adminGetAllChamados()
+  {
+      $query = 'SELECT
+                      pk_id_chamado,
+                      usuario,
+                      fk_id_usuario,
+                      departamento,                        
+                      status_chamado,
+                      DATE_FORMAT(data_chamado,"%d/%m/%Y") as data_chamado,
+                      DATE_FORMAT(data_chamado,"%H:%i") as hora_chamado
+                  FROM
+                      tb_chamados
+                  LEFT JOIN
+                      tb_departamentos
+                  ON
+                      (tb_chamados.fk_id_departamento = tb_departamentos.pk_id_departamento)
+                   LEFT JOIN
+                      tb_usuarios
+                  ON
+                      (tb_chamados.fk_id_usuario = tb_usuarios.pk_id_usuario)
+                  
+                  ORDER BY
+                      data_chamado DESC';
+                  
+      $stmt = $this->db->prepare($query);
+      
+      $stmt->execute();
+
+      return $stmt->fetchAll(\PDO::FETCH_ASSOC);
   }
  
 }

@@ -45,7 +45,7 @@ class IndexController extends Action
     public function user()
     {
         session_start();
-        $chamado = Container::getModel('Chamado');
+        $chamado = Container::getModel('User');
         $usuario = Container::getModel('Admin');
 
         $chamado->__set('pk_id_usuario', $_SESSION['pk_id_usuario']);
@@ -84,20 +84,21 @@ class IndexController extends Action
     {
         session_start();
 
-        $historico = Container::getModel('Chamado');  
+         
  
         if ($_SESSION['tipo_usuario'] == 1) {
+            $historico = Container::getModel('Admin');
 
             $historico->adminGetAllChamados();
 
             $this->view->adminGetAllChamados = $historico->adminGetAllChamados();
-            // echo "<pre>";
-            // print_r( $this->view->adminGetAllChamados);
-            // echo "</pre>";           
+                  
            
             $this->render('historicoGeral', 'adminLayout');
 
         } elseif ($_SESSION['tipo_usuario'] == 2) {
+            $historico = Container::getModel('User');
+
 
             $historico->__set('pk_id_usuario',$_SESSION['pk_id_usuario']); 
 
