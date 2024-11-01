@@ -62,16 +62,4 @@ Guia de como usar o sistema, voltado para usuários finais.
 
 
 
-Manual do Desenvolvedor
 
-Guia de como manter e desenvolver o sistema, voltado para desenvolvedores.
-
-
-
-
-
-
-
-Documentação da API
-
-Se o projeto inclui APIs, documentação detalhada de como utilizá-las.
