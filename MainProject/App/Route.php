@@ -130,6 +130,12 @@ class Route extends Bootstrap
             'action' => 'delete_departamento'
         );
 
+        $routes['showDepartamento'] = array(
+            'route' => '/show_departamento',
+            'controller' => 'AdminController',
+            'action' => 'showDepartamento'
+        );
+
 
 
         
@@ -207,6 +213,14 @@ class Route extends Bootstrap
             'controller' => 'AuthController',
             'action' => 'sair'
         );
+
+
+
+
+
+
+
+
 
         //ROTA DE BOTÃO DE VOLTAR E HOME
 

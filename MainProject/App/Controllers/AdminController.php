@@ -10,26 +10,13 @@ class AdminController extends Action
 {
   
 
-    //logica para criação de usuarios
-    public function createUser()
+   
+    //pagina de renderizaçao show_departamento
+    public function showDepartamento()
     {
-        session_start();
-
-        $user = Container::getModel('Admin');
-
-        $_POST['tipo_usuario'] = intval( $_POST['tipo_usuario']);
-        $_POST['departamento'] = intval( $_POST['departamento']);
-
-        $user->__set('usuario', $_POST['usuario']);
-        $user->__set('senha', md5($_POST['senha']));
-        $user->__set('email', $_POST['email']);
-        $user->__set('tipo_usuario', $_POST['tipo_usuario']);
-        $user->__set('departamento', $_POST['departamento']);
-
-        $user->createUser();
-
-        header('location:/Show_configs');
+        $this->render('show_departamento');
     }
+
 
     //pagina de rebderização de profile de usuario pela pagina de admin
     public function showProfile()
@@ -111,6 +98,27 @@ class AdminController extends Action
         }
         header('Location: /sair');
     }
+
+     //logica para criação de usuarios
+     public function createUser()
+     {
+         session_start();
+ 
+         $user = Container::getModel('Admin');
+ 
+         $_POST['tipo_usuario'] = intval( $_POST['tipo_usuario']);
+         $_POST['departamento'] = intval( $_POST['departamento']);
+ 
+         $user->__set('usuario', $_POST['usuario']);
+         $user->__set('senha', md5($_POST['senha']));
+         $user->__set('email', $_POST['email']);
+         $user->__set('tipo_usuario', $_POST['tipo_usuario']);
+         $user->__set('departamento', $_POST['departamento']);
+ 
+         $user->createUser();
+ 
+         header('location:/Show_configs');
+     }
 
     //logica com a função de deletar usuario de acordo com o id fornecido pelo banco
     public function deleteUserAdmin()

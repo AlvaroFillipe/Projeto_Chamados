@@ -44,7 +44,7 @@ INSERT INTO
         situacao_departamento
         )
 VALUES
-        ("dep_piloto",1);.
+        ("dep_piloto",1);
 INSERT INTO 
     tb_usuarios
         (
@@ -52,7 +52,7 @@ INSERT INTO
         usuario, 
         tipo_usuario,
         fk_id_departamento,
-        situacao_usuario         
+        situacao_usuario,         
         senha
         )
 VALUES
