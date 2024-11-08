@@ -10,11 +10,11 @@ CREATE TABLE tb_departamentos(
 );
 
 CREATE TABLE tb_usuarios(   
-    pk_id_usuario int not null auto_increment primary key,    
+    pk_id_usuario int not null auto_increment primary key,  
+    fk_id_departamento int not null,  
     email varchar(150) not null,
     usuario varchar(150) not null,
-    tipo_usuario int not null,
-    fk_id_departamento int not null,
+    tipo_usuario int not null,    
     situacao_usuario int not null,
     senha varchar(32) not null,   
 
@@ -36,7 +36,7 @@ CREATE TABLE tb_chamados(
     FOREIGN KEY(fk_id_departamento)REFERENCES tb_departamentos(pk_id_departamento)
 );
 
-//adicionando primeiro depatrtamento e usuario
+//adicionando primeiro depatrtamto e usuario
 INSERT INTO 
     tb_departamentos
         (

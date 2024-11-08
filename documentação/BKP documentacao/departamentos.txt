@@ -1,6 +1,0 @@
-aqui seram criados e datados os departamentos de acordo com o banco de dados
-
-EX:
-departamento{
-    cod: 1 departamento
-}
