@@ -73,12 +73,14 @@ class Chamado extends Model
     }
 
     //query para pegar TODOS os departamentos que tem no sistema
-    public function getAllDepartamentos()
+    public function getAllDepartamentosAbertos()
     {
         $query =   "SELECT
                     *
                     FROM
-                    tb_departamentos;";
+                    tb_departamentos
+                    WHERE
+                    situacao_departamento = 1;";
 
         $stmt = $this->db->prepare($query);
 
@@ -88,7 +90,7 @@ class Chamado extends Model
     }
     
     //query para pegar um departamento em especifico
-    public function getDepartamento()
+    public function getDepartamentoAberto()
     {
         $query = "SELECT
                     pk_id_departamento,
@@ -96,9 +98,9 @@ class Chamado extends Model
                 FROM
                     tb_departamentos
                 WHERE
-                    pk_id_departamento = :pk_id_departamento";
+                    pk_id_departamento = :pk_id_departamento and situacao_departamento = 1";
         $stmt = $this->db->prepare($query);
-        $stmt->bindValue('pk_id_departamento',$this->__get('pk_id_usuario'));
+        $stmt->bindValue('pk_id_departamento',$this->__get('pk_id_departamento'));
 
         $stmt->execute();
 

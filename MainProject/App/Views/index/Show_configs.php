@@ -187,7 +187,7 @@
                       <td><?= $departamento['departamento']; ?></td>   
                       <td>
                         <form action="show_departamento" method="post">
-                          <input type="hidden" name="pk_id_usuario" value="<?= $usuario['pk_id_usuario']; ?>">
+                        <input type="hidden" name="pk_id_departamento" value="<?= $departamento['pk_id_departamento']; ?>">
                           <button type="submit" class="btn btn-info"><i class="bi bi-info-circle"></i></button>
                         </form>
                       </td>                  

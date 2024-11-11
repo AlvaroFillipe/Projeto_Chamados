@@ -2,20 +2,8 @@
 <html lang="en">
 <body>
   <main id="main" class="main">
-    <?php
-  foreach ($this->view->contentUsuario as $contentUsuario => $usuario) {}
-  
-
-  //logica da tabela para se o valor de tipo_usuario for 1 imprime 'admin' e se for 2 imprime 'padrao'
-  if ($usuario['tipo_usuario'] == 1) {
-      $usuario['tipo_usuario'] = 'Admin';
-  } elseif ($usuario['tipo_usuario'] == 2) {
-      $usuario['tipo_usuario'] = 'Padrão';
-  }
-  ?>
-
       <div class="pagetitle">
-        <h1>Perfil de Usuário</h1>
+        <h1>Perfil de Departaento</h1>
         
     </div><!-- End Page Title -->
 
@@ -34,44 +22,24 @@
               <ul class="nav nav-tabs nav-tabs-bordered">
 
                 <li class="nav-item">
-                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Visão de Perfil</button>
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Visão de Departamento</button>
                 </li>
 
                 <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Editar Perfil</button>
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Editar Departamento</button>
                 </li>
-
-
-
-                <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Mudar Senha</button>
-                </li>
-
               </ul>
               <div class="tab-content pt-2">
 
                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
 
-                  <h4 class="card-title">Detalhes do Perfil</h4>
+                  <h4 class="card-title">Detalhes do Departameto</h4>
+
+                  
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                    <div class="col-lg-9 col-md-8"><?=$usuario['usuario']?></div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Email</div>
-                    <div class="col-lg-9 col-md-8"><?=$usuario['email']?></div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Tipo de Usuario</div>
-                    <div class="col-lg-9 col-md-8"><?=$usuario['tipo_usuario']?></div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Departamento</div>
-                    <div class="col-lg-9 col-md-8"><?=$usuario['departamento']?></div>
+                    <div class="col-lg-6 col-md-4 label">Departamento</div>
+                    <div class="col-lg-9 col-md-4">Departaeto deostracao</div>
                   </div>
 
                 </div>
@@ -79,51 +47,15 @@
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
                   <!-- Profile Edit Form -->
-                  <form method="post" action="/editarPerfil">
-
-                    <input type="hidden" name="pk_id_usuario" value="<?=$usuario['pk_id_usuario']?>">
-
-                    <div class="row mb-3">
-                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Usuario</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="usuario" type="text" class="form-control" id="fullName" value="<?=$usuario['usuario']?>">
-                      </div>
-                    </div>
-
-
-
-                    <div class="row mb-3">
-                      <label for="company" class="col-md-4 col-lg-3 col-form-label">Email</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="email" type="text" class="form-control" id="company" value="<?=$usuario['email']?>">
-                      </div>
-                    </div>
-
-                    <fieldset class="row mb-3">
-                      <legend class="col-form-label col-sm-6 pt-0">Tipo De Usuário</legend>
-                      <div class="col-sm-10">
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="tipo_usuario" id="gridRadios1" value="1">
-                          <label class="form-check-label" for="gridRadios1">
-                            Admin
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="tipo_usuario" id="gridRadios2" value="2" checked>
-                          <label class="form-check-label" for="gridRadios2">
-                            Usuário Padrão
-                          </label>
-                        </div>
-                      </div>
-                    </fieldset>
+                  <form method="post" action="/editarDepartameto">                  
 
                     <fieldset class="row mb-4">
                       <legend class="col-form-label col-sm-4 pt-0">Departamento</legend>
                       <div class="col-md-12">
                         <select  name="departamento" id="inputState" class="form-select">
-                            <option selected><?=$usuario['departamento']?></option>
+                            <option selected>Departaeto deostracao</option>
                             <?php foreach ($this->view->getAlldepartamentos as $departamentos => $departamento) {?>
-                                <option  value="<?=$departamento['pk_id_departamento']?>"><?=$departamento['departamento']?></option>
+                                <option  value="">Departaeto deostracao</option>
                             <?php }?>
                         </select>
                       </div>
@@ -135,29 +67,7 @@
                     </div>
                   </form><!-- End Profile Edit Form -->
 
-                </div>
-
-
-                <div class="tab-pane fade pt-3" id="profile-change-password">
-                  <!-- Change Password Form -->
-                  <form method="post" action="/mudarSenhaAdmin">
-
-                    <div class="row mb-3">
-
-
-                      <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input type="hidden" name="pk_id_usuario" value="<?=$usuario['pk_id_usuario']?>">
-                        <input name="senha" type="password" class="form-control" id="newPassword">
-                      </div>
-                    </div>
-
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-primary">Change Password</button>
-                    </div>
-                  </form><!-- End Change Password Form -->
-
-                </div>
+                </div>         
 
               </div><!-- End Bordered Tabs -->
 
@@ -170,15 +80,14 @@
           <div class="row">
             <div class="card">
               <div class="card-body">
-                 <h5 class="card-title">Tabela de usuarios</h5>
+                 <h5 class="card-title">Tabela de Departamentos</h5>
 
                 <!-- Table with stripped rows -->
                 <table class="table table-bordered">
                   <thead>
                     <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Usuario</th>
-                      <th scope="col">Tipo de usuario</th>
+                      <th scope="col">#</th>                     
+                      <th scope="col">Departaento</th>
 
                       <th>Visualizar</th>
                       <th>Deletar</th>
@@ -186,21 +95,9 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <?php foreach ($this->view->adminGetUsers as $adminGetUsers => $usuario) {
-                      //logica da tabela para se o valor de tipo_usuario for 1 imprime 'admin' e se for 2 imprime 'padrao'
-                      if ($usuario['tipo_usuario'] == 1) {
-                          $usuario['tipo_usuario'] = 'Admin';
-                      } elseif ($usuario['tipo_usuario'] == 2) {
-                          $usuario['tipo_usuario'] = 'Padrão';
-                      }
-
-                      //logica da tabela para se o valor de categoria de usuario for 1 = senior, se for 2 pleno e se for 3 junior
-
-                      ?>
                       <tr>
-                        <th scope="row" name="id"><?=$usuario['pk_id_usuario'];?></th>
-                        <td><?=$usuario['usuario'];?></td>
-                        <td><?=$usuario['tipo_usuario'];?></td>
+                        <th scope="row" name="id">1</th>                        
+                        <td>Departaeto deostracao</td>
 
                         <td>
                           <form action="showProfile" method="post">
@@ -226,14 +123,14 @@
       </div>
     </section>
 
-<?php }?>
+
     <section class="section">
       <div class="row">
         <div class="col-lg-10">
 
           <div class="card">
             <div class="card-body">
-              <h2 class="card-title">Tabela de Chamados ABERTOS</h2>
+              <h2 class="card-title">Tabela de Chamados ABERTOS </h2>
 
 
               <!-- Table with stripped rows -->

@@ -14,7 +14,37 @@ class AdminController extends Action
     //pagina de renderizaçao show_departamento
     public function showDepartamento()
     {
-        $this->render('show_departamento');
+        session_start();
+        
+
+        $departamento = Container::getModel('Chamado');
+
+        $departamento->__set('pk_id_departamento',$_POST['pk_id_departamento']);
+        $getDepartamento = $departamento->getDepartamentoAberto();
+        $getDepartamentos = $departamento->getAllDepartamentosAbertos();
+
+        $this->view->GetDepartamento = $getDepartamento;
+        $this->view->GetDepartamentos = $getDepartamentos;
+
+       
+
+        echo "<pre>";
+        print_r($this->view->GetDepartamento);
+        echo"</pre>";
+
+        
+        echo "<pre>";
+        print_r($this->view->GetDepartamentos);
+        echo"</pre>";
+
+
+
+
+
+
+
+
+        //$this->render('show_departamento','adminLayout');
     }
 
 
@@ -34,7 +64,7 @@ class AdminController extends Action
         $adminGetUsers = $usuario->adminGetUsuarios();
 
         
-        $getAllDepartamentos = $chamado->getAllDepartamentos();
+        $getAllDepartamentos = $chamado->getAllDepartamentosAbertos();
 
         //metodo para renderizar os chamados ABERTOS de um usuario especifico
         $getChamadosAbertos = $chamado->getChamadosAbertos();
@@ -58,9 +88,7 @@ class AdminController extends Action
         $this->view->chamadosAbertos = $getChamadosAbertos;
         $this->view->chamadosFechados =  $getChamadosFechados;
 
-        // echo "<pre>";
-        // print_r($contentUsuario);
-        // echo"</pre>";
+       
 
     
 
@@ -151,7 +179,7 @@ class AdminController extends Action
     }
 
     //logica para adicionar site
-    public function addDepartamento()
+    public function add_departamento()
     {
 
         $site = Container::getModel('Admin');
