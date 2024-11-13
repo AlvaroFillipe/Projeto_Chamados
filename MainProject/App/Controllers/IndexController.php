@@ -115,17 +115,7 @@ class IndexController extends Action
 
     }
 
-    //logica de botçao de volta e home
-    public function voltar()
-    {
-        session_start();
-        if ($_SESSION['tipo_usuario'] == 1) {
-            header("Location: /admin");
-        } else {
-            header("Location: /user");
-        }
-
-    }
+    
 
     //render para a tela de configurações do dite de chamados
     public function show_configs()
@@ -137,7 +127,7 @@ class IndexController extends Action
 
         //logica da tabela de usuarios
         $adminGetUsers = $getUsers->adminGetUsuarios();
-        $departamentos = $depto->getAlldepartamentos();
+        $departamentos = $depto->getAlldepartamentosAbertos();
         
 
         $this->view->getAlldepartamentos = $departamentos;

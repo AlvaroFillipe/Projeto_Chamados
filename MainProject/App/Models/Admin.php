@@ -210,11 +210,13 @@ class Admin extends Model
   {
     $query = 'INSERT INTO tb_departamentos
                         (
-                          departamento
+                          departamento,
+                          situacao_departamento
                         )
                       VALUES
                         (
-                          :departamento
+                          :departamento,
+                          1
                         )';
     
     $stmt = $this->db->prepare($query);

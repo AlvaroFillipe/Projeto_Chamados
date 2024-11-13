@@ -9,73 +9,7 @@ class Route extends Bootstrap
 
     protected function initRoutes()
     {
-        //ROTAS DE RENDERIZAÇÃO DE PAGINAS PRINCIPAIS     
-        $routes['login'] = array(
-            'route' => '/',
-            'controller' => 'IndexController',
-            'action' => 'login'
-        );
-
-        $routes['admin'] = array(
-            'route' => '/admin',
-            'controller' => 'IndexController',
-            'action' => 'Admin'
-        );
-
-        $routes['user'] = array(
-            'route' => '/user',
-            'controller' => 'IndexController',
-            'action' => 'user'
-        );
-
-        $routes['reportChamadoPage'] = array(
-            'route' => '/reportChamadoPage',
-            'controller' => 'UserController',
-            'action' => 'reportChamadoPage'
-        );     
-
-        $routes['showChamado'] = array(
-            'route' => '/showChamado',
-            'controller' => 'UserController',
-            'action' => 'showChamado'
-        );
-
-        $routes['deleteAposta'] = array(
-            'route' => '/deleteAposta',
-            'controller' => 'UserController',
-            'action' => 'deleteAposta'
-        );
-        
-        $routes['show_historico_geral'] = array(
-            'route' => '/show_historico_geral',
-            'controller' => 'IndexController',
-            'action' => 'show_historico_geral'
-        );
-
-        $routes['show_configs'] = array(
-            'route' => '/Show_configs',
-            'controller' => 'IndexController',
-            'action' => 'show_configs'
-        );
-
-
-
-
-
-
-
-
-
-
-
-
-        //ROTAS DE ADMIN
-        $routes['adminGetUsuarios'] = array(
-            'route' => '/adminGetUsuarios',
-            'controller' => 'IndexController',
-            'action' => 'adminGetUsuarios'
-        );
-
+        //ROTAS AdminController   
         $routes['createUser'] = array(
             'route' => '/createUser',
             'controller' => 'AdminController',
@@ -112,17 +46,7 @@ class Route extends Bootstrap
             'action' => 'add_departamento'
         );
 
-        $routes['deleteChamadoAdmin'] = array(
-            'route' => '/deleteChamadoAdmin',
-            'controller' => 'AdminController',
-            'action' => 'deleteChamadoAdmin'
-        );
-
-        $routes['responder_chamado'] = array(
-            'route' => '/responder_chamado',
-            'controller' => 'AdminController',
-            'action' => 'responder_chamado'
-        );
+        
 
         $routes['delete_departamento'] = array(
             'route' => '/delete_departamento',
@@ -138,103 +62,144 @@ class Route extends Bootstrap
 
 
 
+
+
+
+
+
+
+
+        //ROTAS ChamdoController
+
+        $routes['reportChamadoPage'] = array(
+            'route' => '/reportChamadoPage',
+            'controller' => 'ChamadoController',
+            'action' => 'reportChamadoPage'
+        );     
+
+        $routes['showChamado'] = array(
+            'route' => '/showChamado',
+            'controller' => 'ChamadoController',
+            'action' => 'showChamado'
+        );
         
+        $routes['deleteChamadoAdmin'] = array(
+            'route' => '/deleteChamadoAdmin',
+            'controller' => 'ChamadoController',
+            'action' => 'deleteChamadoAdmin'
+        );
 
-
-
-
-
-
-
-
-
-
-
-
-        //ROTAS DE USUARIO
-        $routes['getUser'] = array(
-            'route' => '/getUser',
-            'controller' => 'UserController',
-            'action' => 'getUser'
+        $routes['responder_chamado'] = array(
+            'route' => '/responder_chamado',
+            'controller' => 'ChamadoController',
+            'action' => 'responder_chamado'
         );
 
         $routes['reportChamado'] = array(
             'route' => '/reportChamado',
-            'controller' => 'UserController',
+            'controller' => 'ChamadoController',
             'action' => 'reportChamado'
+        );
+        
+        
+
+
+
+
+
+
+
+
+
+        $routes['getUser'] = array(
+            'route' => '/getUser',
+            'controller' => 'UserController',
+            'action' => 'getUser'
+        );            
+
+
+        //ROTAS SystemController
+
+        $routes['login'] = array(
+            'route' => '/',
+            'controller' => 'SystemController',
+            'action' => 'login'
+        );
+
+        $routes['admin'] = array(
+            'route' => '/admin',
+            'controller' => 'SystemController',
+            'action' => 'Admin'
+        );
+
+        $routes['user'] = array(
+            'route' => '/user',
+            'controller' => 'SystemController',
+            'action' => 'user'
+        );
+        
+        $routes['show_historico_geral'] = array(
+            'route' => '/show_historico_geral',
+            'controller' => 'SystemController',
+            'action' => 'show_historico_geral'
+        );
+
+        $routes['show_configs'] = array(
+            'route' => '/Show_configs',
+            'controller' => 'SystemController',
+            'action' => 'show_configs'
+        );
+
+        $routes['adminGetUsuarios'] = array(
+            'route' => '/adminGetUsuarios',
+            'controller' => 'SystemController',
+            'action' => 'adminGetUsuarios'
         );
 
         $routes['getAllSites'] = array(
             'route' => '/getAllSites',
-            'controller' => 'IndexController',
+            'controller' => 'SystemController',
             'action' => 'getAllSites'
         );
 
-        $routes['edit_aposta'] = array(
-            'route' => '/edit_aposta',
-            'controller' => 'UserController',
-            'action' => 'edit_aposta'
-        );
-
-
-        
-        
-
-
-
-
-
-
-
-
-
-        
-
-        //ROTAS DE AUTENTICAÇÃO DE LOGIN
-        $routes['autenticar'] = array(
-            'route' => '/autenticar',
-            'controller' => 'AuthController',
-            'action' => 'autenticar'
-        );
-
-
-
-
-
-
-
-
-
-        
-
-        //ROTAS DE SAIR DA CONTA
-        $routes['sair'] = array(
-            'route' => '/sair',
-            'controller' => 'AuthController',
-            'action' => 'sair'
-        );
-
-
-
-
-
-
-
-
-
-        //ROTA DE BOTÃO DE VOLTAR E HOME
-
         $routes['voltar'] = array(
             'route' => '/voltar',
-            'controller' => 'IndexController',
+            'controller' => 'SystemController',
             'action' => 'voltar'
         );
 
 
 
-        //ROTAS DE BET
 
-       
+
+
+
+
+
+        //ROTAS SystemController  
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        //ROTAS AuthController
+
+        $routes['autenticar'] = array(
+            'route' => '/autenticar',
+            'controller' => 'AuthController',
+            'action' => 'autenticar'
+        );        
+
+        $routes['sair'] = array(
+            'route' => '/sair',
+            'controller' => 'AuthController',
+            'action' => 'sair'
+        );
 
 
 

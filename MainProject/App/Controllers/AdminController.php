@@ -40,10 +40,6 @@ class AdminController extends Action
 
 
 
-
-
-
-
         //$this->render('show_departamento','adminLayout');
     }
 
