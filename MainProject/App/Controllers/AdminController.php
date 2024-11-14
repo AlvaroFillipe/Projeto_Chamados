@@ -7,10 +7,7 @@ use MF\Controller\Action;
 use MF\Model\Container;
 
 class AdminController extends Action
-{
-  
-
-   
+{   
     //pagina de renderizaçao show_departamento
     public function showDepartamento()
     {
@@ -41,60 +38,7 @@ class AdminController extends Action
 
 
         //$this->render('show_departamento','adminLayout');
-    }
-
-
-    //pagina de rebderização de profile de usuario pela pagina de admin
-    public function showProfile()
-    {
-        session_start();
-        //se o usuario for admin
-        $usuario = Container::getModel('Admin');
-        $chamado = Container::getModel('Chamado');
-
-        $usuario->__set('pk_id_usuario', $_POST['pk_id_usuario']);
-        $chamado->__set('pk_id_usuario', $_POST['pk_id_usuario']);
-
-        //metodo da parte de editar e visualizar usuario
-        $contentUsuario = $usuario->adminGetUsuario();
-        $adminGetUsers = $usuario->adminGetUsuarios();
-
-        
-        $getAllDepartamentos = $chamado->getAllDepartamentosAbertos();
-
-        //metodo para renderizar os chamados ABERTOS de um usuario especifico
-        $getChamadosAbertos = $chamado->getChamadosAbertos();
-        
-        
-        //metodo para renderizar os chamados FECHADOS de um usuario especifico
-        $getChamadosFechados = $chamado->getChamadosFechados();
-        
-
-        //metodo da parte de editar e visualizar usuario
-        $this->view->contentUsuario = $contentUsuario;
-       
-        $this->view->getAlldepartamentos = $getAllDepartamentos; 
-       
-
-
-        //metodo para admin ver todos os usuarios
-        $this->view->adminGetUsers = $adminGetUsers;
-
-        //metodo das tabelas de chamados abertos e fechados
-        $this->view->chamadosAbertos = $getChamadosAbertos;
-        $this->view->chamadosFechados =  $getChamadosFechados;
-
-       
-
-    
-
-        //renderizando pagina
-        if ($_SESSION['tipo_usuario'] == 1) {
-            $this->render('showProfile', 'adminLayout');
-        }else {
-            $this->render('showProfile', 'userLayout');
-        }
-    }
+    }    
 
     //pagina de rebderização de edit de usuario pela pagina de admin
     public function editarPerfil()
@@ -220,22 +164,7 @@ class AdminController extends Action
         $this->view->contentChamados = $contentChamados;   
 
         header('Location: /admin');       
-    }
-
-    //logica de responder chamado
-    public function responder_chamado()
-    {
-        session_start();        
-
-        $chamado = Container::getModel('Admin');
-        $chamado->__set('solucao_chamado',$_POST['solucao_chamado']);
-        $chamado->__set('pk_id_chamado',$_POST['pk_id_chamado']);
-
-        $chamado->responderChamado();
-
-        header('Location:/voltar');
-
-    }
+    }    
 
     //logica para deletar departamento
     public function deleteDepartamento()
@@ -255,5 +184,40 @@ class AdminController extends Action
         header('Location: /Show_configs'); 
 
         
+    }
+    
+    //render para tela de adição de site no sistema
+    public function addDepartamentoPage()
+    {
+        session_start();       
+
+
+        $this->render('addDepartamentoPage', 'adminLayout');
+    }    
+
+    //render para a tela de configurações do dite de chamados
+    public function show_configs()
+    {
+        session_start();
+
+        $depto = Container::getModel('Chamado');
+        $getUsers = Container::getModel('Admin');
+
+        //logica da tabela de usuarios
+        $adminGetUsers = $getUsers->adminGetUsuarios();
+        $departamentos = $depto->getAlldepartamentosAbertos();
+        
+
+        $this->view->getAlldepartamentos = $departamentos;
+        $this->view->adminGetUsers = $adminGetUsers;
+
+       
+
+
+        $this->view->adminGetUsers = $adminGetUsers;
+
+        //logica para pegar os valores da tabela de usuarios para um formulario
+
+        $this->render('Show_configs','adminLayout');
     }
 }

@@ -111,14 +111,16 @@ class Route extends Bootstrap
 
 
 
-        $routes['getUser'] = array(
-            'route' => '/getUser',
-            'controller' => 'UserController',
-            'action' => 'getUser'
-        );            
+                 
 
 
         //ROTAS SystemController
+
+        $routes['getUser'] = array(
+            'route' => '/getUser',
+            'controller' => 'SystemController',
+            'action' => 'getUser'
+        );   
 
         $routes['login'] = array(
             'route' => '/',
@@ -146,7 +148,7 @@ class Route extends Bootstrap
 
         $routes['show_configs'] = array(
             'route' => '/Show_configs',
-            'controller' => 'SystemController',
+            'controller' => 'AdminController',
             'action' => 'show_configs'
         );
 
@@ -167,6 +169,8 @@ class Route extends Bootstrap
             'controller' => 'SystemController',
             'action' => 'voltar'
         );
+        
+        
 
 
 
@@ -175,18 +179,6 @@ class Route extends Bootstrap
 
 
 
-
-        //ROTAS SystemController  
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         //ROTAS AuthController
 
         $routes['autenticar'] = array(

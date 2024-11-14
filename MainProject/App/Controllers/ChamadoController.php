@@ -7,7 +7,7 @@ use MF\Controller\Action;
 use MF\Model\Container;
 
 
-class ChhamadoController extends Action
+class ChamadoController extends Action
 {
      //render para pagina /reportBet
      public function reportChamado()
@@ -92,4 +92,19 @@ class ChhamadoController extends Action
          }
  
      }  
+
+     //logica de responder chamado
+    public function responder_chamado()
+    {
+        session_start();        
+
+        $chamado = Container::getModel('Admin');
+        $chamado->__set('solucao_chamado',$_POST['solucao_chamado']);
+        $chamado->__set('pk_id_chamado',$_POST['pk_id_chamado']);
+
+        $chamado->responderChamado();
+
+        header('Location:/voltar');
+
+    }
 }
