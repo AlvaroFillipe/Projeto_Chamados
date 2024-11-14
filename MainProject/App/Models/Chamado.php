@@ -37,7 +37,7 @@ class Chamado extends Model
     //query para adicionar um chamado
     public function reportChamado()
     {
-        $query = "SET FOREIGN_KEY_CHECKS = 0;
+        $query = "
                 INSERT INTO
                         tb_chamados
                         ( 
@@ -45,7 +45,8 @@ class Chamado extends Model
                             fk_id_departamento,                    
                             chamado,
                             status_chamado,
-                            solucao_chamado                                      
+                            solucao_chamado,
+                            situacao_chamado                                      
                         )
                     VALUES
                         (
@@ -53,9 +54,9 @@ class Chamado extends Model
                             :fk_id_departamento,                    
                             :chamado, 
                             :status_chamado,
-                            :solucao_chamado                     
-                        );
-                        SET FOREIGN_KEY_CHECKS = 1;";
+                            :solucao_chamado,
+                            1                   
+                        );";
 
         $stmt = $this->db->prepare($query);
 

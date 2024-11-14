@@ -18,7 +18,7 @@ class Route extends Bootstrap
 
         $routes['showProfile'] = array(
             'route' => '/showProfile',
-            'controller' => 'AdminController',
+            'controller' => 'SystemController',
             'action' => 'showProfile'
         );
 

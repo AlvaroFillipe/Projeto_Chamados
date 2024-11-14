@@ -43,28 +43,31 @@ class AdminController extends Action
     //pagina de rebderização de edit de usuario pela pagina de admin
     public function editarPerfil()
     {
+        session_start();
         if (isset($_SESSION)) {
-            session_start();
-        $editar = Container::getModel('Admin');        
-       
-        //passado os valores necessarios para int
-        $_POST['pk_id_usuario'] = intval($_POST['pk_id_usuario']);
-        $_POST['tipo_usuario'] = intval($_POST['tipo_usuario']);
-        $_POST['departamento'] = intval($_POST['departamento']);
-
-        $editar->__set('pk_id_usuario', $_POST['pk_id_usuario']);
-        $editar->__set('usuario', $_POST['usuario']);
-        $editar->__set('email', $_POST['email']);
-        $editar->__set('tipo_usuario', $_POST['tipo_usuario']);
-        $editar->__set('departamento', $_POST['departamento']);       
-
-
+            
+            $editar = Container::getModel('Admin');        
         
-        $editar->editarUsuario();                
+            //passado os valores necessarios para int
+            $_POST['pk_id_usuario'] = intval($_POST['pk_id_usuario']);
+            $_POST['tipo_usuario'] = intval($_POST['tipo_usuario']);
+            $_POST['departamento'] = intval($_POST['departamento']);
 
-        header('Location: /voltar');
+            $editar->__set('pk_id_usuario', $_POST['pk_id_usuario']);
+            $editar->__set('usuario', $_POST['usuario']);
+            $editar->__set('email', $_POST['email']);
+            $editar->__set('tipo_usuario', $_POST['tipo_usuario']);
+            $editar->__set('departamento', $_POST['departamento']);       
+
+
+            
+            $editar->editarUsuario();                
+
+            header('Location: /voltar');
+        }else{
+            header('Location: /sair');
         }
-        header('Location: /sair');
+        
     }
 
      //logica para criação de usuarios

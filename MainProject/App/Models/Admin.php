@@ -44,6 +44,7 @@ class Admin extends Model
                       tipo_usuario,
                       email,
                       fk_id_departamento
+                      situacao_usuario
                     )
                   VALUES
                     (
@@ -51,7 +52,8 @@ class Admin extends Model
                       :senha,
                       :tipo_usuario,
                       :email,
-                      :departamento
+                      :departamento,
+                      1
                     );";
 
     $stmt = $this->db->prepare($query);
@@ -78,7 +80,9 @@ class Admin extends Model
                   WHERE 
                     usuario = :usuario 
                   AND 
-                    senha = :senha";
+                    senha = :senha
+                  AND
+                    situacao_usuario = 1";
     $stmt = $this->db->prepare($query);
     $stmt->bindValue('usuario', $this->__get('usuario'));
     $stmt->bindValue('senha', $this->__get('senha'));
@@ -113,11 +117,10 @@ class Admin extends Model
                   tb_departamentos
               ON
                   tb_usuarios.fk_id_departamento = tb_departamentos.pk_id_departamento
-
               WHERE 
-                  pk_id_usuario = :pk_id_usuario;";
+                  pk_id_usuario = :pk_id_usuario AND situacao_usuario = 1;";
 
-    $stmt = $this->db->prepare($query);
+    $stmt = $this->db->prepare($query); 
     $stmt->bindValue('pk_id_usuario', $this->__get('pk_id_usuario'));
 
     $stmt->execute();
@@ -134,29 +137,12 @@ class Admin extends Model
                   tipo_usuario,
                   fk_id_departamento 
               FROM 
-                  tb_usuarios;";
+                  tb_usuarios AND situacao_usuario = 1;";
     $stmt = $this->db->prepare($query);
 
     $stmt->execute();
 
     return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-  }
-
-  //query deletar usuario especifico
-  public function deleteUser()
-  {
-    $query = "SET FOREIGN_KEY_CHECKS = 0;
-              DELETE FROM 
-                  tb_usuarios 
-              WHERE 
-                  pk_id_usuario = :pk_id_usuario;
-              SET FOREIGN_KEY_CHECKS = 1;";
-
-    $stmt = $this->db->prepare($query);
-    $stmt->bindValue(':pk_id_usuario', $this->__get('pk_id_usuario'));
-
-    $stmt->execute();
-    return $this;
   }
 
   //query mudar senha
@@ -181,7 +167,8 @@ class Admin extends Model
   //query para editar um usuario especifico
   public function editarUsuario()
   {
-    $query = "SET FOREIGN_KEY_CHECKS = 0;
+    $query = "
+              SET FOREIGN_KEY_CHECKS = 0;
               UPDATE 
                   tb_usuarios 
               SET 
@@ -191,7 +178,8 @@ class Admin extends Model
                   fk_id_departamento = :departamento
               WHERE
                   pk_id_usuario = :pk_id_usuario;
-                SET FOREIGN_KEY_CHECKS = 1;";
+                SET FOREIGN_KEY_CHECKS = 1;
+              ";
 
     $stmt = $this->db->prepare($query);
 
@@ -228,22 +216,6 @@ class Admin extends Model
     return $this;
   }
 
-  //query para deletar um usuario especifico
-  public function adminDeletarChamado()
-  {
-    $query = 'DELETE FROM 
-                tb_chamados
-              WHERE
-                pk_id_chamado = :pk_id_chamado';
-    
-    $stmt = $this->db->prepare($query);
-
-    $stmt->bindValue(':pk_id_chamado',$this->__get('pk_id_chamado'));
-
-    $stmt->execute();
-    return $this;
-  }
-
   //query para responder o chamado
   public function responderChamado()
   {
@@ -267,25 +239,6 @@ class Admin extends Model
 
   }
 
-  //query para deletar um departamento especifico
-  public function deleteDepartamento()
-  {
-    $query = "SET FOREIGN_KEY_CHECKS = 0;
-              DELETE FROM
-                tb_departamentos
-              WHERE 
-                pk_id_departamento = :pk_id_departamento;
-              SET FOREIGN_KEY_CHECKS = 1;";
-    
-    $stmt = $this->db->prepare($query);
-
-    $stmt->bindValue("pk_id_departamento",$this->__get('pk_id_departamento'));
-
-    $stmt->execute();
-
-    return $this;
-  }
-
   //query para pegar apenas um chamado de acordo com um usuario especifico
   public function adminGetAllChamados()
   {
@@ -307,6 +260,8 @@ class Admin extends Model
                       tb_usuarios
                   ON
                       (tb_chamados.fk_id_usuario = tb_usuarios.pk_id_usuario)
+                  WHERE
+                  situacao_chamado = 1
                   
                   ORDER BY
                       data_chamado DESC';
