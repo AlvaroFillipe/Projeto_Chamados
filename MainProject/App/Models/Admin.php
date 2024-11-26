@@ -43,7 +43,7 @@ class Admin extends Model
                       senha,
                       tipo_usuario,
                       email,
-                      fk_id_departamento
+                      fk_id_departamento,
                       situacao_usuario
                     )
                   VALUES
@@ -82,7 +82,7 @@ class Admin extends Model
                   AND 
                     senha = :senha
                   AND
-                    situacao_usuario = 1";
+                    situacao_usuario = 1;";
     $stmt = $this->db->prepare($query);
     $stmt->bindValue('usuario', $this->__get('usuario'));
     $stmt->bindValue('senha', $this->__get('senha'));
@@ -137,7 +137,7 @@ class Admin extends Model
                   tipo_usuario,
                   fk_id_departamento 
               FROM 
-                  tb_usuarios AND situacao_usuario = 1;";
+                  tb_usuarios WHERE situacao_usuario = 1;";
     $stmt = $this->db->prepare($query);
 
     $stmt->execute();

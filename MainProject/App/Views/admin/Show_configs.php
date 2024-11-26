@@ -44,9 +44,17 @@
                   </div>
                   <div class="col-sm-10">
                     <div class="form-check">
-                      <input value="1" name="tipo_usuario" class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                      <input value="1" name="tipo_usuario" class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1"c>
                       <label class="form-check-label" for="gridRadios1">
                         Usuario Admin
+                      </label>
+                    </div>                    
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="form-check">
+                      <input value="3" name="tipo_usuario" class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1">
+                      <label class="form-check-label" for="gridRadios1">
+                        Usuario Visualizador
                       </label>
                     </div>                    
                   </div>

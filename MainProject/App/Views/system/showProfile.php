@@ -114,6 +114,12 @@
                             Usuário Padrão
                           </label>
                         </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="tipo_usuario" id="gridRadios2" value="3" checked>
+                          <label class="form-check-label" for="gridRadios2">
+                            Usuário Visualizador
+                          </label>
+                        </div>
                       </div>
                     </fieldset>
 
