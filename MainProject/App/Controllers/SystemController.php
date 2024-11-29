@@ -17,14 +17,14 @@ class SystemController extends Action
         //metodo criado para fazer render do alerta de usuario incorreto, se na url tiver ['login'] ele vai pégar-la e incluir o que estiver nela,caso o contrario ele vai incluir a url vaia [''] = ''
         $this->view->login = isset($_GET['login']) ? $_GET['login'] : '';
 
-        $this->render('login');
+        $this->render('login','layout4');
     }
 
     //render para pagina de admin
     public function admin()
     {
         session_start();
-        if ($_SESSION['tipo_usuario'] != 2) {
+        if ($_SESSION['tipo_usuario'] == 1) {
 
             $getUsers = Container::getModel('Admin');
 
@@ -35,10 +35,23 @@ class SystemController extends Action
 
             //logica para pegar os valores da tabela de usuarios para um formulario
 
-            $this->render('admin', 'adminLayout');
+            $this->render('admin', 'layout1');
+        }elseif ($_SESSION['tipo_usuario'] == 3) {
+            $getUsers = Container::getModel('Admin');
+
+            //logica da tabela de usuarios
+            $adminGetUsers = $getUsers->adminGetUsuarios();
+
+            $this->view->adminGetUsers = $adminGetUsers;
+
+            //logica para pegar os valores da tabela de usuarios para um formulario
+
+            $this->render('admin', 'layout2');
         } else {
             header('Location: /');
         }
+        
+       
     }
 
     //render para pagina de usuario padrão
@@ -64,7 +77,7 @@ class SystemController extends Action
         //renderizando página
         if ($_SESSION['tipo_usuario'] != 1) {
 
-            $this->render('user', 'userLayout');
+            $this->render('user', 'layout1');
         } else {
             header('Location: /');
         }
@@ -75,11 +88,15 @@ class SystemController extends Action
     public function voltar()
     {
         session_start();
-        if ($_SESSION['tipo_usuario'] == 1) {
-            header("Location: /admin");
-        } else {
+        if ($_SESSION['tipo_usuario'] == 1 and $_SESSION['tipo_usuario'] == 3) {
+            header("Locarion :/admin");
+        }elseif($_SESSION['tipo_usuario'] == 2){
             header("Location: /user");
+        }else{
+            header("Location: / ");
         }
+        
+       
 
     }
 
@@ -97,7 +114,7 @@ class SystemController extends Action
             $this->view->adminGetAllChamados = $historico->adminGetAllChamados();
                   
            
-            $this->render('historicoGeral', 'adminLayout');
+            $this->render('historicoGeral', 'layout1');
 
         } elseif ($_SESSION['tipo_usuario'] == 2) {
             $historico = Container::getModel('User');
@@ -107,7 +124,7 @@ class SystemController extends Action
 
             $this->view->adminGetAllChamados = $historico->userGetAllChamados();
 
-            $this->render('historicoGeral', 'userLayout');
+            $this->render('historicoGeral', 'layout1');
         }else {
             header('Location:/');
         }
@@ -157,9 +174,11 @@ class SystemController extends Action
 
         //renderizando pagina
         if ($_SESSION['tipo_usuario'] == 1) {
-            $this->render('showProfile', 'adminLayout');
-        }else {
-            $this->render('showProfile', 'userLayout');
+            $this->render('showProfile', 'layout1');
+        }elseif($_SESSION['tipo_usuario'] == 3) {
+            $this->render('showProfile', 'layout2');
+        }elseif($_SESSION['tipo_usuario'] == 2) {
+            $this->render('showProfile', 'layout3');
         }
     }
     

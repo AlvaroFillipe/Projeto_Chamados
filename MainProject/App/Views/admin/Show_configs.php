@@ -104,6 +104,8 @@
                           $usuario['tipo_usuario'] = 'Admin';
                       } elseif ($usuario['tipo_usuario'] == 2) {
                           $usuario['tipo_usuario'] = 'Padrão';
+                      }elseif($usuario['tipo_usuario'] == 3) {
+                          $usuario['tipo_usuario'] = 'Visualizador';
                       }
 
                       //logica da tabela para se o valor de categoria de usuario for 1 = senior, se for 2 pleno e se for 3 junior

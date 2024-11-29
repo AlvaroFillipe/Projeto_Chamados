@@ -47,9 +47,9 @@ class ChamadoController extends Action
          $this->view->adminGetUsuario = $getUsuario;
  
          if ($_SESSION['tipo_usuario'] != 2) {
-             $this->render('reportChamadoPage', 'adminLayout');
+             $this->render('reportChamadoPage', 'layout1');
          } else {
-             $this->render('reportChamadoPage', 'userLayout');
+             $this->render('reportChamadoPage', 'layout1');
          }
      }
  
@@ -73,7 +73,7 @@ class ChamadoController extends Action
              
  
              
-             $this->render('showChamado', 'adminLayout');
+             $this->render('showChamado', 'layout1');
          } else {
  
              
@@ -88,7 +88,7 @@ class ChamadoController extends Action
              //pegando informações do  usuario
              $this->view->usuarioGetUsuario = $usuario->userGetUsuario();
                          
-             $this->render('showChamado', 'userLayout');
+             $this->render('showChamado', 'layout1');
          }
  
      }  

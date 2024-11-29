@@ -37,7 +37,7 @@ class AdminController extends Action
 
 
 
-        //$this->render('show_departamento','adminLayout');
+        //$this->render('show_departamento','layout1');
     }    
 
     //pagina de rebderização de edit de usuario pela pagina de admin
@@ -195,7 +195,7 @@ class AdminController extends Action
         session_start();       
 
 
-        $this->render('addDepartamentoPage', 'adminLayout');
+        $this->render('addDepartamentoPage', 'layout1');
     }    
 
     //render para a tela de configurações do dite de chamados
@@ -221,6 +221,6 @@ class AdminController extends Action
 
         //logica para pegar os valores da tabela de usuarios para um formulario
 
-        $this->render('Show_configs','adminLayout');
+        $this->render('Show_configs','layout1');
     }
 }

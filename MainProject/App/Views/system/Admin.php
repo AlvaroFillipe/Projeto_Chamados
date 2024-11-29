@@ -35,10 +35,12 @@
                     <?php foreach ($this->view->adminGetUsers as $adminGetUsers => $usuario) {
                       //logica da tabela para se o valor de tipo_usuario for 1 imprime 'admin' e se for 2 imprime 'padrao'
                       if ($usuario['tipo_usuario'] == 1) {
-                          $usuario['tipo_usuario'] = 'Admin';
-                      } elseif ($usuario['tipo_usuario'] == 2) {
-                          $usuario['tipo_usuario'] = 'Padrão';
-                      }
+                        $usuario['tipo_usuario'] = 'Admin';
+                    } elseif ($usuario['tipo_usuario'] == 2) {
+                        $usuario['tipo_usuario'] = 'Padrão';
+                    }elseif($usuario['tipo_usuario'] == 3) {
+                        $usuario['tipo_usuario'] = 'Visualizador';
+                    }
 
                       //logica da tabela para se o valor de categoria de usuario for 1 = senior, se for 2 pleno e se for 3 junior
 
