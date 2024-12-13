@@ -17,7 +17,7 @@ class SystemController extends Action
         //metodo criado para fazer render do alerta de usuario incorreto, se na url tiver ['login'] ele vai pégar-la e incluir o que estiver nela,caso o contrario ele vai incluir a url vaia [''] = ''
         $this->view->login = isset($_GET['login']) ? $_GET['login'] : '';
 
-        $this->render('login','layout4');
+        $this->render('login','anyLayout');
     }
 
     //render para pagina de admin
@@ -46,7 +46,7 @@ class SystemController extends Action
 
             //logica para pegar os valores da tabela de usuarios para um formulario
 
-            $this->render('admin', 'layout2');
+            $this->render('admin', 'adminLayout');
         } else {
             header('Location: /');
         }
@@ -77,7 +77,7 @@ class SystemController extends Action
         //renderizando página
         if ($_SESSION['tipo_usuario'] != 1) {
 
-            $this->render('user', 'layout1');
+            $this->render('user', 'userLayput');
         } else {
             header('Location: /');
         }
@@ -174,11 +174,11 @@ class SystemController extends Action
 
         //renderizando pagina
         if ($_SESSION['tipo_usuario'] == 1) {
-            $this->render('showProfile', 'layout1');
+            $this->render('showProfile', 'adminLayout');
         }elseif($_SESSION['tipo_usuario'] == 3) {
-            $this->render('showProfile', 'layout2');
+            $this->render('showProfile', 'visualizerLayout');
         }elseif($_SESSION['tipo_usuario'] == 2) {
-            $this->render('showProfile', 'layout3');
+            $this->render('showProfile', 'userLayout');
         }
     }
     

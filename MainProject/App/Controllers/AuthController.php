@@ -34,7 +34,7 @@ class AuthController extends Action
 
             // 1 = ADMIN
             // 2 = USUARIO COMUM  
-            if ($autenticar->__get('tipo_usuario') != 2) {
+            if ($autenticar->__get('tipo_usuario') == 1 OR $autenticar->__get('tipo_usuario') == 3) {
                 //iniciando sessão para guardar dados do usuario emquanto ele estiver logado
                 session_start();
 
@@ -46,7 +46,7 @@ class AuthController extends Action
 
                 //redirecionando usuario para sua timeline especifica
                 header('Location: /admin');
-            } elseif ($autenticar->__get('tipo_usuario') != 1) {
+            } elseif ($autenticar->__get('tipo_usuario') == 2) {
                 //iniciando sessão para guardar dados do usuario emquanto ele estiver logado
                 session_start();
 
@@ -57,7 +57,7 @@ class AuthController extends Action
 
                 //redirecionando usuario para sua timeline especifica
                 header('Location: /user');
-            }
+            }            
         } else {
             //usando função nativa do php para redirecionar o usuario para a tela de login se ele não colocar um usuario e senha corretos
             header('Location: /?login=erro'); //somente a barra retorna ele para a pagina raiz de login

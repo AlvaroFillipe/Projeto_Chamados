@@ -1,6 +1,6 @@
 layouts{
-    layout1 = layout do admin,
-    layout2 = layout do usuario visualizador,    
-    layout3 = layout do usuario normal,
-    layout4 = layout sem nada,    
+    adminLayout = layout do admin,
+    visualizerLayout = layout do usuario visualizador,    
+    userLayout = layout do usuario normal,
+    anyLayout = layout sem nada,    
 }

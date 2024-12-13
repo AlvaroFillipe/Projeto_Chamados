@@ -187,16 +187,8 @@ class AdminController extends Action
         header('Location: /Show_configs'); 
 
         
-    }
-    
-    //render para tela de adição de site no sistema
-    public function addDepartamentoPage()
-    {
-        session_start();       
-
-
-        $this->render('addDepartamentoPage', 'layout1');
-    }    
+    } 
+ 
 
     //render para a tela de configurações do dite de chamados
     public function show_configs()
@@ -221,6 +213,6 @@ class AdminController extends Action
 
         //logica para pegar os valores da tabela de usuarios para um formulario
 
-        $this->render('Show_configs','layout1');
+        $this->render('Show_configs','adminLayout');
     }
 }

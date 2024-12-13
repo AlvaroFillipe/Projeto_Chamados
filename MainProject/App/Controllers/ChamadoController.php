@@ -9,7 +9,7 @@ use MF\Model\Container;
 
 class ChamadoController extends Action
 {
-     //render para pagina /reportBet
+     //logica para abrir um chamado
      public function reportChamado()
      {
          session_start();
@@ -33,7 +33,7 @@ class ChamadoController extends Action
          header('Location: /reportChamadoPage');
      }
  
-     //render para pagina de registrar bet
+     //render para pagina de abrir chamado
      public function reportChamadoPage()
      {
          session_start();
@@ -46,10 +46,10 @@ class ChamadoController extends Action
  
          $this->view->adminGetUsuario = $getUsuario;
  
-         if ($_SESSION['tipo_usuario'] != 2) {
-             $this->render('reportChamadoPage', 'layout1');
+         if ($_SESSION['tipo_usuario'] == 1 OR $_SESSION['tipo_usuario'] == 3 ) {
+             $this->render('reportChamadoPage', 'adminLayout');
          } else {
-             $this->render('reportChamadoPage', 'layout1');
+             $this->render('reportChamadoPage', 'userLayout');
          }
      }
  
@@ -57,7 +57,7 @@ class ChamadoController extends Action
      public function showChamado()
      {
          session_start();
-         if ($_SESSION['tipo_usuario'] != 2) {           
+         if ($_SESSION['tipo_usuario'] == 1 OR $_SESSION['tipo_usuario'] == 3) {           
              
              $usuario = Container::getModel('User');
  
@@ -73,7 +73,7 @@ class ChamadoController extends Action
              
  
              
-             $this->render('showChamado', 'layout1');
+             $this->render('showChamado', 'adminLayout');
          } else {
  
              
@@ -88,7 +88,7 @@ class ChamadoController extends Action
              //pegando informações do  usuario
              $this->view->usuarioGetUsuario = $usuario->userGetUsuario();
                          
-             $this->render('showChamado', 'layout1');
+             $this->render('showChamado', 'userLayout');
          }
  
      }  
