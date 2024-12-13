@@ -35,7 +35,7 @@ class SystemController extends Action
 
             //logica para pegar os valores da tabela de usuarios para um formulario
 
-            $this->render('admin', 'layout1');
+            $this->render('admin', 'adminLayout');
         }elseif ($_SESSION['tipo_usuario'] == 3) {
             $getUsers = Container::getModel('Admin');
 
@@ -114,7 +114,7 @@ class SystemController extends Action
             $this->view->adminGetAllChamados = $historico->adminGetAllChamados();
                   
            
-            $this->render('historicoGeral', 'layout1');
+            $this->render('historicoGeral', 'adminLayout');
 
         } elseif ($_SESSION['tipo_usuario'] == 2) {
             $historico = Container::getModel('User');
@@ -124,7 +124,7 @@ class SystemController extends Action
 
             $this->view->adminGetAllChamados = $historico->userGetAllChamados();
 
-            $this->render('historicoGeral', 'layout1');
+            $this->render('historicoGeral', 'userLayout');
         }else {
             header('Location:/');
         }
