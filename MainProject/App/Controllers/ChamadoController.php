@@ -9,7 +9,23 @@ use MF\Model\Container;
 
 class ChamadoController extends Action
 {
-     //logica para abrir um chamado
+
+     //logica para abrir um chamado feito por um usuario administrador
+     public function adminreportchamado()
+     {
+        session_start();
+        if ($_SESSION['tipo_usuario'] == 1) {
+            $chamado = Container::getModel('Chamado');
+
+            
+        } else {
+            header('Location: /');
+        }
+        
+     }
+
+
+     //logica para abrir um chamado feito por um usuario normal
      public function reportChamado()
      {
          session_start();
@@ -106,5 +122,11 @@ class ChamadoController extends Action
 
         header('Location:/voltar');
 
+    }
+
+    //render para pagina de abrir chamado pelo admin 
+    public function adminReportChamadoPage(){
+        session_start();
+        $this->render('adminReportChamadoPage','adminLayout');
     }
 }

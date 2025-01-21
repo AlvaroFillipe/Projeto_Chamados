@@ -75,7 +75,13 @@ class Route extends Bootstrap
             'route' => '/reportChamadoPage',
             'controller' => 'ChamadoController',
             'action' => 'reportChamadoPage'
-        );     
+        );   
+        
+        $routes['adminReportChamadoPage'] = array(
+            'route' => '/adminReportChamadoPage',
+            'controller' => 'ChamadoController',
+            'action' => 'adminReportChamadoPage'
+        );   
 
         $routes['showChamado'] = array(
             'route' => '/showChamado',
