@@ -77,7 +77,7 @@ class SystemController extends Action
         //renderizando página
         if ($_SESSION['tipo_usuario'] != 1) {
 
-            $this->render('user', 'userLayput');
+            $this->render('user', 'userLayout');
         } else {
             header('Location: /');
         }
@@ -180,6 +180,26 @@ class SystemController extends Action
         }elseif($_SESSION['tipo_usuario'] == 2) {
             $this->render('showProfile', 'userLayout');
         }
+    }
+
+    //render para pagina do usuario visualizer
+    public function visualizer()
+    {
+        session_start();
+        $adminModels = Container::getModel('Admin');
+
+        $getUsuarios = $adminModels->getUsuariosNormais();
+
+        $this->view->getUsuarios = $getUsuarios;
+
+        echo '<pre>';
+        //print_r($this->view->getUsuarios = $getUsuarios);
+        echo'</pre>';
+
+        //tetodo para colocar os usuarios na tabela de visualizer
+
+
+        $this->render('visualizer', 'visualizerLayout');
     }
     
 }

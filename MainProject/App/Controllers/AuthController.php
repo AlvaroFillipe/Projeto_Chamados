@@ -34,7 +34,7 @@ class AuthController extends Action
 
             // 1 = ADMIN
             // 2 = USUARIO COMUM  
-            if ($autenticar->__get('tipo_usuario') == 1 OR $autenticar->__get('tipo_usuario') == 3) {
+            if ($autenticar->__get('tipo_usuario') == 1) {
                 //iniciando sessão para guardar dados do usuario emquanto ele estiver logado
                 session_start();
 
@@ -57,7 +57,18 @@ class AuthController extends Action
 
                 //redirecionando usuario para sua timeline especifica
                 header('Location: /user');
-            }            
+            } elseif ($autenticar->__get('tipo_usuario') == 3) {
+                  //iniciando sessão para guardar dados do usuario emquanto ele estiver logado
+                  session_start();
+
+                  //guarddndo dados do usuario
+                  $_SESSION['pk_id_usuario'] = $autenticar->__get('pk_id_usuario');
+                  $_SESSION['usuario'] = $autenticar->__get('usuario');
+                  $_SESSION['tipo_usuario'] = $autenticar->__get('tipo_usuario');
+  
+                  //redirecionando usuario para sua timeline especifica
+                  header('Location: /visualizer');
+            }           
         } else {
             //usando função nativa do php para redirecionar o usuario para a tela de login se ele não colocar um usuario e senha corretos
             header('Location: /?login=erro'); //somente a barra retorna ele para a pagina raiz de login

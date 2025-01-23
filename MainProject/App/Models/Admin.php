@@ -128,6 +128,30 @@ class Admin extends Model
     return $stmt->fetchAll(\PDO::FETCH_ASSOC);
   }
 
+  //query para chamar TODOS os usuarios que normais que estao ativoso
+  public function getUsuariosNormais(){
+    $query = "SELECT 
+                  pk_id_usuario,
+                  usuario,
+                  email,
+                  tipo_usuario,
+                  fk_id_departamento,
+                  departamento                  
+              FROM
+                  tb_usuarios 
+              LEFT JOIN
+                  tb_departamentos
+              ON
+                  tb_usuarios.fk_id_departamento = tb_departamentos.pk_id_departamento
+              WHERE 
+                  tipo_usuario = 2";
+
+                  $stmt = $this->db->prepare($query);
+                  $stmt->execute();
+
+                  return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+  }
+
   //query para pegar TODOS os usuarios
   public function adminGetUsuarios()
   {

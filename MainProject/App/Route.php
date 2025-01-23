@@ -122,6 +122,12 @@ class Route extends Bootstrap
 
         //ROTAS SystemController
 
+        $routes['visualizer'] = array(
+            'route' => '/visualizer',
+            'controller' => 'SystemController',
+            'action' => 'visualizer'
+        );   
+     
         $routes['getUser'] = array(
             'route' => '/getUser',
             'controller' => 'SystemController',
