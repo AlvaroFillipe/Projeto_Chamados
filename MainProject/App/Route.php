@@ -71,6 +71,13 @@ class Route extends Bootstrap
 
         //ROTAS ChamdoController
 
+        $routes['adminreportchamado'] = array(
+            'route' => '/adminreportchamado',
+            'controller' => 'ChamadoController',
+            'action' => 'adminreportchamado'
+        );   
+        
+
         $routes['reportChamadoPage'] = array(
             'route' => '/reportChamadoPage',
             'controller' => 'ChamadoController',
@@ -106,6 +113,21 @@ class Route extends Bootstrap
             'controller' => 'ChamadoController',
             'action' => 'reportChamado'
         );
+
+
+
+
+
+
+
+
+        //ROTAS PARA ConselhoController
+        $routes['mainConselho'] = array(
+            'route' => '/mainConselho',
+            'controller' => 'ConselhoController',
+            'action' => 'mainConselho'
+        );
+
         
         
 
@@ -120,7 +142,7 @@ class Route extends Bootstrap
                  
 
 
-        //ROTAS SystemController
+        //ROTAS SystemController 
 
         $routes['visualizer'] = array(
             'route' => '/visualizer',
@@ -181,7 +203,8 @@ class Route extends Bootstrap
             'controller' => 'SystemController',
             'action' => 'voltar'
         );
-        
+
+      
         
 
 

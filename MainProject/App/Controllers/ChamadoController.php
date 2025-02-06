@@ -14,13 +14,7 @@ class ChamadoController extends Action
      public function adminreportchamado()
      {
         session_start();
-        if ($_SESSION['tipo_usuario'] == 1) {
-            $chamado = Container::getModel('Chamado');
-
-            
-        } else {
-            header('Location: /');
-        }
+        print_r($_POST);
         
      }
 
@@ -127,6 +121,16 @@ class ChamadoController extends Action
     //render para pagina de abrir chamado pelo admin 
     public function adminReportChamadoPage(){
         session_start();
-        $this->render('adminReportChamadoPage','adminLayout');
+        if ($_SESSION['tipo_usuario'] == 1) {
+            $chamado = Container::getModel('Admin');
+            $chamado->getUsuariosNormais();
+            $this->view->getUsuarios = $chamado->getUsuariosNormais();
+            
+
+            $this->render('adminReportChamadoPage','adminLayout');
+        }else{
+            header('Location: /');
+        }
+       
     }
 }

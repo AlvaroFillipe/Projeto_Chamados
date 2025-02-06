@@ -56,7 +56,7 @@ INSERT INTO
         senha
         )
 VALUES
-        ("alvarofillipe6@gmail.com","alvaro",1,1,1,"123");
+        ("alvarofillipe6@gmail.com","alvaro",1,1,1,"202cb962ac59075b964b07152d234b70a");
 
 
 

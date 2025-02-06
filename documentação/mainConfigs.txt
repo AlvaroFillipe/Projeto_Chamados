@@ -1,6 +1,16 @@
-layouts{
+layouts
+{
     adminLayout = layout do admin,
     visualizerLayout = layout do usuario visualizador,    
     userLayout = layout do usuario normal,
     anyLayout = layout sem nada,    
+}
+Modulo_conselho
+{
+
+}
+
+Modulo_chaves
+{
+
 }
