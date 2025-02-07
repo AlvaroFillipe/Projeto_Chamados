@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Chamados Internos</title>
+  <title>Easy Life</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -161,7 +161,7 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-bar-chart"></i><span>Conselho</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="bi bi-menu-button-wide"></i><span>Conselho</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>

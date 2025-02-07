@@ -69,7 +69,7 @@ class Route extends Bootstrap
 
 
 
-        //ROTAS ChamdoController
+        //ROTAS ChamadoController
 
         $routes['adminreportchamado'] = array(
             'route' => '/adminreportchamado',
@@ -126,6 +126,18 @@ class Route extends Bootstrap
             'route' => '/mainConselho',
             'controller' => 'ConselhoController',
             'action' => 'mainConselho'
+        );
+
+        $routes['createFolderConselho'] = array(
+            'route' => '/createFolderConselho',
+            'controller' => 'ConselhoController',
+            'action' => 'createFolderConselhoPage'
+        );
+
+        $routes['anexaArquivoConselho'] = array(
+            'route' => '/anexaArquivoConselho',
+            'controller' => 'ConselhoController',
+            'action' => 'anexaArquivoFolderConselhoPage'
         );
 
         

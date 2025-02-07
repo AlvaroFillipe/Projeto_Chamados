@@ -1,0 +1,4 @@
+Este arquivo é destinado como guia de anotações para o novo modulo File Menager do conselho deliberativo
+
+O modulo vai ter o fim de organizar, pesquisar e gerenciar melhor os arquivos gerados pelo conselho deliberativo
+
