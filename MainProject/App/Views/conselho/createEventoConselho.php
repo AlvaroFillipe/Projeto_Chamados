@@ -29,7 +29,7 @@
             </div>         
             
             <div class="row mb-3">
-              <label for="inputDate" class="col-sm-2 col-form-label">Date</label>
+              <label for="inputDate" class="col-sm-2 col-form-label">Data Do Evento</label>
               <div class="col-sm-6">
                 <input name="data "type="date" class="form-control">
               </div>
