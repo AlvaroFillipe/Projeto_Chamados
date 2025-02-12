@@ -36,6 +36,64 @@ CREATE TABLE tb_chamados(
     FOREIGN KEY(fk_id_departamento)REFERENCES tb_departamentos(pk_id_departamento)
 );
 
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE tb_modalidade_arquivos(
+    pk_id_modalidade_arquivo int not null auto_increment primary key,
+    modalidade_arquivo varchar(30),
+    situacao_modalidade int
+);
+
+CREATE TABLE tb_evento_conselho(
+    pk_id_evento int not null auto_increment primary key,
+    data_criacao_evento DATETIME DEFAULT CURRENT_TIMESTAMP,
+    data_evento DATETIME,
+    situacao_evento int
+);
+
+CREATE TABLE tb_modalidade_evento(
+    pk_id_modalidade_evento int not null auto_increment primary key,
+    modalidade_evento varchar(30),
+    situacao_modalidade int 
+);
+
+CREATE TABLE tb_arquivos_conselho(
+    pk_id_arquivo int not null auto_increment primary key,
+    fk_id_modalidade_arquivo int not null,
+    fk_id_modalidade_evento int not null,
+    fk_id_evento_conselho int not null,
+    nome_arquivo varchar(150) not null, 
+    assunto_arquivo varchar(50),
+    data_criacao_arquivo DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY(fk_id_modalidade_arquivo)REFERENCES tb_modalidade_arquivos(pk_id_modalidade_arquivo),
+    FOREIGN KEY(fk_id_modalidade_evento)REFERENCES tb_modalidade_evento(pk_id_modalidade_evento) ,
+    FOREIGN KEY(fk_id_evento_conselho)REFERENCES tb_evento_conselho(pk_id_evento)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //adicionando primeiro depatrtamto e usuario
 INSERT INTO 
     tb_departamentos

@@ -128,8 +128,8 @@ class Route extends Bootstrap
             'action' => 'mainConselho'
         );
 
-        $routes['createFolderConselho'] = array(
-            'route' => '/createFolderConselho',
+        $routes['createFolderConselhoPage'] = array(
+            'route' => '/createFolderConselhoPage',
             'controller' => 'ConselhoController',
             'action' => 'createFolderConselhoPage'
         );
@@ -138,6 +138,24 @@ class Route extends Bootstrap
             'route' => '/anexaArquivoConselho',
             'controller' => 'ConselhoController',
             'action' => 'anexaArquivoFolderConselhoPage'
+        );
+
+        $routes['add_modalidade_arquivo'] = array(
+            'route' => '/add_modalidade_arquivo',
+            'controller' => 'ConselhoController',
+            'action' => 'add_modalidade_arquivo'
+        );
+
+        $routes['add_modalidade_evento'] = array(
+            'route' => '/add_modalidade_evento',
+            'controller' => 'ConselhoController',
+            'action' => 'add_modalidade_evento'
+        );
+
+        $routes['add_evento_conselho'] = array(
+            'route' => '/add_evento_conselho',
+            'controller' => 'ConselhoController',
+            'action' => 'add_evento_conselho'
         );
 
         

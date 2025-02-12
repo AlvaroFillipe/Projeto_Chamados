@@ -20,7 +20,7 @@
          <div class="card">
             <div class="card-body">
             <br>             
-            <a href="/createFolderConselho"><button type="button" class="btn btn-success btn-lg">Criar Evento</button></a>
+            <a href="/createFolderConselhoPage"><button type="button" class="btn btn-success btn-lg">Criar Evento</button></a>
             <a href="/anexaArquivoConselho"><button type="button" class="btn btn-success btn-lg">Anexar Arquivo</button></a> 
             </div>
           </div>

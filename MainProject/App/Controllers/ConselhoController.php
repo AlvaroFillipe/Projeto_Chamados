@@ -88,4 +88,36 @@ class ConselhoController extends Action
         }
 
     }
+
+    //logica para adicionar uma modalidade de evento no conselho
+    public function add_modalidade_evento()
+    {
+        $evento = Container::getModel('Conselho');
+        
+
+        $evento->__set('modalidade_evento', $_POST['modalidade_evento']);
+
+        $evento->add_modalidade_evento();
+
+        header('Location:/Show_configs');
+    }
+
+    //logica para adicionar uma modalidade de arquivo no conselho
+    public function add_modalidade_arquivo()
+    {
+        $evento = Container::getModel('Conselho');
+        
+
+        $evento->__set('modalidade_arquivo', $_POST['modalidade_arquivo']);
+
+        $evento->add_modalidade_arquivo();
+
+        header('Location:/Show_configs');
+    }
+
+    //logica para adicionar um evento no conselho
+    public function add_evento_conselho()
+    {
+        
+    }
 }

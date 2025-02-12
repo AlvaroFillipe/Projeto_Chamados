@@ -12,9 +12,9 @@
 <!-- LADO ESQUERDO DA TELA -->
         <div class="col-lg-6">
 
-        <div class="card">
+          <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Formulário para adiconar usuário</h5>
+              <h5 class="card-title">Adiconar usuário</h5>
 
               <!-- Multi Columns Form -->
               <form class="row g-3" method="post" action="createUser">
@@ -78,7 +78,7 @@
               </form><!-- End Multi Columns Form -->
 
             </div>
-          </div>
+          </div>          
 
           <div class="card">
             <div class="card-body">
@@ -156,7 +156,50 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Formulário para Adicionar Departamento</h5>
+              <h5 class="card-title">Adicionar Modaliade de Arquivos no conselho</h5>
+
+              <!-- Vertical Form -->
+              <form class="row g-3" method="post" action="add_modalidade_arquivo">
+              <div class="col-12">
+                  <div class="form-floating">
+                    <textarea name="modalidade_arquivo" class="form-control" placeholder="Address" id="floatingTextarea" style="height: 100px;"></textarea>
+                    <label for="floatingTextarea">Nome da modalidade</label>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="reset" class="btn btn-secondary">Reset</button>
+                </div>
+              </form><!-- Vertical Form -->
+
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Adicionar Modaliade de Eventos no conselho</h5>
+
+              <!-- Vertical Form -->
+              <form class="row g-3" method="post" action="add_modalidade_evento">
+              <div class="col-12">
+                  <div class="form-floating">
+                    <textarea name="modalidade_evento" class="form-control" placeholder="Address" id="floatingTextarea" style="height: 100px;"></textarea>
+                    <label for="floatingTextarea">Nome da Modalidade</label>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="reset" class="btn btn-secondary">Reset</button>
+                </div>
+              </form><!-- Vertical Form -->
+
+            </div>
+          </div>
+
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Adicionar Departamento</h5>
 
               <!-- Vertical Form -->
               <form class="row g-3" method="post" action="add_departamento">
