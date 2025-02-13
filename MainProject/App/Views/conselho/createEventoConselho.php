@@ -20,36 +20,36 @@
           <h5 class="card-title">General Form Elements</h5>
 
           <!-- General Form Elements -->
-          <form metyhod action="createFolderConselho">
+          <form method="post" action="/create_evento_conselho">
             <div class="row mb-3">
               <label for="inputText" class="col-sm-2 col-form-label">Nome da pasta</label>
               <div class="col-sm-6">
-                <input name="nome" type="text" class="form-control">
+                <input name="nome_evento" type="text" class="form-control">
               </div>
             </div>         
             
             <div class="row mb-3">
               <label for="inputDate" class="col-sm-2 col-form-label">Data Do Evento</label>
               <div class="col-sm-6">
-                <input name="data "type="date" class="form-control">
+                <input name="data_evento"type="date" class="form-control">
               </div>
             </div>            
           
             <div class="row mb-3">
-              <label for="inputPassword" class="col-sm-2 col-form-label">Textarea</label>
+              <label for="inputPassword" class="col-sm-2 col-form-label">Assunto ou tag</label>
               <div class="col-sm-6">
-                <textarea name="textarea" class="form-control" style="height: 100px"></textarea>
+                <textarea name="tag_evento" class="form-control" style="height: 100px"></textarea>
               </div>
             </div>
 
             <div class="row mb-3">
-              <label class="col-sm-2 col-form-label">Select</label>
+              <label class="col-sm-2 col-form-label">Categoria do Evento</label>
               <div class="col-sm-6">
-                <select  name="select" class="form-select" aria-label="Default select example">
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                <select  name="modalidade_evento" class="form-select" aria-label="Default select example">
+                  <option selected>Selecione Modalidade de Evento</option>
+                  <?php foreach ( $this->view->getEventosAtivos as $getEventosAtivos => $evento) { ?>
+                    <option value="<?=$evento['pk_id_modalidade_evento']?>"><?=$evento['modalidade_evento']?></option>
+                  <?php }?>                 
                 </select>
               </div>
             </div>           

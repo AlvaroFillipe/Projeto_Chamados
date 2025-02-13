@@ -159,7 +159,7 @@
               <h5 class="card-title">Adicionar Modaliade de Arquivos no conselho</h5>
 
               <!-- Vertical Form -->
-              <form class="row g-3" method="post" action="add_modalidade_arquivo">
+              <form class="row g-3" method="post" action="/add_modalidade_arquivo">
               <div class="col-12">
                   <div class="form-floating">
                     <textarea name="modalidade_arquivo" class="form-control" placeholder="Address" id="floatingTextarea" style="height: 100px;"></textarea>

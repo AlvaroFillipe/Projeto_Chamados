@@ -51,6 +51,12 @@ class ConselhoController extends Action
     public function createFolderConselhoPage()
     {
         session_start();
+        $conselho = Container::getModel('Conselho');
+
+        $get_eventos_ativos = $conselho->getEventosAtivos();
+
+        $this->view->getEventosAtivos = $get_eventos_ativos;
+
         if ($_SESSION['tipo_usuario'] == 1) {
             $this->render('createEventoConselho','adminLayout');
         } else {
@@ -116,8 +122,40 @@ class ConselhoController extends Action
     }
 
     //logica para adicionar um evento no conselho
-    public function add_evento_conselho()
+    public function create_evento_conselho()
     {
+        session_start();
+
+
         
+        $pasta = $_POST['nome_evento'];
+
+        $caminho_pasta = "\\\as010\Conselho\pasta_eventos_conselho_2024\\".$pasta ;
+        
+        
+        if (!file_exists($caminho_pasta)) {//verificando se pasta ja existe
+            if (mkdir($caminho_pasta, 0777, true)) {//criando pasta
+                $evento = Container::getModel('Conselho');
+
+                $evento->__set('caminho_pasta', $caminho_pasta);
+                $evento->__set('nome_evento',$_POST['nome_evento']);
+                $evento->__set('data_evento',$_POST['data_evento']);
+                $evento->__set('tag_evento',$_POST['tag_evento']);
+                $evento->__set('modalidade_evento',$_POST['modalidade_evento']);
+
+                $evento->add_evento_conselho();
+
+                header('Location: /createFolderConselhoPage');
+
+            } else {
+                echo "nao foi possivel criar a pasta";
+            }
+            
+        } else {
+           echo "a pasta ja existe";
+        }
+    
+
+
     }
 }

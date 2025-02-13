@@ -158,6 +158,12 @@ class Route extends Bootstrap
             'action' => 'add_evento_conselho'
         );
 
+        $routes['create_evento_conselho'] = array(
+            'route' => '/create_evento_conselho',
+            'controller' => 'ConselhoController',
+            'action' => 'create_evento_conselho'
+        );
+
         
         
 
