@@ -19,9 +19,9 @@
 
          <div class="card">
             <div class="card-body">
-            <br>             
-            <a href="/createFolderConselhoPage"><button type="button" class="btn btn-success btn-lg">Criar Evento</button></a>
-            <a href="/anexaArquivoConselho"><button type="button" class="btn btn-success btn-lg">Anexar Arquivo</button></a> 
+              <br>             
+              <a href="/createFolderConselhoPage"><button type="button" class="btn btn-success btn-lg">Criar Evento</button></a>
+            
             </div>
           </div>
 
@@ -51,17 +51,27 @@
                     <th scope="col">#</th>
                     <th scope="col">Nome Evento</th>
                     <th scope="col">Data Do Evento</th>
+                    <th scope="col">Data Criação Evetno</th>
+                    <th scope="col">tag do evento</th>
                     <th scope="col">Visualizar</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row"><a href="#">#2457</a></th>
-                    <td>Brandon Jacob</td>
-                    <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                    
-                    <td><span class="badge bg-success">Approved</span></td>
-                  </tr>                  
+                <?php foreach ($this->view->getEventosAtivos as $getEventosAtivos => $evento) {?>
+                  <tr>                    
+                    <th scope="row"><a href="#"><?=$evento['pk_id_evento']?></a></th>
+                    <td><?=$evento['nome_evento']?></td>
+                    <td><?=$evento['data_evento']?></td> 
+                    <td><?=$evento['data_criacao_evento']?></td>    
+                    <td><?=$evento['tag_evento']?></td>                    
+                    <td>
+                      <form action="show_evento_conselho" method="post">
+                        <input type="hidden" name="pk_id_evento" value="<?=$evento['pk_id_evento'];?>">
+                        <button type="submit" class="btn btn-info"><i class="bi bi-info-circle"></i></button>
+                      </form>
+                    </td>               
+                  </tr> 
+                  <?php }?>
                 </tbody>
               </table>
 

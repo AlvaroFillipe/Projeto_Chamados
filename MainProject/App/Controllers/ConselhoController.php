@@ -14,6 +14,11 @@ class ConselhoController extends Action
     {
         session_start();
 
+        $evento = Container::getModel('Conselho');
+        $getEventosAtibos = $evento->getEventosAtivos();
+        $this->view->getEventosAtivos = $getEventosAtibos;
+
+
         if ($_SESSION['tipo_usuario'] == 1) {
             $this->render('mainConselho','adminLayout');
         } else {
@@ -53,7 +58,7 @@ class ConselhoController extends Action
         session_start();
         $conselho = Container::getModel('Conselho');
 
-        $get_eventos_ativos = $conselho->getEventosAtivos();
+        $get_eventos_ativos = $conselho->getModalidadeEventosAtivos();
 
         $this->view->getEventosAtivos = $get_eventos_ativos;
 
@@ -158,4 +163,30 @@ class ConselhoController extends Action
 
 
     }
+
+    //render para pagina show_evento_conselho 
+    public function show_evento_conselho()
+    {
+        
+        session_start();
+
+        $evento = Container::getModel('Conselho');
+        $evento->__set('pk_id_evento', $_POST['pk_id_evento']);
+
+        $getEventoAtivo = $evento->getEventoAtivo();
+        $this->view->getEventoAtivo = $getEventoAtivo;
+
+        $getmodalidadeArquivoAtiva = $evento->getModalidadeArquivoAtiva();
+        $this->view->getModaliadesArquivosAtivas = $getmodalidadeArquivoAtiva;
+
+
+        if ($_SESSION['tipo_usuario'] == 1) {
+            $this->render('show_evento_conselho','adminLayout');
+        } else {
+            $this->render('show_evento_conselho','userLayout');
+        }
+        
+    }
+
+    
 }

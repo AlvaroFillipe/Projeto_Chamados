@@ -33,7 +33,7 @@ class Conselho extends Model
                         tb_modalidade_evento
                         (
                             modalidade_evento,
-                            situacao_evento
+                            situacao_modalidade
                         )
                     VALUES
                         (
@@ -74,7 +74,7 @@ class Conselho extends Model
 
     //query para retornar um array de todas as categorias de tipos de eventos ativos do conselho
 
-    public function getEventosAtivos()
+    public function getModalidadeEventosAtivos()
     {
         $query =  " SELECT 
                         pk_id_modalidade_evento, 
@@ -124,6 +124,76 @@ class Conselho extends Model
     
     }
 
+    //query para pegar toodos os eventos do conselho que estao ativos no sistema
+    public function getEventosAtivos()
+    {
+       $query = "SELECT 
+                  pk_id_evento,
+                  nome_evento,
+                  caminho_pasta,
+                  DATE_FORMAT(data_criacao_evento,'%d/%m/%Y') as data_criacao_evento,
+                  DATE_FORMAT(data_evento,'%d/%m/%Y') as data_evento,                  
+                  tag_evento                  
+              FROM
+                  tb_evento_conselho 
+              LEFT JOIN
+                  tb_modalidade_evento
+              ON
+                  tb_evento_conselho.fk_id_modalidade_evento = tb_modalidade_evento.pk_id_modalidade_evento
+              WHERE 
+                  situacao_evento = 1";
+
+                  $stmt = $this->db->prepare($query);
+                  $stmt->execute();
+
+                  return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    //query para pega um evento em especifico usando o id do evento
+    public function getEventoAtivo()
+    {
+       $query = "SELECT 
+                  pk_id_evento,
+                  nome_evento,
+                  caminho_pasta,
+                  DATE_FORMAT(data_criacao_evento,'%d/%m/%Y') as data_criacao_evento,
+                  DATE_FORMAT(data_evento,'%d/%m/%Y') as data_evento,                  
+                  tag_evento                  
+              FROM
+                  tb_evento_conselho 
+              LEFT JOIN
+                  tb_modalidade_evento
+              ON
+                  tb_evento_conselho.fk_id_modalidade_evento = tb_modalidade_evento.pk_id_modalidade_evento
+              WHERE 
+                  situacao_evento = 1 and pk_id_evento = :pk_id_evento";
+
+                  $stmt = $this->db->prepare($query);
+                  $stmt->bindValue(':pk_id_evento',$this->__get('pk_id_evento'));
+                  $stmt->execute();
+
+                  return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    //query para pegar todas asmodalidades de arquivos do conselho que estao ativas
+    public function getModalidadeArquivoAtiva()
+    {
+        $query = "SELECT 
+                    pk_id_modalidade_arquivo,
+                    modalidade_arquivo
+                  FROM 
+                    tb_modalidade_arquivos
+                  WHERE
+                    situacao_modalidade = 1";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+
+        
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+
+    }
 
 
 

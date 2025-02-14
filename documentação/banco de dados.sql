@@ -1,4 +1,4 @@
-CREATE DATABASE db_projeto_chamados;
+CREATE DATABASE db_projeto_easy_life;
 
 
 

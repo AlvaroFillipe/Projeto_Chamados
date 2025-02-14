@@ -202,7 +202,7 @@ class Admin extends Model
                   fk_id_departamento = :departamento
               WHERE
                   pk_id_usuario = :pk_id_usuario;
-                SET FOREIGN_KEY_CHECKS = 1;
+                  SET FOREIGN_KEY_CHECKS = 1;
               ";
 
     $stmt = $this->db->prepare($query);
