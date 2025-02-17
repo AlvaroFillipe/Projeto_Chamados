@@ -15,8 +15,15 @@ class ConselhoController extends Action
         session_start();
 
         $evento = Container::getModel('Conselho');
+
+        //pegando eventos(pastas ativas)
         $getEventosAtibos = $evento->getEventosAtivos();
         $this->view->getEventosAtivos = $getEventosAtibos;
+
+
+        //pegando modalidades de eventos ativos
+        $get_eventos_ativos = $evento->getModalidadeEventosAtivos();
+        $this->view->getModalidadesEventosAtivos = $get_eventos_ativos;        
 
 
         if ($_SESSION['tipo_usuario'] == 1) {

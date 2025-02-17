@@ -1,7 +1,7 @@
 CREATE DATABASE db_projeto_easy_life;
 
 
-
+-->         TABELA DO MODULO DE CHAMADOS
 
 CREATE TABLE tb_departamentos(
     pk_id_departamento int not null auto_increment primary key,   
@@ -43,13 +43,19 @@ CREATE TABLE tb_chamados(
 
 
 
-
-
+-->         TABELAS DO MODULO CONSELHO
 
 CREATE TABLE tb_modalidade_arquivos(
     pk_id_modalidade_arquivo int not null auto_increment primary key,
     modalidade_arquivo varchar(30),
     situacao_modalidade int
+);
+
+CREATE TABLE tb_arquivos(
+    pk_id_arquivo int not null auto_increment primary key,
+    nome_arquivo TEXT,
+    caminho_arquivo TEXT,
+    situacao_arquivo int
 );
 
 CREATE TABLE tb_modalidade_evento(
@@ -101,7 +107,7 @@ CREATE TABLE tb_arquivos_conselho(
 
 
 
-//adicionando primeiro depatrtamto e usuario
+-->         adicionando primeiro depatrtamto e usuario
 INSERT INTO 
     tb_departamentos
         (
