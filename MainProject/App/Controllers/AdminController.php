@@ -55,7 +55,6 @@ class AdminController extends Action
 
             $editar->__set('pk_id_usuario', $_POST['pk_id_usuario']);
             $editar->__set('usuario', $_POST['usuario']);
-            $editar->__set('email', $_POST['email']);
             $editar->__set('tipo_usuario', $_POST['tipo_usuario']);
             $editar->__set('departamento', $_POST['departamento']);       
 
@@ -82,7 +81,6 @@ class AdminController extends Action
  
          $user->__set('usuario', $_POST['usuario']);
          $user->__set('senha', md5($_POST['senha']));
-         $user->__set('email', $_POST['email']);
          $user->__set('tipo_usuario', $_POST['tipo_usuario']);
          $user->__set('departamento', $_POST['departamento']);
  

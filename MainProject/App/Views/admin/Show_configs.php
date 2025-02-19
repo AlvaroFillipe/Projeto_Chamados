@@ -23,10 +23,6 @@
                   <input name="usuario"type="text" class="form-control" id="inputName5">
                 </div>
                 <div class="col-md-6">
-                  <label for="inputEmail5" class="form-label">Email</label>
-                  <input name="email" type="email" class="form-control" id="inputEmail5">
-                </div>
-                <div class="col-md-6">
                   <label for="inputPassword5" class="form-label">Password</label>
                   <input name="senha" type="password" class="form-control" id="inputPassword5">
                 </div>

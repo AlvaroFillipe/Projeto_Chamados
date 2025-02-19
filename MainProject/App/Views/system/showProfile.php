@@ -58,12 +58,7 @@
                     <div class="col-lg-3 col-md-4 label ">Full Name</div>
                     <div class="col-lg-9 col-md-8"><?=$usuario['usuario']?></div>
                   </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Email</div>
-                    <div class="col-lg-9 col-md-8"><?=$usuario['email']?></div>
-                  </div>
-
+                 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Tipo de Usuario</div>
                     <div class="col-lg-9 col-md-8"><?=$usuario['tipo_usuario']?></div>
@@ -89,16 +84,6 @@
                         <input name="usuario" type="text" class="form-control" id="fullName" value="<?=$usuario['usuario']?>">
                       </div>
                     </div>
-
-
-
-                    <div class="row mb-3">
-                      <label for="company" class="col-md-4 col-lg-3 col-form-label">Email</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="email" type="text" class="form-control" id="company" value="<?=$usuario['email']?>">
-                      </div>
-                    </div>
-
                     <fieldset class="row mb-3">
                       <legend class="col-form-label col-sm-6 pt-0">Tipo De Usuário</legend>
                       <div class="col-sm-10">
@@ -198,6 +183,8 @@
                           $usuario['tipo_usuario'] = 'Admin';
                       } elseif ($usuario['tipo_usuario'] == 2) {
                           $usuario['tipo_usuario'] = 'Padrão';
+                      }elseif ($usuario['tipo_usuario'] == 3) {
+                          $usuario['tipo_usuario'] = 'Visualizador';
                       }
 
                       //logica da tabela para se o valor de categoria de usuario for 1 = senior, se for 2 pleno e se for 3 junior

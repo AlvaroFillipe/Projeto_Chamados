@@ -17,7 +17,6 @@ class Admin extends Model
   //dados normais
   
   private $tipo_usuario;
-  private $email;
   private $usuario;
 
 
@@ -42,7 +41,6 @@ class Admin extends Model
                       usuario,
                       senha,
                       tipo_usuario,
-                      email,
                       fk_id_departamento,
                       situacao_usuario
                     )
@@ -51,7 +49,6 @@ class Admin extends Model
                       :usuario,
                       :senha,
                       :tipo_usuario,
-                      :email,
                       :departamento,
                       1
                     );";
@@ -60,7 +57,6 @@ class Admin extends Model
     $stmt->bindValue(':usuario', $this->__get('usuario'));
     $stmt->bindValue(':senha', $this->__get('senha'));
     $stmt->bindValue(':tipo_usuario', $this->__get('tipo_usuario'));
-    $stmt->bindValue(':email', $this->__get('email'));
     $stmt->bindValue(':departamento', $this->__get('departamento'));
 
     $stmt->execute();
@@ -106,7 +102,6 @@ class Admin extends Model
     $query = "SELECT 
                   pk_id_usuario,
                   usuario,
-                  email,
                   tipo_usuario,
                   fk_id_departamento,
                   departamento
@@ -133,7 +128,6 @@ class Admin extends Model
     $query = "SELECT 
                   pk_id_usuario,
                   usuario,
-                  email,
                   tipo_usuario,
                   fk_id_departamento,
                   departamento                  
@@ -144,7 +138,10 @@ class Admin extends Model
               ON
                   tb_usuarios.fk_id_departamento = tb_departamentos.pk_id_departamento
               WHERE 
-                  tipo_usuario = 2";
+                  tipo_usuario = 2
+                  
+              ORDER BY
+                  usuario ASC";
 
                   $stmt = $this->db->prepare($query);
                   $stmt->execute();
@@ -161,7 +158,9 @@ class Admin extends Model
                   tipo_usuario,
                   fk_id_departamento 
               FROM 
-                  tb_usuarios WHERE situacao_usuario = 1;";
+                  tb_usuarios WHERE situacao_usuario = 1
+              ORDER BY
+                  usuario ASC;";
     $stmt = $this->db->prepare($query);
 
     $stmt->execute();
@@ -195,8 +194,7 @@ class Admin extends Model
               SET FOREIGN_KEY_CHECKS = 0;
               UPDATE 
                   tb_usuarios 
-              SET 
-                  email = :email,
+              SET                   
                   usuario = :usuario,
                   tipo_usuario = :tipo_usuario,
                   fk_id_departamento = :departamento
@@ -207,7 +205,7 @@ class Admin extends Model
 
     $stmt = $this->db->prepare($query);
 
-    $stmt->bindValue('email', $this->__get('email'));
+   
     $stmt->bindValue('usuario', $this->__get('usuario'));
     $stmt->bindValue('tipo_usuario', $this->__get('tipo_usuario'));
     $stmt->bindValue('departamento', $this->__get('departamento'));
